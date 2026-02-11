@@ -1,0 +1,2331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UEFA Cup 1999-2000 - Full Match List</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Basis Layout */
+        .app-wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 260px;
+            background: #111;
+            padding: 20px;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            background: #ffffff;
+            color: #000000;
+        }
+
+        /* Navigatie & Header */
+        .season-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #393838;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+        
+        .season-navigation h1 { margin: 0; font-size: 24px; color: #ffffff !important; }
+
+        .next-button {
+            background-color: rgb(255, 148, 0) !important;
+            color: white !important;
+            padding: 10px 18px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 13px;
+            transition: opacity 0.3s ease;
+        }
+        .next-button:hover { opacity: 0.9; }
+
+        /* Statistieken in Sidebar */
+        .sidebar-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-section h3 {
+            color: rgb(255, 148, 0);
+            font-size: 14px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .stat-value {
+            color: #000000;
+            font-weight: bold;
+            background: #ffffff;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        /* Tabel Styling */
+        .team-section { width: 100%; overflow-x: auto; }
+        .match-table-full { width: 100%; border-collapse: collapse; min-width: 700px; color: #000000; }
+        .match-table-full th { text-align: left; padding: 12px; border-bottom: 2px solid #000; color: #000; }
+        .match-table-full td { padding: 12px; border-bottom: 1px solid #eee; }
+        
+        .match-table-full tbody tr:hover td { background-color: #f0f7ff !important; }
+        
+        .round-divider { background-color: rgb(255, 148, 0); padding: 10px 15px !important; font-weight: bold; color: #000000; }
+        .score-bold { font-weight: bold; color: #000000; }
+        .table-icon { width: 25px; transition: transform 0.2s ease; }
+
+        #scrollTopBtn {
+            position: fixed; bottom: 20px; right: 20px; width: 40px; height: 40px;
+            background: #0046a6; color: white; border: none; border-radius: 50%; cursor: pointer; display: none;
+            z-index: 100;
+        }
+
+        @media (max-width: 768px) {
+            .app-wrapper { flex-direction: column; }
+            .sidebar { width: 100%; }
+            .season-navigation { flex-direction: column; text-align: center; gap: 15px; }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="app-wrapper">
+    <aside class="sidebar">
+        <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #333;">
+                <img src="../images/logo.png" alt="All Football Tickets Logo" style="width: 100%; max-width: 180px; border-radius: 10px; opacity: 0.8;">
+            </div>
+        
+        <nav class="sidebar-nav">
+            <a href="../index.html" style="color: #fff; text-decoration: none; display: block; margin-bottom: 10px;">Home</a>
+            <a href="uc-overzicht.html" style="color: #fff; text-decoration: none; display: block; margin-bottom: 20px;">UEFA Cup</a>
+        </nav>
+        
+        <div class="sidebar-section">
+            <h3>Season Stats</h3>
+            <div class="stat-item">
+                <span>Tickets:</span> 
+                <span class="stat-value"><span id="ticket-count">0</span> / <span id="total-tickets">0</span></span>
+            </div>
+            
+        </div>
+
+        <div class="sidebar-section">
+    <h3>Select a Season</h3>
+    <select class="season-selector" onchange="location = this.value;" style="width:100%; padding:8px; background:#fff; color:#000; border:1px solid #333;">
+<option value="uc-1971-1972.html">1971 / 1972</option>
+<option value="uc-1972-1973.html">1972 / 1973</option>
+<option value="uc-1973-1974.html">1973 / 1974</option>
+<option value="uc-1974-1975.html">1974 / 1975</option>
+<option value="uc-1975-1976.html">1975 / 1976</option>
+<option value="uc-1976-1977.html">1976 / 1977</option>
+<option value="uc-1977-1978.html">1977 / 1978</option>
+<option value="uc-1978-1979.html">1978 / 1979</option>
+<option value="uc-1979-1980.html">1979 / 1980</option>
+<option value="uc-1980-1981.html">1980 / 1981</option>
+<option value="uc-1981-1982.html">1981 / 1982</option>
+<option value="uc-1982-1983.html">1982 / 1983</option>
+<option value="uc-1983-1984.html">1983 / 1984</option>
+<option value="uc-1984-1985.html">1984 / 1985</option>
+<option value="uc-1985-1986.html">1985 / 1986</option>
+<option value="uc-1986-1987.html">1986 / 1987</option>
+<option value="uc-1987-1988.html">1987 / 1988</option>
+<option value="uc-1988-1989.html">1988 / 1989</option>
+<option value="uc-1989-1990.html">1989 / 1990</option>
+<option value="uc-1990-1991.html">1990 / 1991</option>
+<option value="uc-1991-1992.html">1991 / 1992</option>
+<option value="uc-1992-1993.html">1992 / 1993</option>
+<option value="uc-1993-1994.html">1993 / 1994</option>
+<option value="uc-1994-1995.html">1994 / 1995</option>
+<option value="uc-1995-1996.html">1995 / 1996</option>
+<option value="uc-1996-1997.html">1996 / 1997</option>
+<option value="uc-1997-1998.html">1997 / 1998</option>
+<option value="uc-1998-1999.html">1998 / 1999</option>
+<option value="uc-1999-2000.html" selected>1999 / 2000</option>
+<option value="uc-2000-2001.html">2000 / 2001</option>
+<option value="uc-2001-2002.html">2001 / 2002</option>
+<option value="uc-2002-2003.html">2002 / 2003</option>
+<option value="uc-2003-2004.html">2003 / 2004</option>
+<option value="uc-2004-2005.html">2004 / 2005</option>
+<option value="uc-2005-2006.html">2005 / 2006</option>
+<option value="uc-2006-2007.html">2006 / 2007</option>
+<option value="uc-2007-2008.html">2007 / 2008</option>
+<option value="uc-2008-2009.html">2008 / 2009</option>
+        
+    </select>
+</div>
+
+        <div class="sidebar-section">
+            <h3>Legenda</h3>
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+                <img src="../images/aaa.png" width="20"> <span style="font-size:13px; color:#ccc;">on Site (hover over to see)</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:10px;">
+                <img src="../images/bbb.png" width="20"> <span style="font-size:13px; color:#ccc;">searching</span>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="season-navigation">
+    <div>
+        <h1>UEFA Cup 1999-2000</h1>
+        <div class="az-filter-container" style="margin-top: 15px;">
+    <div id="alphabet-nav" style="display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px;"></div>
+    <div id="team-list-display" style="position: absolute; width: 320px; background: white; border: 1px solid #ccc; border-radius: 8px; display: none; max-height: 400px; overflow-y: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 9999;"></div>
+</div>
+        
+    </div>
+    <div style="display: flex; gap: 10px;">
+        <a href="uc-1998-1999.html" class="next-button">&laquo;Previous 98/99</a>
+        <a href="uc-2000-2001.html" class="next-button">Next 00/01 &raquo;</a>
+    </div>
+</header>
+
+        <section class="team-section">
+            <table class="match-table-full" id="matchTable">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Game</th>
+                        <th>Score</th>
+                        <th>Tickets</th>
+                        <th>Match Stats</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+<tr><td colspan="5" class="round-divider">Qualification Round</td></tr>
+<tr>
+    <td>	 10-08-1999&nbsp;	</td>
+    <td>	Shakhtar Donetsk	 - 	Sileks Kratovo	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 11-08-1999&nbsp;	</td>
+    <td>	HJK Helsinki	 - 	ShIraq Gyumri	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	Neftchi PFK	 - 	Rode Ster Belgrado	</td>
+    <td class="score-bold">	2-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	FK Vojvodina Novi Sad	 - 	Újpesti TE	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	FC Erevan	 - 	Hapoel Tel Aviv	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	FC Sheriff Tiraspol	 - 	SK Sigma Olomouc	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	FC Locomotive Tbilisi	 - 	Linfield FC	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	Liepajas Metalurgs	 - 	Lech Poznan	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	BATE Borisov	 - 	Lokomotiv Moskau	</td>
+    <td class="score-bold">	1-7	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	ND Gorica	 - 	Inter Cardiff	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	Lantana Tallinn	 - 	Torpedo Kutaisi	</td>
+    <td class="score-bold">	0-5	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	KF Vllaznia	 - 	Spartak Trnava	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	Maccabi Tel Aviv	 - 	Spyris Kaunas	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	JK Viljandi Tulevik	 - 	Club Brugge KV	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	Ferencvarosi TC	 - 	Constructorul Chisinau	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	Viking FK	 - 	CE Principat	</td>
+    <td class="score-bold">	7-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	Lyngby Boldklub	 - 	Birkirkara FC	</td>
+    <td class="score-bold">	7-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	APOEL Nicosia	 - 	Levski Sofia	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	Kryvbas Kryvyi Rig	 - 	FK Shamkir	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	Belshina Bobruisk	 - 	Omonia Nicosia	</td>
+    <td class="score-bold">	1-5	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	KI Klaksvik	 - 	Grazer AK	</td>
+    <td class="score-bold">	0-5	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	FK Riga	 - 	Helsingborgs IF	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	FK Bodo Glimt	 - 	FC Vaduz	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	Vardar Skopje	 - 	Legia Warszawa </td>
+    <td class="score-bold">	0-5	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	Vaasan Palloseura	 - 	St  Johnstone FC	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	MKE Ankaragücü	 - 	B36 Tórshavn	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	IFK Goteborg	 - 	Cork City FC	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	FC Mondercange	 - 	FC Dinamo 1948	</td>
+    <td class="score-bold">	2-6	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	NK Olimpija Ljubljana	 - 	FK Kareda Kaunas	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	RSC Anderlecht	 - 	KS/Leiftur	</td>
+    <td class="score-bold">	6-1	</td>
+    <td><a href="https://i.postimg.cc/DwpXJGtM/uc19990812-anderlecht-leiftur.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	ASK Inter Slovnaft Bratislava	 - 	FK Bylis	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	Cwmbran Town	 - 	Celtic Glasgow	</td>
+    <td class="score-bold">	0-6	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	Sliema Wanderers	 - 	FC Zúrich	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	Steaua Bucharest	 - 	Levadia Maardu	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	Grasshopper Club Zurich	 - 	Bray Wanderers	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	KR Reykjavík	 - 	Kilmarnock FC	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	HNK Hajduk Split	 - 	F91 Dudelange	</td>
+    <td class="score-bold">	5-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-08-1999&nbsp;	</td>
+    <td>	Portadown FC	 - 	CSKA Sofia	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Qualification Round</td></tr>
+<tr>
+    <td>	 24-08-1999&nbsp;	</td>
+    <td>	FK Shamkir	 - 	Kryvbas Kryvyi Rig	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-08-1999&nbsp;	</td>
+    <td>	CSKA Sofia	 - 	Portadown FC	</td>
+    <td class="score-bold">	5-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	Torpedo Kutaisi	 - 	Lantana Tallinn	</td>
+    <td class="score-bold">	4-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	ShIraq Gyumri	 - 	HJK Helsinki	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	FK Kareda Kaunas	 - 	NK Olimpija Ljubljana	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	Constructorul Chisinau	 - 	Ferencvarosi TC	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	Levski Sofia	 - 	APOEL Nicosia	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	Sileks Kratovo	 - 	Shakhtar Donetsk	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	Spyris Kaunas	 - 	Maccabi Tel Aviv	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	Lokomotiv Moskau	 - 	BATE Borisov	</td>
+    <td class="score-bold">	5-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	FC Dinamo 1948	 - 	FC Mondercange	</td>
+    <td class="score-bold">	7-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	Rode Ster Belgrado	 - 	Neftchi PFK	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	Grazer AK	 - 	KI Klaksvik	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	Lech Poznan	 - 	Liepajas Metalurgs	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	Újpesti TE	 - 	FK Vojvodina Novi Sad	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	Hapoel Tel Aviv	 - 	FC Erevan	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	KS/Leiftur	 - 	RSC Anderlecht	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://i.postimg.cc/CxrqB8Wr/uc19990826-leiftur-anderlecht.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	B36 Tórshavn	 - 	MKE Ankaragücü	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	Birkirkara FC	 - 	Lyngby Boldklub	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	F91 Dudelange	 - 	HNK Hajduk Split	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	Spartak Trnava	 - 	KF Vllaznia	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	Legia Warszawa	 - 	Vardar Skopje	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	Helsingborgs IF	 - 	FK Riga	</td>
+    <td class="score-bold">	5-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	Levadia Maardu	 - 	Steaua Bucharest	</td>
+    <td class="score-bold">	1-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	FC Vaduz	 - 	FK Bodo Glimt	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	Cork City FC	 - 	IFK Goteborg	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	Omonia Nicosia	 - 	Belshina Bobruisk	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	Inter Cardiff	 - 	ND Gorica	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	FC Zúrich	 - 	Sliema Wanderers	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	Club Brugge KV	 - 	JK Viljandi Tulevik	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	FK Bylis	 - 	ASK Inter Slovnaft Bratislava	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	St  Johnstone FC	 - 	Vaasan Palloseura	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	Celtic Glasgow	 - 	Cwmbran Town	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	Kilmarnock FC	 - 	KR Reykjavík	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	Bray Wanderers	 - 	Grasshopper Club Zurich	</td>
+    <td class="score-bold">	0-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	CE Principat	 - 	Viking FK	</td>
+    <td class="score-bold">	0-11	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	SK Sigma Olomouc	 - 	FC Sheriff Tiraspol	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-1999&nbsp;	</td>
+    <td>	Linfield FC	 - 	FC Locomotive Tbilisi	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Round 1</td></tr>
+<tr>
+    <td>	 14-09-1999&nbsp;	</td>
+    <td>	Rode Ster Belgrado	 - 	Montpellier HSC	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-09-1999&nbsp;	</td>
+    <td>	FK Partizan Belgrado	 - 	Leeds United	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-09-1999&nbsp;	</td>
+    <td>	Steaua Bucharest	 - 	LASK	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-09-1999&nbsp;	</td>
+    <td>	Stabæk Fotball	 - 	Deportivo de La Coruña 	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-09-1999&nbsp;	</td>
+    <td>	Udinese Calcio	 - 	Aalborg BK	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-09-1999&nbsp;	</td>
+    <td>	VfL Wolfsburg	 - 	Debreceni VSC	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 15-09-1999&nbsp;	</td>
+    <td>	HJK Helsinki	 - 	Olympique Lyon	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	Torpedo Kutaisi	 - 	AEK Athens	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	FK Vojvodina Novi Sad	 - 	SK Slavia Praag	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	ND Gorica	 - 	Panathinaikos FC	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	SK Sigma Olomouc	 - 	RCD Mallorca	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	Maccabi Tel Aviv	 - 	RC Lens	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	Skonto Riga	 - 	Widzew Lodz	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	HNK Hajduk Split	 - 	Levski Sofia	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	FK Bodo Glimt	 - 	SV Werder Bremen	</td>
+    <td class="score-bold">	0-5	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	FC Locomotive Tbilisi	 - 	PAOK Thessaloniki	</td>
+    <td class="score-bold">	0-7	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	Zenit Saint-Petersburg	 - 	FC Bologna	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	ASK Inter Slovnaft Bratislava	 - 	SK Rapid Wien	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	Roda JC	 - 	Shakhtar Donetsk	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	Lyngby Boldklub	 - 	Lokomotiv Moskau	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	Helsingborgs IF	 - 	Karpaty Lviv	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	Lech Poznan	 - 	IFK Goteborg	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	Anorthosis Famagusta	 - 	Legia Warszawa </td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	Hapoel Haifa	 - 	Club Brugge KV	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	FK Teplice	 - 	Ferencvarosi TC	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	AC Parma	 - 	Kryvbas Kryvyi Rig	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	Ionikos Nikeas	 - 	FC Nantes	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	CSKA Sofia	 - 	Newcastle United	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	Aris Thessaloniki	 - 	Servette FC	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	Omonia Nicosia	 - 	Juventus FC	</td>
+    <td class="score-bold">	2-5	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	RSC Anderlecht	 - 	NK Olimpija Ljubljana	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://i.postimg.cc/QdYT97Rn/uc19990916-anderlecht-ljubljana.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	Viking FK	 - 	Sporting CP	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	FC Zúrich	 - 	Lierse SK	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	FC Lausanne-Sport	 - 	Celta de Vigo	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	Grazer AK	 - 	Spartak Trnava	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	AFC Ajax	 - 	Dukla Banska Bystrica	</td>
+    <td class="score-bold">	6-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	1.FC Kaiserslautern	 - 	Kilmarnock FC	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	MTK Hungária FC	 - 	Fenerbahçe SK	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	Akademisk Boldklub	 - 	Grasshopper Club Zurich	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	AS Monaco	 - 	St  Johnstone FC	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	Celtic Glasgow	 - 	Hapoel Tel Aviv	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	Tottenham Hotspur	 - 	FC Zimbru Chisinau	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	West Ham United	 - 	NK Osijek	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	Amica Wronki	 - 	Bröndby IF	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	Atlético Madrid	 - 	MKE Ankaragücü	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	SC Beira-Mar	 - 	Vitesse Arnhem	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	AS Roma	 - 	Vitória Setúbal FC	</td>
+    <td class="score-bold">	7-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-1999&nbsp;	</td>
+    <td>	SL Benfica	 - 	FC Dinamo 1948	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Round 1</td></tr>
+<tr>
+    <td>	 28-09-1999&nbsp;	</td>
+    <td>	Montpellier HSC	 - 	Rode Ster Belgrado	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-09-1999&nbsp;	</td>
+    <td>	Debreceni VSC	 - 	VfL Wolfsburg	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-09-1999&nbsp;	</td>
+    <td>	LASK	 - 	Steaua Bucharest	</td>
+    <td class="score-bold">	2-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	Levski Sofia	 - 	HNK Hajduk Split	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	SK Slavia Praag	 - 	FK Vojvodina Novi Sad	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	AEK Athens	 - 	Torpedo Kutaisi	</td>
+    <td class="score-bold">	6-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	FC Bologna	 - 	Zenit Saint-Petersburg	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	Shakhtar Donetsk	 - 	Roda JC	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	St  Johnstone FC	 - 	AS Monaco	</td>
+    <td class="score-bold">	3-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	Lokomotiv Moskau	 - 	Lyngby Boldklub	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	Kilmarnock FC	 - 	1.FC Kaiserslautern	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	Spartak Trnava	 - 	Grazer AK	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	RC Lens	 - 	Maccabi Tel Aviv	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	FC Zimbru Chisinau	 - 	Tottenham Hotspur	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	Ferencvarosi TC	 - 	FK Teplice	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	Kryvbas Kryvyi Rig	 - 	AC Parma	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	Widzew Lodz	 - 	Skonto Riga	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	Karpaty Lviv	 - 	Helsingborgs IF	</td>
+    <td class="score-bold">	1-1 pen 1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	MKE Ankaragücü	 - 	Atlético Madrid	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	Bröndby IF	 - 	Amica Wronki	</td>
+    <td class="score-bold">	4-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	FC Nantes	 - 	Ionikos Nikeas	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	IFK Goteborg	 - 	Lech Poznan	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	FC Dinamo 1948	 - 	SL Benfica	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	Celta de Vigo	 - 	FC Lausanne-Sport	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	Leeds United	 - 	FK Partizan Belgrado	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	Dukla Banska Bystrica	 - 	AFC Ajax	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	Lierse SK	 - 	FC Zúrich	</td>
+    <td class="score-bold">	3-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	Legia Warszawa	 - 	Anorthosis Famagusta	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	NK Olimpija Ljubljana	 - 	RSC Anderlecht	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	PAOK Thessaloniki	 - 	FC Locomotive Tbilisi	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	Hapoel Tel Aviv	 - 	Celtic Glasgow	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	Panathinaikos FC	 - 	ND Gorica	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	Servette FC	 - 	Aris Thessaloniki	</td>
+    <td class="score-bold">	1-2 aet	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	SK Rapid Wien	 - 	ASK Inter Slovnaft Bratislava	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	Juventus FC	 - 	Omonia Nicosia	</td>
+    <td class="score-bold">	5-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	SV Werder Bremen	 - 	FK Bodo Glimt	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	Club Brugge KV	 - 	Hapoel Haifa	</td>
+    <td class="score-bold">	4-2	</td>
+    <td><a href="https://i.postimg.cc/7Zt2Gzpc/uc19990930-club-brugge-hapoel-haifa.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	Fenerbahçe SK	 - 	MTK Hungária FC	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	Aalborg BK	 - 	Udinese Calcio	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	Grasshopper Club Zurich	 - 	Akademisk Boldklub	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	Olympique Lyon	 - 	HJK Helsinki	</td>
+    <td class="score-bold">	5-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	Vitesse Arnhem	 - 	SC Beira-Mar	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	NK Osijek	 - 	West Ham United	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	Newcastle United	 - 	CSKA Sofia	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	RCD Mallorca	 - 	SK Sigma Olomouc	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	Deportivo de La Coruña 	 - 	Stabæk Fotball	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	Sporting CP	 - 	Viking FK	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-1999&nbsp;	</td>
+    <td>	Vitória Setúbal FC	 - 	AS Roma	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Round 2</td></tr>
+<tr>
+    <td>	 19-10-1999&nbsp;	</td>
+    <td>	Aris Thessaloniki	 - 	Celta de Vigo	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-10-1999&nbsp;	</td>
+    <td>	Udinese Calcio	 - 	Legia Warszawa </td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-10-1999&nbsp;	</td>
+    <td>	Deportivo de La Coruña 	 - 	Montpellier HSC	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-10-1999&nbsp;	</td>
+    <td>	SK Slavia Praag	 - 	Grasshopper Club Zurich	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-10-1999&nbsp;	</td>
+    <td>	Levski Sofia	 - 	Juventus FC	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-10-1999&nbsp;	</td>
+    <td>	ASK Inter Slovnaft Bratislava	 - 	FC Nantes	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-10-1999&nbsp;	</td>
+    <td>	Widzew Lodz	 - 	AS Monaco	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-10-1999&nbsp;	</td>
+    <td>	SV Werder Bremen	 - 	Viking FK	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-10-1999&nbsp;	</td>
+    <td>	IFK Goteborg	 - 	AS Roma	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-10-1999&nbsp;	</td>
+    <td>	FK Teplice	 - 	RCD Mallorca	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-10-1999&nbsp;	</td>
+    <td>	Steaua Bucharest	 - 	West Ham United	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-10-1999&nbsp;	</td>
+    <td>	RSC Anderlecht	 - 	FC Bologna	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://i.postimg.cc/9Qg7R9vK/uc19991021-anderlecht-bologna.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-10-1999&nbsp;	</td>
+    <td>	PAOK Thessaloniki	 - 	SL Benfica	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-10-1999&nbsp;	</td>
+    <td>	MTK Hungária FC	 - 	AEK Athens	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-10-1999&nbsp;	</td>
+    <td>	FC Zúrich	 - 	Newcastle United	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-10-1999&nbsp;	</td>
+    <td>	Grazer AK	 - 	Panathinaikos FC	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-10-1999&nbsp;	</td>
+    <td>	Roda JC	 - 	VfL Wolfsburg	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-10-1999&nbsp;	</td>
+    <td>	Hapoel Haifa	 - 	AFC Ajax	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-10-1999&nbsp;	</td>
+    <td>	Olympique Lyon	 - 	Celtic Glasgow	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-10-1999&nbsp;	</td>
+    <td>	Leeds United	 - 	Lokomotiv Moskau	</td>
+    <td class="score-bold">	4-1	</td>
+    <td><a href="https://i.postimg.cc/P5VwpDgs/uc19991021-Leeds-United-v-Lokomotiv-Moscow.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-10-1999&nbsp;	</td>
+    <td>	AC Parma	 - 	Helsingborgs IF	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-10-1999&nbsp;	</td>
+    <td>	Atlético Madrid	 - 	Amica Wronki	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-10-1999&nbsp;	</td>
+    <td>	RC Lens	 - 	Vitesse Arnhem	</td>
+    <td class="score-bold">	4-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-10-1999&nbsp;	</td>
+    <td>	Tottenham Hotspur	 - 	1.FC Kaiserslautern	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Round 2</td></tr>
+<tr>
+    <td>	 2-11-1999&nbsp;	</td>
+    <td>	AEK Athens	 - 	MTK Hungária FC	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-11-1999&nbsp;	</td>
+    <td>	VfL Wolfsburg	 - 	Roda JC	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-11-1999&nbsp;	</td>
+    <td>	FC Bologna	 - 	RSC Anderlecht	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://i.postimg.cc/kgYb6Skk/uc19991102-bolonga-anderlecht.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-11-1999&nbsp;	</td>
+    <td>	AS Monaco	 - 	Widzew Lodz	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-11-1999&nbsp;	</td>
+    <td>	Viking FK	 - 	SV Werder Bremen	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-11-1999&nbsp;	</td>
+    <td>	Montpellier HSC	 - 	Deportivo de La Coruña 	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-11-1999&nbsp;	</td>
+    <td>	Legia Warszawa	 - 	Udinese Calcio	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-11-1999&nbsp;	</td>
+    <td>	AS Roma	 - 	IFK Goteborg	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-11-1999&nbsp;	</td>
+    <td>	Lokomotiv Moskau	 - 	Leeds United	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://i.postimg.cc/W1YkFZQB/uc19991104-LOKOMOTIV-MOSCOW-LEEDS-UNITED.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-11-1999&nbsp;	</td>
+    <td>	Helsingborgs IF	 - 	AC Parma	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-11-1999&nbsp;	</td>
+    <td>	Grasshopper Club Zurich	 - 	SK Slavia Praag	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-11-1999&nbsp;	</td>
+    <td>	Amica Wronki	 - 	Atlético Madrid	</td>
+    <td class="score-bold">	1-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-11-1999&nbsp;	</td>
+    <td>	FC Nantes	 - 	ASK Inter Slovnaft Bratislava	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-11-1999&nbsp;	</td>
+    <td>	Vitesse Arnhem	 - 	RC Lens	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-11-1999&nbsp;	</td>
+    <td>	Panathinaikos FC	 - 	Grazer AK	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-11-1999&nbsp;	</td>
+    <td>	1.FC Kaiserslautern	 - 	Tottenham Hotspur	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-11-1999&nbsp;	</td>
+    <td>	AFC Ajax	 - 	Hapoel Haifa	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-11-1999&nbsp;	</td>
+    <td>	SL Benfica	 - 	PAOK Thessaloniki	</td>
+    <td class="score-bold">	1-2 pen 4-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-11-1999&nbsp;	</td>
+    <td>	Juventus FC	 - 	Levski Sofia	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-11-1999&nbsp;	</td>
+    <td>	Celtic Glasgow	 - 	Olympique Lyon	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-11-1999&nbsp;	</td>
+    <td>	West Ham United	 - 	Steaua Bucharest	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-11-1999&nbsp;	</td>
+    <td>	Newcastle United	 - 	FC Zúrich	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-11-1999&nbsp;	</td>
+    <td>	Celta de Vigo	 - 	Aris Thessaloniki	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-11-1999&nbsp;	</td>
+    <td>	RCD Mallorca	 - 	FK Teplice	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Round 3</td></tr>
+<tr>
+    <td>	 23-11-1999&nbsp;	</td>
+    <td>	Udinese Calcio	 - 	Bayer Leverkusen	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-11-1999&nbsp;	</td>
+    <td>	AEK Athens	 - 	AS Monaco	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-11-1999&nbsp;	</td>
+    <td>	FC Bologna	 - 	Galatasaray	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-11-1999&nbsp;	</td>
+    <td>	VfL Wolfsburg	 - 	Atlético Madrid	</td>
+    <td class="score-bold">	2-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 25-11-1999&nbsp;	</td>
+    <td>	AC Parma	 - 	SK Sturm Graz	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 25-11-1999&nbsp;	</td>
+    <td>	SK Slavia Praag	 - 	Steaua Bucharest	</td>
+    <td class="score-bold">	4-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 25-11-1999&nbsp;	</td>
+    <td>	RC Lens	 - 	1.FC Kaiserslautern	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 25-11-1999&nbsp;	</td>
+    <td>	Olympique Lyon	 - 	SV Werder Bremen	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 25-11-1999&nbsp;	</td>
+    <td>	AFC Ajax	 - 	RCD Mallorca	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 25-11-1999&nbsp;	</td>
+    <td>	Olympiacos Piraeus	 - 	Juventus FC	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 25-11-1999&nbsp;	</td>
+    <td>	Deportivo de La Coruña 	 - 	Panathinaikos FC	</td>
+    <td class="score-bold">	4-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 25-11-1999&nbsp;	</td>
+    <td>	Arsenal FC	 - 	FC Nantes	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 25-11-1999&nbsp;	</td>
+    <td>	AS Roma	 - 	Newcastle United	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 25-11-1999&nbsp;	</td>
+    <td>	Rangers FC	 - 	Borussia Dortmund	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://i.postimg.cc/fRq9tdGQ/uc19991125-rangers-dortmund.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 25-11-1999&nbsp;	</td>
+    <td>	Celta de Vigo	 - 	SL Benfica	</td>
+    <td class="score-bold">	7-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Round 3</td></tr>
+<tr>
+    <td>	 2-12-1999&nbsp;	</td>
+    <td>	Spartak Moscou	 - 	Leeds United	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 7-12-1999&nbsp;	</td>
+    <td>	Borussia Dortmund	 - 	Rangers FC	</td>
+    <td class="score-bold">	2-0 pen 3-1	</td>
+    <td><a href="https://i.postimg.cc/rwZr04BM/uc19991207-dortmund-rangers.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 7-12-1999&nbsp;	</td>
+    <td>	SV Werder Bremen	 - 	Olympique Lyon	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 7-12-1999&nbsp;	</td>
+    <td>	Juventus FC	 - 	Olympiacos Piraeus	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-12-1999&nbsp;	</td>
+    <td>	1.FC Kaiserslautern	 - 	RC Lens	</td>
+    <td class="score-bold">	1-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-12-1999&nbsp;	</td>
+    <td>	SK Sturm Graz	 - 	AC Parma	</td>
+    <td class="score-bold">	3-3 aet	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-12-1999&nbsp;	</td>
+    <td>	Galatasaray	 - 	FC Bologna	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-12-1999&nbsp;	</td>
+    <td>	Steaua Bucharest	 - 	SK Slavia Praag	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-12-1999&nbsp;	</td>
+    <td>	Panathinaikos FC	 - 	Deportivo de La Coruña 	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-12-1999&nbsp;	</td>
+    <td>	AS Monaco	 - 	AEK Athens	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-12-1999&nbsp;	</td>
+    <td>	FC Nantes	 - 	Arsenal FC	</td>
+    <td class="score-bold">	3-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-12-1999&nbsp;	</td>
+    <td>	Bayer Leverkusen	 - 	Udinese Calcio	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-12-1999&nbsp;	</td>
+    <td>	Leeds United	 - 	Spartak Moscou	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://i.postimg.cc/T3NDLbzx/uc19991209-LEEDS-UNITED-SPARTAK-MOSCOW.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-12-1999&nbsp;	</td>
+    <td>	Newcastle United	 - 	AS Roma	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-12-1999&nbsp;	</td>
+    <td>	SL Benfica	 - 	Celta de Vigo	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-12-1999&nbsp;	</td>
+    <td>	Atlético Madrid	 - 	VfL Wolfsburg	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-12-1999&nbsp;	</td>
+    <td>	RCD Mallorca	 - 	AFC Ajax	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Last 16</td></tr>
+<tr>
+    <td>	 29-02-2000&nbsp;	</td>
+    <td>	SK Slavia Praag	 - 	Udinese Calcio	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-02-2000&nbsp;	</td>
+    <td>	AC Parma	 - 	SV Werder Bremen	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-03-2000&nbsp;	</td>
+    <td>	AS Roma	 - 	Leeds United	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-03-2000&nbsp;	</td>
+    <td>	Borussia Dortmund	 - 	Galatasaray	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-03-2000&nbsp;	</td>
+    <td>	Atlético Madrid	 - 	RC Lens	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-03-2000&nbsp;	</td>
+    <td>	Juventus FC	 - 	Celta de Vigo	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-03-2000&nbsp;	</td>
+    <td>	Arsenal FC	 - 	Deportivo de La Coruña 	</td>
+    <td class="score-bold">	5-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-03-2000&nbsp;	</td>
+    <td>	RCD Mallorca	 - 	AS Monaco	</td>
+    <td class="score-bold">	4-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Last 16</td></tr>
+<tr>
+    <td>	 7-03-2000&nbsp;	</td>
+    <td>	Udinese Calcio	 - 	SK Slavia Praag	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-03-2000&nbsp;	</td>
+    <td>	Galatasaray	 - 	Borussia Dortmund	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-03-2000&nbsp;	</td>
+    <td>	AS Monaco	 - 	RCD Mallorca	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-03-2000&nbsp;	</td>
+    <td>	SV Werder Bremen	 - 	AC Parma	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-03-2000&nbsp;	</td>
+    <td>	Celta de Vigo	 - 	Juventus FC	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-03-2000&nbsp;	</td>
+    <td>	Leeds United	 - 	AS Roma	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://i.postimg.cc/2S9ZbWsm/uc20000309-Leeds-United-AS-Rom.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-03-2000&nbsp;	</td>
+    <td>	RC Lens	 - 	Atlético Madrid	</td>
+    <td class="score-bold">	4-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-03-2000&nbsp;	</td>
+    <td>	Deportivo de La Coruña 	 - 	Arsenal FC	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Quarter Final</td></tr>
+<tr>
+    <td>	 16-03-2000&nbsp;	</td>
+    <td>	Arsenal FC	 - 	SV Werder Bremen	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-03-2000&nbsp;	</td>
+    <td>	Leeds United	 - 	SK Slavia Praag	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://i.postimg.cc/hGJ79jB6/uc20000316-Leeds-United-v-Slavia-Prague.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-03-2000&nbsp;	</td>
+    <td>	RCD Mallorca	 - 	Galatasaray	</td>
+    <td class="score-bold">	1-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-03-2000&nbsp;	</td>
+    <td>	Celta de Vigo	 - 	RC Lens	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Quarter Final</td></tr>
+<tr>
+    <td>	 23-03-2000&nbsp;	</td>
+    <td>	SK Slavia Praag	 - 	Leeds United	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-03-2000&nbsp;	</td>
+    <td>	Galatasaray	 - 	RCD Mallorca	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-03-2000&nbsp;	</td>
+    <td>	SV Werder Bremen	 - 	Arsenal FC	</td>
+    <td class="score-bold">	2-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-03-2000&nbsp;	</td>
+    <td>	RC Lens	 - 	Celta de Vigo	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Semi Final</td></tr>
+<tr>
+    <td>	 6-04-2000&nbsp;	</td>
+    <td>	Galatasaray	 - 	Leeds United	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-04-2000&nbsp;	</td>
+    <td>	Arsenal FC	 - 	RC Lens	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Semi Final</td></tr>
+<tr>
+    <td>	 20-04-2000&nbsp;	</td>
+    <td>	RC Lens	 - 	Arsenal FC	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-04-2000&nbsp;	</td>
+    <td>	Leeds United	 - 	Galatasaray	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Final</td></tr>
+<tr style="background: rgba(255, 215, 0, 0.2);">
+    <td><strong> 17-05-2000&nbsp;</strong></td>
+    <td><strong>Galatasaray	 - 	Arsenal FC</strong></td>
+    <td class="score-bold">0-0 pen 4-1</td>
+    <td><a href="https://i.postimg.cc/3wyDgRT6/uc20000517-galatasaray-arsenal.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-1999-2000/"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>                  
+
+                </tbody>
+            </table>
+        </section>
+    </main>
+</div>
+
+<button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" id="scrollTopBtn">↑</button>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // 1. Tooltip aanmaken
+        const tooltip = document.createElement('div');
+        tooltip.id = 'image-preview-tooltip';
+        Object.assign(tooltip.style, {
+            position: 'fixed',
+            display: 'none',
+            zIndex: '10000',
+            pointerEvents: 'none',
+            background: '#fff',
+            border: '3px solid rgb(255, 148, 0)',
+            borderRadius: '8px',
+            boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
+            padding: '5px',
+            width: '250px' // Iets smaller voor de zekerheid
+        });
+        document.body.appendChild(tooltip);
+
+        const rows = document.querySelectorAll('#matchTable tbody tr');
+        let ticketsOwned = 0;
+        let programsOwned = 0;
+        let totalMatches = 0;
+
+        rows.forEach(row => {
+            const cells = row.cells;
+            if (cells.length === 5) { 
+                totalMatches++;
+                const links = row.querySelectorAll('td a');
+                links.forEach(link => {
+                    const img = link.querySelector('img');
+                    if (img && img.src.includes('images/aaa.png')) {
+                        if (link.parentElement.cellIndex === 3) ticketsOwned++;
+                        if (link.parentElement.cellIndex === 4) programsOwned++;
+
+                        link.addEventListener('mouseenter', () => {
+                            tooltip.innerHTML = `<img src="${link.href}" style="width:100%; height:auto; display:block; border-radius:4px;">`;
+                            tooltip.style.display = 'block';
+                        });
+
+                        link.addEventListener('mousemove', (e) => {
+                            const gap = 20;
+                            const tooltipWidth = 460; // breedte + padding
+                            let x = e.clientX + gap;
+                            let y = e.clientY + 10;
+
+                            // RECHTS BUITEN BEELD? -> Verplaats naar links van de muis
+                            if (x + tooltipWidth > window.innerWidth) {
+                                x = e.clientX - tooltipWidth - gap;
+                            }
+
+                            // LINKS BUITEN BEELD?
+                            if (x < 0) x = 10;
+
+                            // ONDERKANT BUITEN BEELD?
+                            if (y + 400 > window.innerHeight) {
+                                y = window.innerHeight - 410;
+                            }
+
+                            tooltip.style.left = x + 'px';
+                            tooltip.style.top = y + 'px';
+                        });
+
+                        link.addEventListener('mouseleave', () => {
+                            tooltip.style.display = 'none';
+                        });
+                    }
+                });
+            }
+        });
+
+        // Tellers invullen
+        document.getElementById('ticket-count').innerText = ticketsOwned;
+        document.getElementById('total-tickets').innerText = totalMatches;
+        
+    });
+
+    // Scroll knop
+    window.onscroll = function() {
+        let btn = document.getElementById("scrollTopBtn");
+        if (btn) btn.style.display = (window.pageYOffset > 200) ? "block" : "none";
+    };
+</script>
+<script src="search-index.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Zelfde opschoon-functie als de converter
+        function cleanId(text) {
+            return text.toString().toLowerCase().replace(/[^a-z0-9]/g, '');
+        }
+
+        // 1. Geef alle rijen een ID
+        const rows = document.querySelectorAll("tr");
+        rows.forEach(row => {
+            const cells = row.querySelectorAll("td");
+            if (cells.length >= 2) {
+                const date = cells[0].innerText;
+                const teams = cells[1].innerText;
+                row.id = "match" + cleanId(date + teams);
+            }
+        });
+
+        // 2. Scroll naar de match als er een # in de URL staat
+        if (window.location.hash) {
+            // Wacht heel even tot de pagina volledig rustig is
+            setTimeout(() => {
+                const target = document.querySelector(window.location.hash);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // Highlight de rij
+                    target.style.transition = "background-color 0.5s";
+                    target.style.backgroundColor = "#cdffcf";
+                    setTimeout(() => { target.style.backgroundColor = ""; }, 5000);
+                }
+            }, 600); // 600ms vertraging voor stabiliteit
+        }
+    });
+</script>    
+</body>
+</html>

@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UEFA Nations League 2024-2025 - Full Match List</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Basis Layout */
+        .app-wrapper {
+            display: flex;
+            min-height: 110vh;
+        }
+
+        .sidebar {
+            width: 260px;
+            background: #111;
+            padding: 20px;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            background: #ffffff;
+            color: #000000;
+        }
+
+        /* Navigatie & Header */
+        .season-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #393838;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+        
+        .season-navigation h1 { margin: 0; font-size: 24px; color: #ffffff !important; }
+
+        .next-button {
+            background-color: rgb(255, 148, 0) !important;
+            color: white !important;
+            padding: 10px 18px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 13px;
+            transition: opacity 0.3s ease;
+        }
+        .next-button:hover { opacity: 0.9; }
+
+        /* Statistieken in Sidebar */
+        .sidebar-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-section h3 {
+            color: rgb(255, 148, 0);
+            font-size: 14px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .stat-value {
+            color: #000000;
+            font-weight: bold;
+            background: #ffffff;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        /* Tabel Styling */
+        .team-section { width: 100%; overflow-x: auto; }
+        .match-table-full { width: 100%; border-collapse: collapse; min-width: 700px; color: #000000; }
+        .match-table-full th { text-align: left; padding: 12px; border-bottom: 2px solid #000; color: #000; }
+        .match-table-full td { padding: 12px; border-bottom: 1px solid #eee; }
+        
+        .match-table-full tbody tr:hover td { background-color: #f0f7ff !important; }
+        
+        .round-divider { background-color: rgb(255, 148, 0); padding: 10px 15px !important; font-weight: bold; color: #000000; }
+        .score-bold { font-weight: bold; color: #000000; }
+        .table-icon { width: 25px; transition: transform 0.2s ease; }
+
+        #scrollTopBtn {
+            position: fixed; bottom: 20px; right: 20px; width: 40px; height: 40px;
+            background: #0046a6; color: white; border: none; border-radius: 50%; cursor: pointer; display: none;
+            z-index: 100;
+        }
+
+        @media (max-width: 768px) {
+            .app-wrapper { flex-direction: column; }
+            .sidebar { width: 100%; }
+            .season-navigation { flex-direction: column; text-align: center; gap: 15px; }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="app-wrapper">
+    <aside class="sidebar">
+        <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #333;">
+                <img src="../images/logo.png" alt="All Football Tickets Logo" style="width: 100%; max-width: 180px; border-radius: 10px; opacity: 0.8;">
+            </div>
+        
+        <nav class="sidebar-nav">
+            <a href="../index.html" style="color: #fff; text-decoration: none; display: block; margin-bottom: 10px;">Home</a>
+            <a href="nl-overzicht.html" style="color: #fff; text-decoration: none; display: block; margin-bottom: 20px;">UEFA Nations League</a>
+        </nav>
+        
+        <div class="sidebar-section">
+            <h3>Season Stats</h3>
+            <div class="stat-item">
+                <span>Tickets:</span> 
+                <span class="stat-value"><span id="ticket-count">0</span> / <span id="total-tickets">0</span></span>
+            </div>
+            
+        </div>
+
+        <div class="sidebar-section">
+    <h3>Select a Season</h3>
+    <select class="season-selector" onchange="location = this.value;" style="width:100%; padding:8px; background:#fff; color:#000; border:1px solid #333;">
+        
+
+<option value="nl-2018-2019.html">2018-2019</option>
+<option value="nl-2020-2021.html">2020-2021</option>
+<option value="nl-2022-2023.html">2022-2023</option>
+<option value="nl-2024-2025.html" selected>2024-2025</option>
+
+
+        
+        
+
+        
+        
+    </select>
+</div>
+
+        <div class="sidebar-section">
+            <h3>Legenda</h3>
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+                <img src="../images/aaa.png" width="20"> <span style="font-size:13px; color:#ccc;">on Site (hover over to see)</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:10px;">
+                <img src="../images/bbb.png" width="20"> <span style="font-size:13px; color:#ccc;">searching</span>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="season-navigation">
+    <div>
+        <h1>UEFA Nations League 2024-2025</h1>
+        <div class="az-filter-container" style="margin-top: 15px;">
+    <div id="alphabet-nav" style="display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px;"></div>
+    <div id="team-list-display" style="position: absolute; width: 320px; background: white; border: 1px solid #ccc; border-radius: 8px; display: none; max-height: 400px; overflow-y: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 9999;"></div>
+</div>
+        
+    </div>
+    <div style="display: flex; gap: 10px;">
+        <a href="nl-2022-2023.html" class="next-button">&laquo;Previous 22/23</a>
+        <a href="nl-2026-2027.html" class="next-button">Next 26/27 &raquo;</a>
+    </div>
+</header>
+
+        <section class="team-section">
+            <table class="match-table-full" id="matchTable">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Game</th>
+                        <th>Score</th>
+                        <th>Tickets</th>
+                        <th>Match Stats</th>
+                    </tr>
+                </thead>
+                <tbody>
+<tr>
+    <td colspan="5" class="round-divider" style="font-size: 1.5rem; font-weight: bold; padding: 12px;">
+        UEFA Nations League D
+    </td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group 1</td></tr>
+<tr>
+    <td>	5-09-2024&nbsp;	</td>
+    <td>	San Marino	 - 	Liechtenstein	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-09-2024&nbsp;	</td>
+    <td>	Gibraltar	 - 	Liechtenstein	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	10-10-2024&nbsp;	</td>
+    <td>	Gibraltar	 - 	San Marino	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	13-10-2024&nbsp;	</td>
+    <td>	Liechtenstein	 - 	Gibraltar	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	15 -11-2024&nbsp;	</td>
+    <td>	San Marino	 - 	Gibraltar	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	18 -11-2024&nbsp;	</td>
+    <td>	Liechtenstein	 - 	San Marino	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group 2</td></tr>
+<tr>
+    <td>	7-09-2024&nbsp;	</td>
+    <td>	Moldova	 - 	Malta	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	10-09-2024&nbsp;	</td>
+    <td>	Andorra	 - 	Malta	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	10-10-2024&nbsp;	</td>
+    <td>	Moldova	 - 	Andorra	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	13-10-2024&nbsp;	</td>
+    <td>	Malta	 - 	Moldova	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	16 -11-2024&nbsp;	</td>
+    <td>	Andorra	 - 	Moldova	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19 -11-2024&nbsp;	</td>
+    <td>	Malta	 - 	Andorra	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td colspan="5" class="round-divider" style="font-size: 1.5rem; font-weight: bold; padding: 12px;">
+        UEFA Nations League C
+    </td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group 1</td></tr>
+<tr>
+    <td>	5-09-2024&nbsp;	</td>
+    <td>	Azerbaijan	 - 	Sweden	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	5-09-2024&nbsp;	</td>
+    <td>	Estland	 - 	Slovakia	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-09-2024&nbsp;	</td>
+    <td>	Slovakia	 - 	Azerbaijan	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-09-2024&nbsp;	</td>
+    <td>	Sweden	 - 	Estland	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	11-10-2024&nbsp;	</td>
+    <td>	Slovakia	 - 	Sweden	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	11-10-2024&nbsp;	</td>
+    <td>	Estland	 - 	Azerbaijan	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	14-10-2024&nbsp;	</td>
+    <td>	Azerbaijan	 - 	Slovakia	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	14-10-2024&nbsp;	</td>
+    <td>	Estland	 - 	Sweden	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	16 -11-2024&nbsp;	</td>
+    <td>	Azerbaijan	 - 	Estland	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	16 -11-2024&nbsp;	</td>
+    <td>	Sweden	 - 	Slovakia	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19 -11-2024&nbsp;	</td>
+    <td>	Sweden	 - 	Azerbaijan	</td>
+    <td class="score-bold">	6-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19 -11-2024&nbsp;	</td>
+    <td>	Slovakia	 - 	Estland	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group 2</td></tr>
+<tr>
+    <td>	6-09-2024&nbsp;	</td>
+    <td>	Kosovo	 - 	Romania	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-09-2024&nbsp;	</td>
+    <td>	Lithuania	 - 	Cyprus	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	9-09-2024&nbsp;	</td>
+    <td>	Cyprus	 - 	Kosovo	</td>
+    <td class="score-bold">	0-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	9-09-2024&nbsp;	</td>
+    <td>	Romania	 - 	Lithuania	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	12-10-2024&nbsp;	</td>
+    <td>	Lithuania	 - 	Kosovo	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	12-10-2024&nbsp;	</td>
+    <td>	Cyprus	 - 	Romania	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	15-10-2024&nbsp;	</td>
+    <td>	Kosovo	 - 	Cyprus	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	15-10-2024&nbsp;	</td>
+    <td>	Lithuania	 - 	Romania	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	15 -11-2024&nbsp;	</td>
+    <td>	Romania	 - 	Kosovo	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	15 -11-2024&nbsp;	</td>
+    <td>	Cyprus	 - 	Lithuania	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	18 -11-2024&nbsp;	</td>
+    <td>	Romania	 - 	Cyprus	</td>
+    <td class="score-bold">	4-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	18 -11-2024&nbsp;	</td>
+    <td>	Kosovo	 - 	Lithuania	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group 3</td></tr>
+<tr>
+    <td>	5-09-2024&nbsp;	</td>
+    <td>	Northern Ireland	 - 	Luxembourg	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	5-09-2024&nbsp;	</td>
+    <td>	Belarus	 - 	Bulgaria	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-09-2024&nbsp;	</td>
+    <td>	Luxembourg	 - 	Belarus	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-09-2024&nbsp;	</td>
+    <td>	Bulgaria	 - 	Northern Ireland	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	12-10-2024&nbsp;	</td>
+    <td>	Bulgaria	 - 	Luxembourg	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	12-10-2024&nbsp;	</td>
+    <td>	Belarus	 - 	Northern Ireland	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	15-10-2024&nbsp;	</td>
+    <td>	Northern Ireland	 - 	Bulgaria	</td>
+    <td class="score-bold">	5-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	15-10-2024&nbsp;	</td>
+    <td>	Belarus	 - 	Luxembourg	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	15 -11-2024&nbsp;	</td>
+    <td>	Luxembourg	 - 	Bulgaria	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	15 -11-2024&nbsp;	</td>
+    <td>	Northern Ireland	 - 	Belarus	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	18 -11-2024&nbsp;	</td>
+    <td>	Luxembourg	 - 	Northern Ireland	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	18 -11-2024&nbsp;	</td>
+    <td>	Bulgaria	 - 	Belarus	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group 4</td></tr>
+<tr>
+    <td>	7-09-2024&nbsp;	</td>
+    <td>	Faroe Islands	 - 	North Macedonia	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	7-09-2024&nbsp;	</td>
+    <td>	Armenia	 - 	Latvia	</td>
+    <td class="score-bold">	4-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	10-09-2024&nbsp;	</td>
+    <td>	North Macedonia	 - 	Armenia	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	10-09-2024&nbsp;	</td>
+    <td>	Latvia	 - 	Faroe Islands	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	10-10-2024&nbsp;	</td>
+    <td>	Faroe Islands	 - 	Armenia	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	10-10-2024&nbsp;	</td>
+    <td>	Latvia	 - 	North Macedonia	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	13-10-2024&nbsp;	</td>
+    <td>	Armenia	 - 	North Macedonia	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	13-10-2024&nbsp;	</td>
+    <td>	Faroe Islands	 - 	Latvia	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	14 -11-2024&nbsp;	</td>
+    <td>	Armenia	 - 	Faroe Islands	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	14 -11-2024&nbsp;	</td>
+    <td>	North Macedonia	 - 	Latvia	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	17 -11-2024&nbsp;	</td>
+    <td>	North Macedonia	 - 	Faroe Islands	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	17 -11-2024&nbsp;	</td>
+    <td>	Latvia	 - 	Armenia	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td colspan="5" class="round-divider" style="font-size: 1.5rem; font-weight: bold; padding: 12px;">
+        UEFA Nations League B
+    </td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group 1</td></tr>
+<tr>
+    <td>	7-09-2024&nbsp;	</td>
+    <td>	Georgia	 - 	Czech Republic	</td>
+    <td class="score-bold">	4-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	7-09-2024&nbsp;	</td>
+    <td>	Ukraine	 - 	Albania	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	10-09-2024&nbsp;	</td>
+    <td>	Czech Republic	 - 	Ukraine	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	10-09-2024&nbsp;	</td>
+    <td>	Albania	 - 	Georgia	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	11-10-2024&nbsp;	</td>
+    <td>	Czech Republic	 - 	Albania	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	11-10-2024&nbsp;	</td>
+    <td>	Ukraine	 - 	Georgia	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	14-10-2024&nbsp;	</td>
+    <td>	Georgia	 - 	Albania	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	14-10-2024&nbsp;	</td>
+    <td>	Ukraine	 - 	Czech Republic	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	16 -11-2024&nbsp;	</td>
+    <td>	Georgia	 - 	Ukraine	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	16 -11-2024&nbsp;	</td>
+    <td>	Albania	 - 	Czech Republic	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19 -11-2024&nbsp;	</td>
+    <td>	Czech Republic	 - 	Georgia	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19 -11-2024&nbsp;	</td>
+    <td>	Albania	 - 	Ukraine	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group 2</td></tr>
+<tr>
+    <td>	7-09-2024&nbsp;	</td>
+    <td>	Republic of Ireland	 - 	England	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	7-09-2024&nbsp;	</td>
+    <td>	Greece	 - 	Finland	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	10-09-2024&nbsp;	</td>
+    <td>	England	 - 	Finland	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	10-09-2024&nbsp;	</td>
+    <td>	Republic of Ireland	 - 	Greece	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	10-10-2024&nbsp;	</td>
+    <td>	England	 - 	Greece	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	10-10-2024&nbsp;	</td>
+    <td>	Finland	 - 	Republic of Ireland	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	13-10-2024&nbsp;	</td>
+    <td>	Finland	 - 	England	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	13-10-2024&nbsp;	</td>
+    <td>	Greece	 - 	Republic of Ireland	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	14 -11-2024&nbsp;	</td>
+    <td>	Republic of Ireland	 - 	Finland	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	14 -11-2024&nbsp;	</td>
+    <td>	Greece	 - 	England	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	17 -11-2024&nbsp;	</td>
+    <td>	England	 - 	Republic of Ireland	</td>
+    <td class="score-bold">	5-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	17 -11-2024&nbsp;	</td>
+    <td>	Finland	 - 	Greece	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group 3</td></tr>
+<tr>
+    <td>	6-09-2024&nbsp;	</td>
+    <td>	Kazakhstan	 - 	Norway	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-09-2024&nbsp;	</td>
+    <td>	Slovenia	 - 	Austria	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	9-09-2024&nbsp;	</td>
+    <td>	Norway	 - 	Austria	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	9-09-2024&nbsp;	</td>
+    <td>	Slovenia	 - 	Kazakhstan	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	10-10-2024&nbsp;	</td>
+    <td>	Austria	 - 	Kazakhstan	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	10-10-2024&nbsp;	</td>
+    <td>	Norway	 - 	Slovenia	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	13-10-2024&nbsp;	</td>
+    <td>	Kazakhstan	 - 	Slovenia	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	13-10-2024&nbsp;	</td>
+    <td>	Austria	 - 	Norway	</td>
+    <td class="score-bold">	5-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	14 -11-2024&nbsp;	</td>
+    <td>	Kazakhstan	 - 	Austria	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	14 -11-2024&nbsp;	</td>
+    <td>	Slovenia	 - 	Norway	</td>
+    <td class="score-bold">	1-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	17 -11-2024&nbsp;	</td>
+    <td>	Austria	 - 	Slovenia	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	17 -11-2024&nbsp;	</td>
+    <td>	Norway	 - 	Kazakhstan	</td>
+    <td class="score-bold">	5-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group 4</td></tr>
+<tr>
+    <td>	6-09-2024&nbsp;	</td>
+    <td>	Wales	 - 	Turkey	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-09-2024&nbsp;	</td>
+    <td>	Iceland	 - 	Montenegro	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	9-09-2024&nbsp;	</td>
+    <td>	Montenegro	 - 	Wales	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	9-09-2024&nbsp;	</td>
+    <td>	Turkey	 - 	Iceland	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	11-10-2024&nbsp;	</td>
+    <td>	Iceland	 - 	Wales	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	11-10-2024&nbsp;	</td>
+    <td>	Turkey	 - 	Montenegro	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	14-10-2024&nbsp;	</td>
+    <td>	Wales	 - 	Montenegro	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	14-10-2024&nbsp;	</td>
+    <td>	Iceland	 - 	Turkey	</td>
+    <td class="score-bold">	2-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	16 -11-2024&nbsp;	</td>
+    <td>	Montenegro	 - 	Iceland	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	16 -11-2024&nbsp;	</td>
+    <td>	Turkey	 - 	Wales	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19 -11-2024&nbsp;	</td>
+    <td>	Wales	 - 	Iceland	</td>
+    <td class="score-bold">	4-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19 -11-2024&nbsp;	</td>
+    <td>	Montenegro	 - 	Turkey	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td colspan="5" class="round-divider" style="font-size: 1.5rem; font-weight: bold; padding: 12px;">
+        UEFA Nations League A
+    </td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group 1</td></tr>
+<tr>
+    <td>	5-09-2024&nbsp;	</td>
+    <td>	Portugal	 - 	Croatia	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	5-09-2024&nbsp;	</td>
+    <td>	Scotland	 - 	Poland	</td>
+    <td class="score-bold">	2-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-09-2024&nbsp;	</td>
+    <td>	Croatia	 - 	Poland	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-09-2024&nbsp;	</td>
+    <td>	Portugal	 - 	Scotland	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	12-10-2024&nbsp;	</td>
+    <td>	Croatia	 - 	Scotland	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	12-10-2024&nbsp;	</td>
+    <td>	Poland	 - 	Portugal	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	15-10-2024&nbsp;	</td>
+    <td>	Poland	 - 	Croatia	</td>
+    <td class="score-bold">	3-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	15-10-2024&nbsp;	</td>
+    <td>	Scotland	 - 	Portugal	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	15 -11-2024&nbsp;	</td>
+    <td>	Portugal	 - 	Poland	</td>
+    <td class="score-bold">	5-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	15 -11-2024&nbsp;	</td>
+    <td>	Scotland	 - 	Croatia	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	18 -11-2024&nbsp;	</td>
+    <td>	Croatia	 - 	Portugal	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	18 -11-2024&nbsp;	</td>
+    <td>	Poland	 - 	Scotland	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group 2</td></tr>
+<tr>
+    <td>	6-09-2024&nbsp;	</td>
+    <td>	Belgium	 - 	Israel	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-09-2024&nbsp;	</td>
+    <td>	France	 - 	Italy	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	9-09-2024&nbsp;	</td>
+    <td>	France	 - 	Belgium	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	9-09-2024&nbsp;	</td>
+    <td>	Israel	 - 	Italy	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	10-10-2024&nbsp;	</td>
+    <td>	Italy	 - 	Belgium	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	10-10-2024&nbsp;	</td>
+    <td>	Israel	 - 	France	</td>
+    <td class="score-bold">	1-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	14-10-2024&nbsp;	</td>
+    <td>	Italy	 - 	Israel	</td>
+    <td class="score-bold">	4-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	14-10-2024&nbsp;	</td>
+    <td>	Belgium	 - 	France	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	14 -11-2024&nbsp;	</td>
+    <td>	Belgium	 - 	Italy	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	14 -11-2024&nbsp;	</td>
+    <td>	France	 - 	Israel	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	17 -11-2024&nbsp;	</td>
+    <td>	Italy	 - 	France	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	17 -11-2024&nbsp;	</td>
+    <td>	Israel	 - 	Belgium	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group 3</td></tr>
+<tr>
+    <td>	7-09-2024&nbsp;	</td>
+    <td>	Netherlands	 - 	Bosnia Herzegovina	</td>
+    <td class="score-bold">	5-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	7-09-2024&nbsp;	</td>
+    <td>	Germany	 - 	Hungary	</td>
+    <td class="score-bold">	5-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	10-09-2024&nbsp;	</td>
+    <td>	Hungary	 - 	Bosnia Herzegovina	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	10-09-2024&nbsp;	</td>
+    <td>	Netherlands	 - 	Germany	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	11-10-2024&nbsp;	</td>
+    <td>	Hungary	 - 	Netherlands	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	11-10-2024&nbsp;	</td>
+    <td>	Bosnia Herzegovina	 - 	Germany	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	14-10-2024&nbsp;	</td>
+    <td>	Germany	 - 	Netherlands	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	14-10-2024&nbsp;	</td>
+    <td>	Bosnia Herzegovina	 - 	Hungary	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	16 -11-2024&nbsp;	</td>
+    <td>	Netherlands	 - 	Hungary	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	16 -11-2024&nbsp;	</td>
+    <td>	Germany	 - 	Bosnia Herzegovina	</td>
+    <td class="score-bold">	7-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19 -11-2024&nbsp;	</td>
+    <td>	Hungary	 - 	Germany	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19 -11-2024&nbsp;	</td>
+    <td>	Bosnia Herzegovina	 - 	Netherlands	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group 4</td></tr>
+<tr>
+    <td>	5-09-2024&nbsp;	</td>
+    <td>	Denmark	 - 	Switserland	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	5-09-2024&nbsp;	</td>
+    <td>	Serbia	 - 	Spain	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-09-2024&nbsp;	</td>
+    <td>	Denmark	 - 	Serbia	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-09-2024&nbsp;	</td>
+    <td>	Switserland	 - 	Spain	</td>
+    <td class="score-bold">	1-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	12-10-2024&nbsp;	</td>
+    <td>	Spain	 - 	Denmark	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	12-10-2024&nbsp;	</td>
+    <td>	Serbia	 - 	Switserland	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	15-10-2024&nbsp;	</td>
+    <td>	Spain	 - 	Serbia	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	15-10-2024&nbsp;	</td>
+    <td>	Switserland	 - 	Denmark	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	15 -11-2024&nbsp;	</td>
+    <td>	Denmark	 - 	Spain	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	15 -11-2024&nbsp;	</td>
+    <td>	Switserland	 - 	Serbia	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	18 -11-2024&nbsp;	</td>
+    <td>	Spain	 - 	Switserland	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	18 -11-2024&nbsp;	</td>
+    <td>	Serbia	 - 	Denmark	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Quarter Final</td></tr>
+<tr>
+    <td>	 20 -03-2025&nbsp;	</td>
+    <td>	Netherlands	 - 	Spain	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20 -03-2025&nbsp;	</td>
+    <td>	Croatia	 - 	France	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20 -03-2025&nbsp;	</td>
+    <td>	Denmark	 - 	Portugal	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20 -03-2025&nbsp;	</td>
+    <td>	Italy	 - 	Germany	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Quarter Final</td></tr>
+<tr>
+    <td>	 23 -03-2025&nbsp;	</td>
+    <td>	Spain	 - 	Netherlands	</td>
+    <td class="score-bold">	3-3 pen 5-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23 -03-2025&nbsp;	</td>
+    <td>	France	 - 	Croatia	</td>
+    <td class="score-bold">	2-0 pen 5-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23 -03-2025&nbsp;	</td>
+    <td>	Portugal	 - 	Denmark	</td>
+    <td class="score-bold">	5-2 aet	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23 -03-2025&nbsp;	</td>
+    <td>	Germany	 - 	Italy	</td>
+    <td class="score-bold">	3-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Semi Final</td></tr>
+<tr>
+    <td>	 4 -06-2025&nbsp;	</td>
+    <td>	Germany	 - 	Portugal	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5 -06-2025&nbsp;	</td>
+    <td>	Spain	 - 	France	</td>
+    <td class="score-bold">	5-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Third Place Play-Off</td></tr>
+<tr>
+    <td>	 8 -06-2025&nbsp;	</td>
+    <td>	Germany	 - 	France	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Final</td></tr>
+<tr style="background: rgba(255, 215, 0, 0.2);">
+    <td><strong>  8 -06-2025&nbsp;&nbsp;</strong></td>
+    <td><strong>Portugal	 - 	Spain</strong></td>
+    <td class="score-bold">2-2 pen 5-3</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="nl-2024-2025/final.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>                         
+    
+    
+                    
+                </tbody>
+            </table>
+        </section>
+    </main>
+</div>
+
+<button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" id="scrollTopBtn">↑</button>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // 1. Tooltip aanmaken
+        const tooltip = document.createElement('div');
+        tooltip.id = 'image-preview-tooltip';
+        Object.assign(tooltip.style, {
+            position: 'fixed',
+            display: 'none',
+            zIndex: '10000',
+            pointerEvents: 'none',
+            background: '#fff',
+            border: '3px solid rgb(255, 148, 0)',
+            borderRadius: '8px',
+            boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
+            padding: '5px',
+            width: '250px' // Iets smaller voor de zekerheid
+        });
+        document.body.appendChild(tooltip);
+
+        const rows = document.querySelectorAll('#matchTable tbody tr');
+        let ticketsOwned = 0;
+        let programsOwned = 0;
+        let totalMatches = 0;
+
+        rows.forEach(row => {
+            const cells = row.cells;
+            if (cells.length === 5) { 
+                totalMatches++;
+                const links = row.querySelectorAll('td a');
+                links.forEach(link => {
+                    const img = link.querySelector('img');
+                    if (img && img.src.includes('images/aaa.png')) {
+                        if (link.parentElement.cellIndex === 3) ticketsOwned++;
+                        if (link.parentElement.cellIndex === 4) programsOwned++;
+
+                        link.addEventListener('mouseenter', () => {
+                            tooltip.innerHTML = `<img src="${link.href}" style="width:100%; height:auto; display:block; border-radius:4px;">`;
+                            tooltip.style.display = 'block';
+                        });
+
+                        link.addEventListener('mousemove', (e) => {
+                            const gap = 20;
+                            const tooltipWidth = 460; // breedte + padding
+                            let x = e.clientX + gap;
+                            let y = e.clientY + 10;
+
+                            // RECHTS BUITEN BEELD? -> Verplaats naar links van de muis
+                            if (x + tooltipWidth > window.innerWidth) {
+                                x = e.clientX - tooltipWidth - gap;
+                            }
+
+                            // LINKS BUITEN BEELD?
+                            if (x < 0) x = 10;
+
+                            // ONDERKANT BUITEN BEELD?
+                            if (y + 400 > window.innerHeight) {
+                                y = window.innerHeight - 410;
+                            }
+
+                            tooltip.style.left = x + 'px';
+                            tooltip.style.top = y + 'px';
+                        });
+
+                        link.addEventListener('mouseleave', () => {
+                            tooltip.style.display = 'none';
+                        });
+                    }
+                });
+            }
+        });
+
+        // Tellers invullen
+        document.getElementById('ticket-count').innerText = ticketsOwned;
+        document.getElementById('total-tickets').innerText = totalMatches;
+        
+    });
+
+    // Scroll knop
+    window.onscroll = function() {
+        let btn = document.getElementById("scrollTopBtn");
+        if (btn) btn.style.display = (window.pageYOffset > 200) ? "block" : "none";
+    };
+</script>
+<script src="search-index.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Zelfde opschoon-functie als de converter
+        function cleanId(text) {
+            return text.toString().toLowerCase().replace(/[^a-z0-9]/g, '');
+        }
+
+        // 1. Geef alle rijen een ID
+        const rows = document.querySelectorAll("tr");
+        rows.forEach(row => {
+            const cells = row.querySelectorAll("td");
+            if (cells.length >= 2) {
+                const date = cells[0].innerText;
+                const teams = cells[1].innerText;
+                row.id = "match" + cleanId(date + teams);
+            }
+        });
+
+        // 2. Scroll naar de match als er een # in de URL staat
+        if (window.location.hash) {
+            // Wacht heel even tot de pagina volledig rustig is
+            setTimeout(() => {
+                const target = document.querySelector(window.location.hash);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // Highlight de rij
+                    target.style.transition = "background-color 0.5s";
+                    target.style.backgroundColor = "#cdffcf";
+                    setTimeout(() => { target.style.backgroundColor = ""; }, 5000);
+                }
+            }, 600); // 600ms vertraging voor stabiliteit
+        }
+    });
+</script>
+</body>
+</html>

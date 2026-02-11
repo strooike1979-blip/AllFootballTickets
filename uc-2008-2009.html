@@ -1,0 +1,2878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UEFA Cup 2008-2009 - Full Match List</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Basis Layout */
+        .app-wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 260px;
+            background: #111;
+            padding: 20px;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            background: #ffffff;
+            color: #000000;
+        }
+
+        /* Navigatie & Header */
+        .season-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #393838;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+        
+        .season-navigation h1 { margin: 0; font-size: 24px; color: #ffffff !important; }
+
+        .next-button {
+            background-color: rgb(255, 148, 0) !important;
+            color: white !important;
+            padding: 10px 18px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 13px;
+            transition: opacity 0.3s ease;
+        }
+        .next-button:hover { opacity: 0.9; }
+
+        /* Statistieken in Sidebar */
+        .sidebar-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-section h3 {
+            color: rgb(255, 148, 0);
+            font-size: 14px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .stat-value {
+            color: #000000;
+            font-weight: bold;
+            background: #ffffff;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        /* Tabel Styling */
+        .team-section { width: 100%; overflow-x: auto; }
+        .match-table-full { width: 100%; border-collapse: collapse; min-width: 700px; color: #000000; }
+        .match-table-full th { text-align: left; padding: 12px; border-bottom: 2px solid #000; color: #000; }
+        .match-table-full td { padding: 12px; border-bottom: 1px solid #eee; }
+        
+        .match-table-full tbody tr:hover td { background-color: #f0f7ff !important; }
+        
+        .round-divider { background-color: rgb(255, 148, 0); padding: 10px 15px !important; font-weight: bold; color: #000000; }
+        .score-bold { font-weight: bold; color: #000000; }
+        .table-icon { width: 25px; transition: transform 0.2s ease; }
+
+        #scrollTopBtn {
+            position: fixed; bottom: 20px; right: 20px; width: 40px; height: 40px;
+            background: #0046a6; color: white; border: none; border-radius: 50%; cursor: pointer; display: none;
+            z-index: 100;
+        }
+
+        @media (max-width: 768px) {
+            .app-wrapper { flex-direction: column; }
+            .sidebar { width: 100%; }
+            .season-navigation { flex-direction: column; text-align: center; gap: 15px; }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="app-wrapper">
+    <aside class="sidebar">
+        <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #333;">
+                <img src="../images/logo.png" alt="All Football Tickets Logo" style="width: 100%; max-width: 180px; border-radius: 10px; opacity: 0.8;">
+            </div>
+        
+        <nav class="sidebar-nav">
+            <a href="../index.html" style="color: #fff; text-decoration: none; display: block; margin-bottom: 10px;">Home</a>
+            <a href="uc-overzicht.html" style="color: #fff; text-decoration: none; display: block; margin-bottom: 20px;">UEFA Cup</a>
+        </nav>
+        
+        <div class="sidebar-section">
+            <h3>Season Stats</h3>
+            <div class="stat-item">
+                <span>Tickets:</span> 
+                <span class="stat-value"><span id="ticket-count">0</span> / <span id="total-tickets">0</span></span>
+            </div>
+            
+        </div>
+
+        <div class="sidebar-section">
+    <h3>Select a Season</h3>
+    <select class="season-selector" onchange="location = this.value;" style="width:100%; padding:8px; background:#fff; color:#000; border:1px solid #333;">
+<option value="uc-1971-1972.html">1971 / 1972</option>
+<option value="uc-1972-1973.html">1972 / 1973</option>
+<option value="uc-1973-1974.html">1973 / 1974</option>
+<option value="uc-1974-1975.html">1974 / 1975</option>
+<option value="uc-1975-1976.html">1975 / 1976</option>
+<option value="uc-1976-1977.html">1976 / 1977</option>
+<option value="uc-1977-1978.html">1977 / 1978</option>
+<option value="uc-1978-1979.html">1978 / 1979</option>
+<option value="uc-1979-1980.html">1979 / 1980</option>
+<option value="uc-1980-1981.html">1980 / 1981</option>
+<option value="uc-1981-1982.html">1981 / 1982</option>
+<option value="uc-1982-1983.html">1982 / 1983</option>
+<option value="uc-1983-1984.html">1983 / 1984</option>
+<option value="uc-1984-1985.html">1984 / 1985</option>
+<option value="uc-1985-1986.html">1985 / 1986</option>
+<option value="uc-1986-1987.html">1986 / 1987</option>
+<option value="uc-1987-1988.html">1987 / 1988</option>
+<option value="uc-1988-1989.html">1988 / 1989</option>
+<option value="uc-1989-1990.html">1989 / 1990</option>
+<option value="uc-1990-1991.html">1990 / 1991</option>
+<option value="uc-1991-1992.html">1991 / 1992</option>
+<option value="uc-1992-1993.html">1992 / 1993</option>
+<option value="uc-1993-1994.html">1993 / 1994</option>
+<option value="uc-1994-1995.html">1994 / 1995</option>
+<option value="uc-1995-1996.html">1995 / 1996</option>
+<option value="uc-1996-1997.html">1996 / 1997</option>
+<option value="uc-1997-1998.html">1997 / 1998</option>
+<option value="uc-1998-1999.html">1998 / 1999</option>
+<option value="uc-1999-2000.html">1999 / 2000</option>
+<option value="uc-2000-2001.html">2000 / 2001</option>
+<option value="uc-2001-2002.html">2001 / 2002</option>
+<option value="uc-2002-2003.html">2002 / 2003</option>
+<option value="uc-2003-2004.html">2003 / 2004</option>
+<option value="uc-2004-2005.html">2004 / 2005</option>
+<option value="uc-2005-2006.html">2005 / 2006</option>
+<option value="uc-2006-2007.html">2006 / 2007</option>
+<option value="uc-2007-2008.html">2007 / 2008</option>
+<option value="uc-2008-2009.html" selected>2008 / 2009</option>
+        
+    </select>
+</div>
+
+        <div class="sidebar-section">
+            <h3>Legenda</h3>
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+                <img src="../images/aaa.png" width="20"> <span style="font-size:13px; color:#ccc;">on Site (hover over to see)</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:10px;">
+                <img src="../images/bbb.png" width="20"> <span style="font-size:13px; color:#ccc;">searching</span>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="season-navigation">
+    <div>
+        <h1>UEFA Cup 2008-2009</h1>
+        <div class="az-filter-container" style="margin-top: 15px;">
+    <div id="alphabet-nav" style="display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px;"></div>
+    <div id="team-list-display" style="position: absolute; width: 320px; background: white; border: 1px solid #ccc; border-radius: 8px; display: none; max-height: 400px; overflow-y: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 9999;"></div>
+</div>
+        
+    </div>
+    <div style="display: flex; gap: 10px;">
+        <a href="uc-2007-2008.html" class="next-button">&laquo;Previous 07/08</a>
+        <a href="uc-overzicht.html" class="next-button">Overview &raquo;</a>
+    </div>
+</header>
+
+        <section class="team-section">
+            <table class="match-table-full" id="matchTable">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Game</th>
+                        <th>Score</th>
+                        <th>Tickets</th>
+                        <th>Match Stats</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+<tr><td colspan="5" class="round-divider">Qualification Round 1</td></tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	Shakhter Karaganda	 - 	Debreceni VSC	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	FC Ararat Erewan	 - 	AC Bellinzona	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	FK Vojvodina Novi Sad	 - 	AZAL PFK Baku	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	JFK Olimps Riga	 - 	St. Patrick's Athletic	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	Dacia Chisinau	 - 	FK Borac Cacak	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	MTZ-Ripo Minsk	 - 	MSK Zilina	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	Tobol Kostanay	 - 	FK Austria Wien	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	TVMK Tallinn	 - 	FC Nordsjaelland	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	FC Honka	 - 	IA Akranes	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	Pelister Bitola	 - 	APOEL Nicosia	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	Khazar Lankaran	 - 	Lech Poznan	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	Hapoel Tel Aviv	 - 	AC Juvenes-Dogana	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	FK Sūduva Marijampolė	 - 	The New Saints	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	FK Vetra Vilnius	 - 	Viking FK	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	Ironi Kiryat Shmona	 - 	Mogren Budva	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	Cliftonville FC	 - 	FC Copenhagen	</td>
+    <td class="score-bold">	0-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	Omonia Nicosia	 - 	FK Milano Kumanovo	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	Djurgårdens IF	 - 	FC Flora Tallinn	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	Cherno More Varna	 - 	UE Sant Julia	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	 Racing FC Union Luxembourg	 - 	Kalmar FF	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	Glentoran FC	 - 	Liepajas Metalurgs	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	Bröndby IF	 - 	B36 Tórshavn	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	EB/Streymur	 - 	Manchester City	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	FC Vaduz	 - 	HSK Zrinjski Mostar	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	Marsaxlokk FC	 - 	Slaven Belupo Koprivnica	</td>
+    <td class="score-bold">	0-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	ETO FC Győr 	 - 	FC Zestafoni	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	Spartak Trnava	 - 	WIT Georgia Tbilisi	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	Hertha BSC	 - 	Nistru Otaci	</td>
+    <td class="score-bold">	8-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	NK Siroki Brijeg	 - 	FK Partizani	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	Red Bull Salzburg	 - 	FC Banants Erewan	</td>
+    <td class="score-bold">	7-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	FC Koper	 - 	KF Vllaznia	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	FK Zeta Golubovac	 - 	NK Interblock Ljubljana	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	Bangor City	 - 	FC Midtjylland	</td>
+    <td class="score-bold">	1-6	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	Legia Warszawa	 - 	FK Gomel	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	Cork City FC	 - 	FC Haka	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	HNK Hajduk Split	 - 	Birkirkara FC	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2008&nbsp;	</td>
+    <td>	FH Hafnarfjördur	 - 	CS Grevenmacher	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Qualification Round 1</td></tr>
+<tr>
+    <td>	 29-07-2008&nbsp;	</td>
+    <td>	FC Nordsjaelland	 - 	TVMK Tallinn	</td>
+    <td class="score-bold">	5-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	AZAL PFK Baku	 - 	FK Vojvodina Novi Sad	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	FK Borac Cacak	 - 	Dacia Chisinau	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	FC Zestafoni	 - 	ETO FC Győr 	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	WIT Georgia Tbilisi	 - 	Spartak Trnava	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	FC Banants Erewan	 - 	Red Bull Salzburg	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	Liepajas Metalurgs	 - 	Glentoran FC	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	FK Milano Kumanovo	 - 	Omonia Nicosia	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	Mogren Budva	 - 	Ironi Kiryat Shmona	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	FC Flora Tallinn	 - 	Djurgårdens IF	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	Viking FK	 - 	FK Vetra Vilnius	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	FC Haka	 - 	Cork City FC	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	FK Gomel	 - 	Legia Warszawa </td>
+    <td class="score-bold">	1-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	Nistru Otaci	 - 	Hertha BSC	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	Birkirkara FC	 - 	HNK Hajduk Split	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	FC Midtjylland	 - 	Bangor City	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	APOEL Nicosia	 - 	Pelister Bitola	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	Kalmar FF	 - 	 Racing FC Union Luxembourg	</td>
+    <td class="score-bold">	7-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	B36 Tórshavn	 - 	Bröndby IF	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://i.postimg.cc/4yLr3rJr/uc20080731-B36-Thorshavn-Brondby-if.png" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	MSK Zilina	 - 	MTZ-Ripo Minsk	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	The New Saints	 - 	FK Sūduva Marijampolė	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	FK Partizani	 - 	NK Siroki Brijeg	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	KF Vllaznia	 - 	FC Koper	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	CS Grevenmacher	 - 	FH Hafnarfjördur	</td>
+    <td class="score-bold">	1-5	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	IA Akranes	 - 	FC Honka	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	Debreceni VSC	 - 	Shakhter Karaganda </td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	FC Copenhagen	 - 	Cliftonville FC	</td>
+    <td class="score-bold">	7-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	Slaven Belupo Koprivnica	 - 	Marsaxlokk FC	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	AC Bellinzona	 - 	FC Ararat Erewan	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	FK Austria Wien	 - 	Tobol Kostanay	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	HSK Zrinjski Mostar	 - 	FC Vaduz	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	UE Sant Julia	 - 	Cherno More Varna	</td>
+    <td class="score-bold">	0-5	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	AC Juvenes-Dogana	 - 	Hapoel Tel Aviv	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	NK Interblock Ljubljana	 - 	FK Zeta Golubovac	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	Lech Poznan	 - 	Khazar Lankaran	</td>
+    <td class="score-bold">	4-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	St. Patrick's Athletic	 - 	JFK Olimps Riga	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 31-07-2008&nbsp;	</td>
+    <td>	Manchester City	 - 	EB/Streymur	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Qualification Round 2</td></tr>
+<tr>
+    <td>	 14-08-2008&nbsp;	</td>
+    <td>	Maccabi Netanya	 - 	Cherno More Varna	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-08-2008&nbsp;	</td>
+    <td>	FK Borac Cacak	 - 	Lokomotiv Sofia	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-08-2008&nbsp;	</td>
+    <td>	FK Vojvodina Novi Sad	 - 	Hapoel Tel Aviv	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-08-2008&nbsp;	</td>
+    <td>	APOEL Nicosia	 - 	Rode Ster Belgrado	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-08-2008&nbsp;	</td>
+    <td>	Liepajas Metalurgs	 - 	FC Vaslui	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-08-2008&nbsp;	</td>
+    <td>	FC Honka	 - 	Viking FK	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-08-2008&nbsp;	</td>
+    <td>	FC Haka	 - 	Bröndby IF	</td>
+    <td class="score-bold">	0-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-08-2008&nbsp;	</td>
+    <td>	Legia Warszawa	 - 	FK Moskou	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-08-2008&nbsp;	</td>
+    <td>	VfB Stuttgart	 - 	ETO FC Győr 	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-08-2008&nbsp;	</td>
+    <td>	Litex Lovech	 - 	Ironi Kiryat Shmona	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-08-2008&nbsp;	</td>
+    <td>	Djurgårdens IF	 - 	Rosenborg BK	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-08-2008&nbsp;	</td>
+    <td>	IF Elfsborg	 - 	St. Patrick's Athletic	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-08-2008&nbsp;	</td>
+    <td>	FK Sūduva Marijampolė	 - 	Red Bull Salzburg	</td>
+    <td class="score-bold">	1-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-08-2008&nbsp;	</td>
+    <td>	Stabæk Fotball	 - 	FC Stade Rennes	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-08-2008&nbsp;	</td>
+    <td>	BSC Young Boys	 - 	Debreceni VSC	</td>
+    <td class="score-bold">	4-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-08-2008&nbsp;	</td>
+    <td>	FC Slovan Liberec	 - 	MSK Zilina	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-08-2008&nbsp;	</td>
+    <td>	FH Hafnarfjördur	 - 	Aston Villa	</td>
+    <td class="score-bold">	1-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-08-2008&nbsp;	</td>
+    <td>	FC Copenhagen	 - 	Lillestrøm SK	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-08-2008&nbsp;	</td>
+    <td>	Dnipro Dnipropetrovsk	 - 	AC Bellinzona	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-08-2008&nbsp;	</td>
+    <td>	Aris Thessaloniki	 - 	Slaven Belupo Koprivnica	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-08-2008&nbsp;	</td>
+    <td>	KAA Gent	 - 	Kalmar FF	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://i.postimg.cc/C5PWKWFD/uc20080814-gent-kalmar.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-08-2008&nbsp;	</td>
+    <td>	AEK Athens	 - 	Omonia Nicosia	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-08-2008&nbsp;	</td>
+    <td>	FC Zúrich	 - 	SK Sturm Graz	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-08-2008&nbsp;	</td>
+    <td>	NK Siroki Brijeg	 - 	Besiktas JK	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-08-2008&nbsp;	</td>
+    <td>	KF Vllaznia	 - 	SSC Napoli	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-08-2008&nbsp;	</td>
+    <td>	NK Interblock Ljubljana	 - 	Hertha BSC	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-08-2008&nbsp;	</td>
+    <td>	Manchester City	 - 	FC Midtjylland	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-08-2008&nbsp;	</td>
+    <td>	Queen of the South FC	 - 	FC Nordsjaelland	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-08-2008&nbsp;	</td>
+    <td>	Lech Poznan	 - 	Grasshopper Club Zurich	</td>
+    <td class="score-bold">	6-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-08-2008&nbsp;	</td>
+    <td>	SC Braga	 - 	HSK Zrinjski Mostar	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-08-2008&nbsp;	</td>
+    <td>	Deportivo de La Coruña 	 - 	HNK Hajduk Split	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Qualification Round 2</td></tr>
+<tr>
+    <td>	 26-08-2008&nbsp;	</td>
+    <td>	Lokomotiv Sofia	 - 	FK Borac Cacak	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-08-2008&nbsp;	</td>
+    <td>	FC Nordsjaelland	 - 	Queen of the South FC	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-08-2008&nbsp;	</td>
+    <td>	FK Moskou	 - 	Legia Warszawa </td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-08-2008&nbsp;	</td>
+    <td>	Hapoel Tel Aviv	 - 	FK Vojvodina Novi Sad	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-08-2008&nbsp;	</td>
+    <td>	FC Midtjylland	 - 	Manchester City	</td>
+    <td class="score-bold">	0-1 pen 2-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-08-2008&nbsp;	</td>
+    <td>	Viking FK	 - 	FC Honka	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-08-2008&nbsp;	</td>
+    <td>	Ironi Kiryat Shmona	 - 	Litex Lovech	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-08-2008&nbsp;	</td>
+    <td>	Rode Ster Belgrado	 - 	APOEL Nicosia	</td>
+    <td class="score-bold">	3-3 aet</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-08-2008&nbsp;	</td>
+    <td>	HSK Zrinjski Mostar	 - 	SC Braga	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-08-2008&nbsp;	</td>
+    <td>	Hertha BSC	 - 	NK Interblock Ljubljana	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-08-2008&nbsp;	</td>
+    <td>	Red Bull Salzburg	 - 	FK Sūduva Marijampolė	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-08-2008&nbsp;	</td>
+    <td>	Slaven Belupo Koprivnica	 - 	Aris Thessaloniki	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-08-2008&nbsp;	</td>
+    <td>	Cherno More Varna	 - 	Maccabi Netanya	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-08-2008&nbsp;	</td>
+    <td>	Lillestrøm SK	 - 	FC Copenhagen	</td>
+    <td class="score-bold">	2-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-08-2008&nbsp;	</td>
+    <td>	Kalmar FF	 - 	KAA Gent	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-08-2008&nbsp;	</td>
+    <td>	Rosenborg BK	 - 	Djurgårdens IF	</td>
+    <td class="score-bold">	5-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-08-2008&nbsp;	</td>
+    <td>	SK Sturm Graz	 - 	FC Zúrich	</td>
+    <td class="score-bold">	1-1 pen 2-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-08-2008&nbsp;	</td>
+    <td>	FC Vaslui	 - 	Liepajas Metalurgs	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-08-2008&nbsp;	</td>
+    <td>	MSK Zilina	 - 	FC Slovan Liberec	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-08-2008&nbsp;	</td>
+    <td>	Bröndby IF	 - 	FC Haka	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-08-2008&nbsp;	</td>
+    <td>	Grasshopper Club Zurich	 - 	Lech Poznan	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-08-2008&nbsp;	</td>
+    <td>	Debreceni VSC	 - 	BSC Young Boys	</td>
+    <td class="score-bold">	2-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-08-2008&nbsp;	</td>
+    <td>	Besiktas JK	 - 	NK Siroki Brijeg	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-08-2008&nbsp;	</td>
+    <td>	AC Bellinzona	 - 	Dnipro Dnipropetrovsk	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://i.postimg.cc/4yLr3rJp/uc20080828-AC-Bellinzona-Dnipro-Dnipropetrovsk.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-08-2008&nbsp;	</td>
+    <td>	Omonia Nicosia	 - 	AEK Athens	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-08-2008&nbsp;	</td>
+    <td>	FK Austria Wien	 - 	WIT Georgia Tbilisi	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-08-2008&nbsp;	</td>
+    <td>	ETO FC Győr 	 - 	VfB Stuttgart	</td>
+    <td class="score-bold">	1-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-08-2008&nbsp;	</td>
+    <td>	FC Stade Rennes	 - 	Stabæk Fotball	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-08-2008&nbsp;	</td>
+    <td>	HNK Hajduk Split	 - 	Deportivo de La Coruña 	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-08-2008&nbsp;	</td>
+    <td>	St. Patrick's Athletic	 - 	IF Elfsborg	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-08-2008&nbsp;	</td>
+    <td>	SSC Napoli	 - 	KF Vllaznia	</td>
+    <td class="score-bold">	5-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-08-2008&nbsp;	</td>
+    <td>	Aston Villa	 - 	FH Hafnarfjördur	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Round 1</td></tr>
+<tr>
+    <td>	 16-09-2008&nbsp;	</td>
+    <td>	Hertha BSC	 - 	St. Patrick's Athletic	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-2008&nbsp;	</td>
+    <td>	APOEL Nicosia	 - 	FC Schalke 04	</td>
+    <td class="score-bold">	1-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-09-2008&nbsp;	</td>
+    <td>	FC Nordsjaelland	 - 	Olympiacos Piraeus	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	FK Moskou	 - 	FC Copenhagen	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	Litex Lovech	 - 	Aston Villa	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	Cherno More Varna	 - 	VfB Stuttgart	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	Hapoel Tel Aviv	 - 	AS Saint-Étienne	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	Slaven Belupo Koprivnica	 - 	CSKA Moscou	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	FC Timisoara	 - 	FK Partizan Belgrado	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	FC Banik Ostrava	 - 	Spartak Moscou	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	VfL Wolfsburg	 - 	Rapid Boekarest	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	Feyenoord Rotterdam	 - 	Kalmar FF	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	SK Brann	 - 	Deportivo de La Coruña 	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	AS Nancy-Lorraine	 - 	Motherwell FC	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	Hamburger SV	 - 	Unirea Urziceni	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://i.postimg.cc/j2gGjGsc/uc20080918-Hamburger-SV-Unirea-Urziceni.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	FC Portsmouth	 - 	Vitória Guimarães SC	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	Omonia Nicosia	 - 	Manchester City	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	SK Slavia Praag	 - 	FC Vaslui	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	Besiktas JK	 - 	Metalist Kharkiv	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	MSK Zilina	 - 	Levski Sofia	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	FK Austria Wien	 - 	Lech Poznan	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	NEC Nijmegen	 - 	FC Dinamo 1948	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	Kayserispor	 - 	Paris Saint Germain	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	BSC Young Boys	 - 	Club Brugge KV	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://i.postimg.cc/Rhsj0jMX/uc20080918-young-boys-brugge.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	AC Bellinzona	 - 	Galatasaray	</td>
+    <td class="score-bold">	3-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	FK Borac Cacak	 - 	AFC Ajax	</td>
+    <td class="score-bold">	1-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	Racing Santander	 - 	FC Honka	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	GNK Dinamo Zagreb	 - 	AC Sparta Prague	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	UC Sampdoria	 - 	FBK Kaunas	</td>
+    <td class="score-bold">	5-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	Bröndby IF	 - 	Rosenborg BK	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	Borussia Dortmund	 - 	Udinese Calcio	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	AC Milan	 - 	FC Zúrich	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	Sevilla FC	 - 	Red Bull Salzburg	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	FC Stade Rennes	 - 	FC Twente	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	Tottenham Hotspur	 - 	Wisła Krakow	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	SSC Napoli	 - 	SL Benfica	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	Everton FC	 - 	R Standard de Liege	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	SC Braga	 - 	FC Artmedia Petrzalka	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	CS Marítimo	 - 	Valencia CF	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-09-2008&nbsp;	</td>
+    <td>	Vitória Setúbal FC	 - 	sc Heerenveen	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-2008&nbsp;	</td>
+    <td>	CSKA Moscou	 - 	Slaven Belupo Koprivnica	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-09-2008&nbsp;	</td>
+    <td>	St. Patrick's Athletic	 - 	Hertha BSC	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Round 1</td></tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	Wisła Krakow	 - 	Tottenham Hotspur	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	Rapid Boekarest	 - 	VfL Wolfsburg	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://i.postimg.cc/x8xWdWfS/uc20081002-Rapid-Bukarest-Vf-L-Wolfsburg.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	Spartak Moscou	 - 	FC Banik Ostrava	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	FBK Kaunas	 - 	UC Sampdoria	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	Unirea Urziceni	 - 	Hamburger SV	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://i.postimg.cc/y6LqnSFD/uc20081002-Unirea-Urziceni-Hamburger-SV.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	FK Partizan Belgrado	 - 	FC Timisoara	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	FC Schalke 04	 - 	APOEL Nicosia	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	VfB Stuttgart	 - 	Cherno More Varna	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	Lech Poznan	 - 	FK Austria Wien	</td>
+    <td class="score-bold">	4-2 aet	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	Levski Sofia	 - 	MSK Zilina	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	FC Honka	 - 	Racing Santander	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	Kalmar FF	 - 	Feyenoord Rotterdam	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	Rosenborg BK	 - 	Bröndby IF	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	Galatasaray	 - 	AC Bellinzona	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	Metalist Kharkiv	 - 	Besiktas JK	</td>
+    <td class="score-bold">	4-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	AS Saint-Étienne	 - 	Hapoel Tel Aviv	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	FC Dinamo 1948	 - 	NEC Nijmegen	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	AFC Ajax	 - 	FK Borac Cacak	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	FC Vaslui	 - 	SK Slavia Praag	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td> R Standard de Liege	 - 	Everton FC	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://i.postimg.cc/NFJW0Wsv/uc20081002-standard-everton.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	sc Heerenveen	 - 	Vitória Setúbal FC	</td>
+    <td class="score-bold">	5-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	FC Twente	 - 	FC Stade Rennes	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	AC Sparta Prague	 - 	GNK Dinamo Zagreb	</td>
+    <td class="score-bold">	3-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	FC Zúrich	 - 	AC Milan	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	FC Artmedia Petrzalka	 - 	SC Braga	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	Red Bull Salzburg	 - 	Sevilla FC	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	Motherwell FC	 - 	AS Nancy-Lorraine	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	Olympiacos Piraeus	 - 	FC Nordsjaelland	</td>
+    <td class="score-bold">	5-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	Club Brugge KV	 - 	BSC Young Boys	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://i.postimg.cc/PJ3BqBtc/uc20081002-club-brugge-young-boys-bern.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	Manchester City	 - 	Omonia Nicosia	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	Udinese Calcio	 - 	Borussia Dortmund	</td>
+    <td class="score-bold">	0-2 pen 4-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	FC Copenhagen	 - 	FK Moskou	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	Paris Saint Germain	 - 	Kayserispor	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	Deportivo de La Coruña 	 - 	SK Brann	</td>
+    <td class="score-bold">	2-0 pen 3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	Aston Villa	 - 	Litex Lovech	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	SL Benfica	 - 	SSC Napoli	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	Valencia CF	 - 	CS Marítimo	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-10-2008&nbsp;	</td>
+    <td>	Vitória Guimarães SC	 - 	FC Portsmouth	</td>
+    <td class="score-bold">	2-2 aet	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group A</td></tr>
+<tr>
+    <td>	23-10-2008&nbsp;	</td>
+    <td>	FC Schalke 04	 - 	Paris Saint Germain	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://i.postimg.cc/44WCwhzm/uc20081023-FC-Schalke-04-psg.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-10-2008&nbsp;	</td>
+    <td>	FC Twente	 - 	Racing Santander	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-11-2008&nbsp;	</td>
+    <td>	Manchester City	 - 	FC Twente	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-10-2008&nbsp;	</td>
+    <td>	Racing Santander	 - 	FC Schalke 04	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	27-11-2008&nbsp;	</td>
+    <td>	FC Schalke 04	 - 	Manchester City	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://i.postimg.cc/Wp5RSJMJ/uc20081127-FC-Schalke-04-Manchester-City-2008-09.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	27-11-2008&nbsp;	</td>
+    <td>	Paris Saint Germain	 - 	Racing Santander	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	3-12-2008&nbsp;	</td>
+    <td>	Manchester City	 - 	Paris Saint Germain	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	3-12-2008&nbsp;	</td>
+    <td>	FC Twente	 - 	FC Schalke 04	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	18-12-2008&nbsp;	</td>
+    <td>	Racing Santander	 - 	Manchester City	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	18-12-2008&nbsp;	</td>
+    <td>	Paris Saint Germain	 - 	FC Twente	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group B</td></tr>
+<tr>
+    <td>	23-10-2008&nbsp;	</td>
+    <td>	Galatasaray	 - 	Olympiacos Piraeus	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-10-2008&nbsp;	</td>
+    <td>	Hertha BSC	 - 	SL Benfica	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-11-2008&nbsp;	</td>
+    <td>	Metalist Kharkiv	 - 	Hertha BSC	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-11-2008&nbsp;	</td>
+    <td>	SL Benfica	 - 	Galatasaray	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	27-11-2008&nbsp;	</td>
+    <td>	Galatasaray	 - 	Metalist Kharkiv	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	27-11-2008&nbsp;	</td>
+    <td>	Olympiacos Piraeus	 - 	SL Benfica	</td>
+    <td class="score-bold">	5-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	3-12-2008&nbsp;	</td>
+    <td>	Hertha BSC	 - 	Galatasaray	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	3-12-2008&nbsp;	</td>
+    <td>	Metalist Kharkiv	 - 	Olympiacos Piraeus	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	18-12-2008&nbsp;	</td>
+    <td>	SL Benfica	 - 	Metalist Kharkiv	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	18-12-2008&nbsp;	</td>
+    <td>	Olympiacos Piraeus	 - 	Hertha BSC	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group C</td></tr>
+<tr>
+    <td>	23-10-2008&nbsp;	</td>
+    <td>	FK Partizan Belgrado	 - 	UC Sampdoria	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-10-2008&nbsp;	</td>
+    <td>	Sevilla FC	 - 	VfB Stuttgart	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-11-2008&nbsp;	</td>
+    <td>	VfB Stuttgart	 - 	FK Partizan Belgrado	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-11-2008&nbsp;	</td>
+    <td> R Standard de Liege	 - 	Sevilla FC	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://i.postimg.cc/qB1fQC8h/uc20081106-standard-sevilla.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	27-11-2008&nbsp;	</td>
+    <td>	UC Sampdoria	 - 	VfB Stuttgart	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	27-11-2008&nbsp;	</td>
+    <td>	FK Partizan Belgrado	 - 	R Standard de Liege	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	3-12-2008&nbsp;	</td>
+    <td>	Sevilla FC	 - 	FK Partizan Belgrado	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	3-12-2008&nbsp;	</td>
+    <td> R Standard de Liege	 - 	UC Sampdoria	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://i.postimg.cc/HW6G37QM/uc20081203-standard-sampdoria.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	18-12-2008&nbsp;	</td>
+    <td>	UC Sampdoria	 - 	Sevilla FC	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	18-12-2008&nbsp;	</td>
+    <td>	VfB Stuttgart	 - 	R Standard de Liege	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://i.postimg.cc/XNsMxyw9/uc20081218-stuttgart-standard.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group D</td></tr>
+<tr>
+    <td>	23-10-2008&nbsp;	</td>
+    <td>	Udinese Calcio	 - 	Tottenham Hotspur	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-10-2008&nbsp;	</td>
+    <td>	GNK Dinamo Zagreb	 - 	NEC Nijmegen	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-11-2008&nbsp;	</td>
+    <td>	Spartak Moscou	 - 	Udinese Calcio	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-11-2008&nbsp;	</td>
+    <td>	Tottenham Hotspur	 - 	GNK Dinamo Zagreb	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	27-11-2008&nbsp;	</td>
+    <td>	NEC Nijmegen	 - 	Tottenham Hotspur	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	27-11-2008&nbsp;	</td>
+    <td>	GNK Dinamo Zagreb	 - 	Spartak Moscou	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	3-12-2008&nbsp;	</td>
+    <td>	Udinese Calcio	 - 	GNK Dinamo Zagreb	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	3-12-2008&nbsp;	</td>
+    <td>	Spartak Moscou	 - 	NEC Nijmegen	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	18-12-2008&nbsp;	</td>
+    <td>	Tottenham Hotspur	 - 	Spartak Moscou	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	18-12-2008&nbsp;	</td>
+    <td>	NEC Nijmegen	 - 	Udinese Calcio	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group E</td></tr>
+<tr>
+    <td>	23-10-2008&nbsp;	</td>
+    <td>	sc Heerenveen	 - 	AC Milan	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-10-2008&nbsp;	</td>
+    <td>	SC Braga	 - 	FC Portsmouth	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-11-2008&nbsp;	</td>
+    <td>	VfL Wolfsburg	 - 	sc Heerenveen	</td>
+    <td class="score-bold">	5-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-11-2008&nbsp;	</td>
+    <td>	AC Milan	 - 	SC Braga	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	27-11-2008&nbsp;	</td>
+    <td>	FC Portsmouth	 - 	AC Milan	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	27-11-2008&nbsp;	</td>
+    <td>	SC Braga	 - 	VfL Wolfsburg	</td>
+    <td class="score-bold">	2-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-12-2008&nbsp;	</td>
+    <td>	VfL Wolfsburg	 - 	FC Portsmouth	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-12-2008&nbsp;	</td>
+    <td>	sc Heerenveen	 - 	SC Braga	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	17-12-2008&nbsp;	</td>
+    <td>	AC Milan	 - 	VfL Wolfsburg	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	17-12-2008&nbsp;	</td>
+    <td>	FC Portsmouth	 - 	sc Heerenveen	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group F</td></tr>
+<tr>
+    <td>	23-10-2008&nbsp;	</td>
+    <td>	MSK Zilina	 - 	Hamburger SV	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://i.postimg.cc/NGdhbr1y/uc20081023-MKS-Zilina-Hamburger-SV.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-10-2008&nbsp;	</td>
+    <td>	Aston Villa	 - 	AFC Ajax	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-11-2008&nbsp;	</td>
+    <td>	SK Slavia Praag	 - 	Aston Villa	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-11-2008&nbsp;	</td>
+    <td>	AFC Ajax	 - 	MSK Zilina	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	27-11-2008&nbsp;	</td>
+    <td>	MSK Zilina	 - 	SK Slavia Praag	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	27-11-2008&nbsp;	</td>
+    <td>	Hamburger SV	 - 	AFC Ajax	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-12-2008&nbsp;	</td>
+    <td>	SK Slavia Praag	 - 	Hamburger SV	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-12-2008&nbsp;	</td>
+    <td>	Aston Villa	 - 	MSK Zilina	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	17-12-2008&nbsp;	</td>
+    <td>	AFC Ajax	 - 	SK Slavia Praag	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	17-12-2008&nbsp;	</td>
+    <td>	Hamburger SV	 - 	Aston Villa	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group G</td></tr>
+<tr>
+    <td>	23-10-2008&nbsp;	</td>
+    <td>	Rosenborg BK	 - 	Club Brugge KV	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-10-2008&nbsp;	</td>
+    <td>	FC Copenhagen	 - 	AS Saint-Étienne	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-11-2008&nbsp;	</td>
+    <td>	AS Saint-Étienne	 - 	Rosenborg BK	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-11-2008&nbsp;	</td>
+    <td>	Valencia CF	 - 	FC Copenhagen	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	27-11-2008&nbsp;	</td>
+    <td>	Rosenborg BK	 - 	Valencia CF	</td>
+    <td class="score-bold">	0-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	27-11-2008&nbsp;	</td>
+    <td>	Club Brugge KV	 - 	AS Saint-Étienne	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://i.postimg.cc/sfTFKZpG/uc20081127-brugge-saint-etienne.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-12-2008&nbsp;	</td>
+    <td>	Valencia CF	 - 	Club Brugge KV	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://i.postimg.cc/T2t8QWrm/uc20081204-valencia-brugge.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-12-2008&nbsp;	</td>
+    <td>	FC Copenhagen	 - 	Rosenborg BK	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	17-12-2008&nbsp;	</td>
+    <td>	Club Brugge KV	 - 	FC Copenhagen	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://i.postimg.cc/Y2dc8m1Y/uc20081217-brugge-kopenhagen.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	17-12-2008&nbsp;	</td>
+    <td>	AS Saint-Étienne	 - 	Valencia CF	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group H</td></tr>
+<tr>
+    <td>	23-10-2008&nbsp;	</td>
+    <td>	CSKA Moscou	 - 	Deportivo de La Coruña 	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-10-2008&nbsp;	</td>
+    <td>	AS Nancy-Lorraine	 - 	Feyenoord Rotterdam	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-11-2008&nbsp;	</td>
+    <td>	Lech Poznan	 - 	AS Nancy-Lorraine	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-11-2008&nbsp;	</td>
+    <td>	Feyenoord Rotterdam	 - 	CSKA Moscou	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	27-11-2008&nbsp;	</td>
+    <td>	CSKA Moscou	 - 	Lech Poznan	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	27-11-2008&nbsp;	</td>
+    <td>	Deportivo de La Coruña 	 - 	Feyenoord Rotterdam	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-12-2008&nbsp;	</td>
+    <td>	AS Nancy-Lorraine	 - 	CSKA Moscou	</td>
+    <td class="score-bold">	3-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-12-2008&nbsp;	</td>
+    <td>	Lech Poznan	 - 	Deportivo de La Coruña 	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	17-12-2008&nbsp;	</td>
+    <td>	Deportivo de La Coruña 	 - 	AS Nancy-Lorraine	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	17-12-2008&nbsp;	</td>
+    <td>	Feyenoord Rotterdam	 - 	Lech Poznan	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Round 2</td></tr>
+<tr>
+    <td>	 18-02-2009&nbsp;	</td>
+    <td>	Dynamo Kyiv	 - 	Valencia CF	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-02-2009&nbsp;	</td>
+    <td>	Zenit Saint-Petersburg	 - 	VfB Stuttgart	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-02-2009&nbsp;	</td>
+    <td>	Olympiacos Piraeus	 - 	AS Saint-Étienne	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-02-2009&nbsp;	</td>
+    <td>	Aston Villa	 - 	CSKA Moscou	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-02-2009&nbsp;	</td>
+    <td>	SV Werder Bremen	 - 	AC Milan	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-02-2009&nbsp;	</td>
+    <td>	Paris Saint Germain	 - 	VfL Wolfsburg	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://i.postimg.cc/44WCwhz5/uc20090218-Paris-Saint-Germain-Vf-L-Wolfsburg.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-02-2009&nbsp;	</td>
+    <td>	NEC Nijmegen	 - 	Hamburger SV	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-02-2009&nbsp;	</td>
+    <td>	UC Sampdoria	 - 	Metalist Kharkiv	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-02-2009&nbsp;	</td>
+    <td>	FC Girondins Bordeaux	 - 	Galatasaray	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-02-2009&nbsp;	</td>
+    <td>	Aalborg BK	 - 	Deportivo de La Coruña 	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-02-2009&nbsp;	</td>
+    <td>	SC Braga	 - 	R Standard de Liege	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://i.postimg.cc/3rtM9Dgj/uc20090218-braga-standard.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-02-2009&nbsp;	</td>
+    <td>	Lech Poznan	 - 	Udinese Calcio	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-02-2009&nbsp;	</td>
+    <td>	ACF Fiorentina	 - 	AFC Ajax	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-02-2009&nbsp;	</td>
+    <td>	Shakhtar Donetsk	 - 	Tottenham Hotspur	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-02-2009&nbsp;	</td>
+    <td>	FC Copenhagen	 - 	Manchester City	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-02-2009&nbsp;	</td>
+    <td>	Olympique Marseille	 - 	FC Twente	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Round 2</td></tr>
+<tr>
+    <td>	 26-02-2009&nbsp;	</td>
+    <td>	Metalist Kharkiv	 - 	UC Sampdoria	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-02-2009&nbsp;	</td>
+    <td>	CSKA Moscou	 - 	Aston Villa	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-02-2009&nbsp;	</td>
+    <td>	Hamburger SV	 - 	NEC Nijmegen	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://i.postimg.cc/y6LqnSFL/uc20090226-Hamburger-SV-NEC-Nijmegen.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-02-2009&nbsp;	</td>
+    <td>	FC Twente	 - 	Olympique Marseille	</td>
+    <td class="score-bold">	0-1 pen 6-7</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-02-2009&nbsp;	</td>
+    <td>	VfL Wolfsburg	 - 	Paris Saint Germain	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-02-2009&nbsp;	</td>
+    <td>	Galatasaray	 - 	FC Girondins Bordeaux	</td>
+    <td class="score-bold">	4-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-02-2009&nbsp;	</td>
+    <td>	Manchester City	 - 	FC Copenhagen	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-02-2009&nbsp;	</td>
+    <td> R Standard de Liege	 - 	SC Braga	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://i.postimg.cc/pVsNknDC/uc20090226-standard-braga.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-02-2009&nbsp;	</td>
+    <td>	Udinese Calcio	 - 	Lech Poznan	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-02-2009&nbsp;	</td>
+    <td>	AS Saint-Étienne	 - 	Olympiacos Piraeus	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-02-2009&nbsp;	</td>
+    <td>	AFC Ajax	 - 	ACF Fiorentina	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-02-2009&nbsp;	</td>
+    <td>	VfB Stuttgart	 - 	Zenit Saint-Petersburg	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-02-2009&nbsp;	</td>
+    <td>	AC Milan	 - 	SV Werder Bremen	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-02-2009&nbsp;	</td>
+    <td>	Deportivo de La Coruña 	 - 	Aalborg BK	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-02-2009&nbsp;	</td>
+    <td>	Tottenham Hotspur	 - 	Shakhtar Donetsk	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-02-2009&nbsp;	</td>
+    <td>	Valencia CF	 - 	Dynamo Kyiv	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Last 16</td></tr>
+<tr>
+    <td>	 12-03-2009&nbsp;	</td>
+    <td>	CSKA Moscou	 - 	Shakhtar Donetsk	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-03-2009&nbsp;	</td>
+    <td>	Dynamo Kyiv	 - 	Metalist Kharkiv	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-03-2009&nbsp;	</td>
+    <td>	Hamburger SV	 - 	Galatasaray	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-03-2009&nbsp;	</td>
+    <td>	Paris Saint Germain	 - 	SC Braga	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-03-2009&nbsp;	</td>
+    <td>	SV Werder Bremen	 - 	AS Saint-Étienne	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-03-2009&nbsp;	</td>
+    <td>	Udinese Calcio	 - 	Zenit Saint-Petersburg	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-03-2009&nbsp;	</td>
+    <td>	Manchester City	 - 	Aalborg BK	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-03-2009&nbsp;	</td>
+    <td>	Olympique Marseille	 - 	AFC Ajax	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Last 16</td></tr>
+<tr>
+    <td>	 18-03-2009&nbsp;	</td>
+    <td>	AS Saint-Étienne	 - 	SV Werder Bremen	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-03-2009&nbsp;	</td>
+    <td>	AFC Ajax	 - 	Olympique Marseille	</td>
+    <td class="score-bold">	2-2 aet	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-03-2009&nbsp;	</td>
+    <td>	Metalist Kharkiv	 - 	Dynamo Kyiv	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-03-2009&nbsp;	</td>
+    <td>	Shakhtar Donetsk	 - 	CSKA Moscou	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-03-2009&nbsp;	</td>
+    <td>	Zenit Saint-Petersburg	 - 	Udinese Calcio	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-03-2009&nbsp;	</td>
+    <td>	Galatasaray	 - 	Hamburger SV	</td>
+    <td class="score-bold">	2-3	</td>
+    <td><a href="https://i.postimg.cc/pVsNknDc/uc20090309-Galatasaray-Istanbul-Hamburger-SV.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-03-2009&nbsp;	</td>
+    <td>	Aalborg BK	 - 	Manchester City	</td>
+    <td class="score-bold">	2-0 pen 3-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-03-2009&nbsp;	</td>
+    <td>	SC Braga	 - 	Paris Saint Germain	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Quarter Final</td></tr>
+<tr>
+    <td>	 9-04-2009&nbsp;	</td>
+    <td>	Shakhtar Donetsk	 - 	Olympique Marseille	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-04-2009&nbsp;	</td>
+    <td>	Hamburger SV	 - 	Manchester City	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-04-2009&nbsp;	</td>
+    <td>	Paris Saint Germain	 - 	Dynamo Kyiv	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-04-2009&nbsp;	</td>
+    <td>	SV Werder Bremen	 - 	Udinese Calcio	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Quarter Final</td></tr>
+<tr>
+    <td>	 16-04-2009&nbsp;	</td>
+    <td>	Dynamo Kyiv	 - 	Paris Saint Germain	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-04-2009&nbsp;	</td>
+    <td>	Manchester City	 - 	Hamburger SV	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-04-2009&nbsp;	</td>
+    <td>	Olympique Marseille	 - 	Shakhtar Donetsk	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 16-04-2009&nbsp;	</td>
+    <td>	Udinese Calcio	 - 	SV Werder Bremen	</td>
+    <td class="score-bold">	3-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Semi Final</td></tr>
+<tr>
+    <td>	 30-04-2009&nbsp;	</td>
+    <td>	Dynamo Kyiv	 - 	Shakhtar Donetsk	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-04-2009&nbsp;	</td>
+    <td>	SV Werder Bremen	 - 	Hamburger SV	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Semi Final</td></tr>
+<tr>
+    <td>	 7-05-2009&nbsp;	</td>
+    <td>	Shakhtar Donetsk	 - 	Dynamo Kyiv	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 7-05-2009&nbsp;	</td>
+    <td>	Hamburger SV	 - 	SV Werder Bremen	</td>
+    <td class="score-bold">	2-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Final</td></tr>
+<tr style="background: rgba(255, 215, 0, 0.2);">
+    <td><strong> 20-05-2009&nbsp;</strong></td>
+    <td><strong>Shakhtar Donetsk	 - 	SV Werder Bremen</strong></td>
+    <td class="score-bold">2-1 aet</td>
+    <td><a href="https://i.postimg.cc/CMcyJfj6/uc20090520Werder-Bremen-Schachtjor-Donezk-20-05-2009.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="uc-2008-2009/"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>                   
+
+                </tbody>
+            </table>
+        </section>
+    </main>
+</div>
+
+<button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" id="scrollTopBtn">↑</button>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // 1. Tooltip aanmaken
+        const tooltip = document.createElement('div');
+        tooltip.id = 'image-preview-tooltip';
+        Object.assign(tooltip.style, {
+            position: 'fixed',
+            display: 'none',
+            zIndex: '10000',
+            pointerEvents: 'none',
+            background: '#fff',
+            border: '3px solid rgb(255, 148, 0)',
+            borderRadius: '8px',
+            boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
+            padding: '5px',
+            width: '250px' // Iets smaller voor de zekerheid
+        });
+        document.body.appendChild(tooltip);
+
+        const rows = document.querySelectorAll('#matchTable tbody tr');
+        let ticketsOwned = 0;
+        let programsOwned = 0;
+        let totalMatches = 0;
+
+        rows.forEach(row => {
+            const cells = row.cells;
+            if (cells.length === 5) { 
+                totalMatches++;
+                const links = row.querySelectorAll('td a');
+                links.forEach(link => {
+                    const img = link.querySelector('img');
+                    if (img && img.src.includes('images/aaa.png')) {
+                        if (link.parentElement.cellIndex === 3) ticketsOwned++;
+                        if (link.parentElement.cellIndex === 4) programsOwned++;
+
+                        link.addEventListener('mouseenter', () => {
+                            tooltip.innerHTML = `<img src="${link.href}" style="width:100%; height:auto; display:block; border-radius:4px;">`;
+                            tooltip.style.display = 'block';
+                        });
+
+                        link.addEventListener('mousemove', (e) => {
+                            const gap = 20;
+                            const tooltipWidth = 460; // breedte + padding
+                            let x = e.clientX + gap;
+                            let y = e.clientY + 10;
+
+                            // RECHTS BUITEN BEELD? -> Verplaats naar links van de muis
+                            if (x + tooltipWidth > window.innerWidth) {
+                                x = e.clientX - tooltipWidth - gap;
+                            }
+
+                            // LINKS BUITEN BEELD?
+                            if (x < 0) x = 10;
+
+                            // ONDERKANT BUITEN BEELD?
+                            if (y + 400 > window.innerHeight) {
+                                y = window.innerHeight - 410;
+                            }
+
+                            tooltip.style.left = x + 'px';
+                            tooltip.style.top = y + 'px';
+                        });
+
+                        link.addEventListener('mouseleave', () => {
+                            tooltip.style.display = 'none';
+                        });
+                    }
+                });
+            }
+        });
+
+        // Tellers invullen
+        document.getElementById('ticket-count').innerText = ticketsOwned;
+        document.getElementById('total-tickets').innerText = totalMatches;
+        
+    });
+
+    // Scroll knop
+    window.onscroll = function() {
+        let btn = document.getElementById("scrollTopBtn");
+        if (btn) btn.style.display = (window.pageYOffset > 200) ? "block" : "none";
+    };
+</script>
+<script src="search-index.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Zelfde opschoon-functie als de converter
+        function cleanId(text) {
+            return text.toString().toLowerCase().replace(/[^a-z0-9]/g, '');
+        }
+
+        // 1. Geef alle rijen een ID
+        const rows = document.querySelectorAll("tr");
+        rows.forEach(row => {
+            const cells = row.querySelectorAll("td");
+            if (cells.length >= 2) {
+                const date = cells[0].innerText;
+                const teams = cells[1].innerText;
+                row.id = "match" + cleanId(date + teams);
+            }
+        });
+
+        // 2. Scroll naar de match als er een # in de URL staat
+        if (window.location.hash) {
+            // Wacht heel even tot de pagina volledig rustig is
+            setTimeout(() => {
+                const target = document.querySelector(window.location.hash);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // Highlight de rij
+                    target.style.transition = "background-color 0.5s";
+                    target.style.backgroundColor = "#cdffcf";
+                    setTimeout(() => { target.style.backgroundColor = ""; }, 5000);
+                }
+            }, 600); // 600ms vertraging voor stabiliteit
+        }
+    });
+</script>    
+</body>
+</html>

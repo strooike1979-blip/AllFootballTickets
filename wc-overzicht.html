@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Cup Archief</title>
+    <style>
+        /* Dezelfde stijlen als in je index.html voor consistentie */
+        * { box-sizing: border-box; }
+        body, html { margin: 0; padding: 0; height: 100%; font-family: 'Segoe UI', sans-serif; background-color: #f8f9fa; }
+
+        .app-wrapper { display: flex; min-height: 100vh; width: 100%; }
+
+        /* ZIJBALK (Hetzelfde als index.html) */
+        .sidebar {
+            width: 320px;
+            background-color: #1a1d23;
+            color: white;
+            padding: 25px 15px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .sidebar h2 { color: #FFFFFF; margin-bottom: 20px; font-size: 1.4rem; text-align: center; }
+
+        .sidebar-nav ul { list-style: none; padding: 0; margin: 0; }
+        .sidebar-nav a {
+            text-decoration: none;
+            color: #adb5bd;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            transition: 0.2s;
+        }
+        .sidebar-nav a:hover { background: #343a40; color: rgb(255, 148, 0); }
+
+        /* CONTENT GEBIED */
+        .main-content { flex-grow: 1; padding: 40px; }
+
+        .year-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; margin-top: 20px; }
+        
+        .year-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            border: 1px solid #eee;
+        }
+        .year-card:hover { transform: translateY(-5px); box-shadow: 0 6px 15px rgba(0,0,0,0.1); border-color: rgb(255, 148, 0); }
+   /* --- Dashboard Stats Styling --- */
+.stats-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+    gap: 20px; 
+    margin-bottom: 40px; 
+}
+.stat-card { 
+    background: white; 
+    padding: 20px; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+    text-align: center; 
+    border-bottom: 4px solid #0e1e5b; /* CL Blauw */
+}
+.stat-card h3 { margin: 0; color: #666; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+.stat-card .value { font-size: 2rem; font-weight: 800; margin: 10px 0; color: #0e1e5b; }
+
+.prog-bg { background: #eee; height: 8px; border-radius: 4px; overflow: hidden; margin-top: 10px; }
+.prog-fill { height: 100%; background: rgb(255, 148, 0); width: 0%; transition: width 1s ease-in-out; }
+
+/* Verberg de bron-data tabel */
+#data-source { display: none; }
+    </style>
+</head>
+<body>
+
+<div class="app-wrapper">
+    <aside class="sidebar">
+        <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #333;">
+                <img src="../images/logo.png" alt="All Football Tickets Logo" style="width: 100%; max-width: 180px; border-radius: 10px; opacity: 0.8;">
+            </div>
+        
+       
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="../index.html" style="font-weight: bold; color: rgb(255, 148, 0);">← Home</a></li>
+            </ul>
+
+            <h3 style="font-size: 0.8rem; color: #666; margin: 20px 0 10px 10px; text-transform: uppercase;">Tournaments</h3>
+            <ul>
+                
+                <li><a href="cl-overzicht.html">Champions League</a></li>
+                <li><a href="el-overzicht.html">Europa League</a></li>
+                <li><a href="conl-overzicht.html">Conference League</a></li>
+            </ul>
+
+            
+            <ul>
+                <li><a href="ec1-overzicht.html">Europacup I</a></li>
+                <li><a href="ec2-overzicht.html">Cup Winners Cup</a></li>
+                <li><a href="uc-overzicht.html">UEFA Cup</a></li>
+                <li><a href="itt-overzicht.html">UEFA Intertoto Cup</a></li>
+                <li><a href="icc-overzicht.html">Inter-Cities Fairs Cup</a></li>
+                <li><a href="wc-overzicht.html">World Cup</a></li>
+                <li><a href="ek-overzicht.html">European Championship</a></li>
+                <li><a href="nl-overzicht.html">UEFA Nations League</a></li>
+                <li><a href="Totaaloverzicht.html">Master Stats Dashboard</a></li>
+            </ul>
+        
+            
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        
+        <h1>World Cup Archief</h1>
+        <div class="stats-grid">
+    <div class="stat-card">
+        <h3>Tickets on site</h3>
+        <div class="value" id="grand-tickets">0 / 0</div>
+        <div class="prog-bg"><div id="bar-tickets" class="prog-fill"></div></div>
+    </div>
+    
+    <div class="stat-card">
+        <h3>Total Progress</h3>
+        <div class="value" id="grand-perc">0%</div>
+        <p style="margin:0; font-size:0.8rem; color:#888;"></p>
+    </div>
+</div>
+
+<table id="data-source">
+    <tbody class="season-rows">
+<tr><td>1930</td><td><span class="t-owned">0</span>/<span class="t-total">18</span></td><td class="row-perc">-</td></tr>
+<tr><td>1934</td><td><span class="t-owned">1</span>/<span class="t-total">17</span></td><td class="row-perc">-</td></tr>
+<tr><td>1938</td><td><span class="t-owned">1</span>/<span class="t-total">19</span></td><td class="row-perc">-</td></tr>
+<tr><td>1950</td><td><span class="t-owned">0</span>/<span class="t-total">22</span></td><td class="row-perc">-</td></tr>
+<tr><td>1954</td><td><span class="t-owned">2</span>/<span class="t-total">26</span></td><td class="row-perc">-</td></tr>
+<tr><td>1958</td><td><span class="t-owned">6</span>/<span class="t-total">35</span></td><td class="row-perc">-</td></tr>
+<tr><td>1962</td><td><span class="t-owned">0</span>/<span class="t-total">32</span></td><td class="row-perc">-</td></tr>
+<tr><td>1966</td><td><span class="t-owned">20</span>/<span class="t-total">32</span></td><td class="row-perc">-</td></tr>
+<tr><td>1970</td><td><span class="t-owned">0</span>/<span class="t-total">32</span></td><td class="row-perc">-</td></tr>
+<tr><td>1974</td><td><span class="t-owned">6</span>/<span class="t-total">38</span></td><td class="row-perc">-</td></tr>
+<tr><td>1978</td><td><span class="t-owned">0</span>/<span class="t-total">38</span></td><td class="row-perc">-</td></tr>
+<tr><td>1982</td><td><span class="t-owned">0</span>/<span class="t-total">52</span></td><td class="row-perc">-</td></tr>
+<tr><td>1986</td><td><span class="t-owned">0</span>/<span class="t-total">52</span></td><td class="row-perc">-</td></tr>
+<tr><td>1990</td><td><span class="t-owned">2</span>/<span class="t-total">52</span></td><td class="row-perc">-</td></tr>
+<tr><td>1994</td><td><span class="t-owned">8</span>/<span class="t-total">52</span></td><td class="row-perc">-</td></tr>
+<tr><td>1998</td><td><span class="t-owned">0</span>/<span class="t-total">64</span></td><td class="row-perc">-</td></tr>
+<tr><td>2002</td><td><span class="t-owned">0</span>/<span class="t-total">64</span></td><td class="row-perc">-</td></tr>
+<tr><td>2006</td><td><span class="t-owned">0</span>/<span class="t-total">64</span></td><td class="row-perc">-</td></tr>
+<tr><td>2010</td><td><span class="t-owned">0</span>/<span class="t-total">64</span></td><td class="row-perc">-</td></tr>
+<tr><td>2014</td><td><span class="t-owned">0</span>/<span class="t-total">64</span></td><td class="row-perc">-</td></tr>
+<tr><td>2018</td><td><span class="t-owned">0</span>/<span class="t-total">64</span></td><td class="row-perc">-</td></tr>
+<tr><td>2022</td><td><span class="t-owned">0</span>/<span class="t-total">64</span></td><td class="row-perc">-</td></tr>
+<tr><td>2026</td><td><span class="t-owned">0</span>/<span class="t-total">0</span></td><td class="row-perc">-</td></tr>        
+        </table>
+        
+        
+        <p>Select a season to see games-scores-tickets and programs</p>
+
+<div class="year-grid">
+    <a href="wc-1930.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">1930</span>
+        <img src="../images/1930_FIFA_World_Cup.jpeg" alt="World Cup 1930" style="width: 100px;">
+    </a>
+
+    <a href="wc-1934.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">1934</span>
+        <img src="../images/1934_FIFA_World_Cup.jpeg" alt="World Cup 1934" style="width: 100px;">
+    </a>
+
+    <a href="wc-1938.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">1938</span>
+        <img src="../images/1938_FIFA_World_Cup.jpeg" alt="World Cup 1938" style="width: 100px;">
+    </a>
+
+    <a href="wc-1950.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">1950</span>
+        <img src="../images/1950_FIFA_World_Cup.jpeg" alt="World Cup 1950" style="width: 100px;">
+    </a>
+
+    <a href="wc-1954.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">1954</span>
+        <img src="../images/1954_FIFA_World_Cup.jpg" alt="World Cup 1954" style="width: 100px;">
+    </a>
+
+    <a href="wc-1958.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">1958</span>
+        <img src="../images/1958_FIFA_World_Cup.jpg" alt="World Cup 1958" style="width: 100px;">
+    </a>
+
+    <a href="wc-1962.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">1962</span>
+        <img src="../images/1962_FIFA_World_Cup.jpg" alt="World Cup 1962" style="width: 100px;">
+    </a>
+
+    <a href="wc-1966.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">1966</span>
+        <img src="../images/1966_FIFA_World_Cup.jpg" alt="World Cup 1966" style="width: 100px;">
+    </a>
+
+    <a href="wc-1970.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">1970</span>
+        <img src="../images/1970_FIFA_World_Cup.jpg" alt="World Cup 1970" style="width: 100px;">
+    </a>
+
+    <a href="wc-1974.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">1974</span>
+        <img src="../images/1974_FIFA_World_Cup.jpg" alt="World Cup 1974" style="width: 100px;">
+    </a>
+
+    <a href="wc-1978.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">1978</span>
+        <img src="../images/1978_FIFA_World_Cup.png" alt="World Cup 1978" style="width: 100px;">
+    </a>
+
+    <a href="wc-1982.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">1982</span>
+        <img src="../images/1982_FIFA_World_Cup.png" alt="World Cup 1982" style="width: 100px;">
+    </a>
+
+    <a href="wc-1986.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">1986</span>
+        <img src="../images/1986_FIFA_World_Cup.png" alt="World Cup 1986" style="width: 100px;">
+    </a>
+
+    <a href="wc-1990.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">1990</span>
+        <img src="../images/1990_FIFA_World_Cup.png" alt="World Cup 1990" style="width: 100px;">
+    </a>
+
+    <a href="wc-1994.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">1994</span>
+        <img src="../images/1994_FIFA_World_Cup.png" alt="World Cup 1994" style="width: 100px;">
+    </a>
+
+    <a href="wc-1998.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">1998</span>
+        <img src="../images/1998_FIFA_World_Cup.png" alt="World Cup 1998" style="width: 100px;">
+    </a>
+
+    <a href="wc-2002.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">2002</span>
+        <img src="../images/2002_FIFA_World_Cup.png" alt="World Cup 2002" style="width: 100px;">
+    </a>
+
+    <a href="wc-2006.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">2006</span>
+        <img src="../images/2006_FIFA_World_Cup.png" alt="World Cup 2006" style="width: 100px;">
+    </a>
+
+    <a href="wc-2010.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">2010</span>
+        <img src="../images/2010_FIFA_World_Cup.png" alt="World Cup 2010" style="width: 100px;">
+    </a>
+
+    <a href="wc-2014.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">2014</span>
+        <img src="../images/2014_FIFA_World_Cup.png" alt="World Cup 2014" style="width: 100px;">
+    </a>
+
+    <a href="wc-2018.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">2018</span>
+        <img src="../images/2018_FIFA_World_Cup.png" alt="World Cup 2018" style="width: 100px;">
+    </a>
+
+    <a href="wc-2022.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">2022</span>
+        <img src="../images/2022_FIFA_World_Cup.png" alt="World Cup 2022" style="width: 100px;">
+    </a>
+
+    <a href="wc-2026.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">2026</span>
+        <img src="../images/2026_FIFA_World_Cup.png" alt="World Cup 2026" style="width: 100px;">
+    </a>
+</div>
+    </main>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    let tO = 0, tT = 0;
+    
+    // Zoek alle rijen in de verborgen tabel
+    const rows = document.querySelectorAll('#data-source .season-rows tr');
+    
+    rows.forEach(row => {
+        // Haal alleen de cijfers voor tickets op
+        tO += parseInt(row.querySelector('.t-owned')?.innerText) || 0;
+        tT += parseInt(row.querySelector('.t-total')?.innerText) || 0;
+    });
+
+    // Update de tekst in de ticket-widget
+    const grandTickets = document.getElementById('grand-tickets');
+    if (grandTickets) {
+        grandTickets.innerText = tO + " / " + tT;
+    }
+    
+    // Bereken percentage op basis van alleen tickets
+    const tPerc = tT > 0 ? (tO / tT) * 100 : 0;
+    const totalPerc = Math.round(tPerc);
+
+    // Update de ticket-balk
+    const barTickets = document.getElementById('bar-tickets');
+    if (barTickets) {
+        barTickets.style.width = tPerc + "%";
+    }
+
+    // Update het totaal percentage (grand-perc)
+    const grandPerc = document.getElementById('grand-perc');
+    if (grandPerc) {
+        grandPerc.innerText = totalPerc + "%";
+    }
+});
+</script>
+</body>
+</html>
