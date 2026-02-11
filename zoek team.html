@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ploegen Zoeker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #111;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .search-container {
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 3.5rem;
+            color: orange;
+            margin-bottom: 10px;
+        }
+
+        #searchBar {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2rem;
+            border: 2px solid orange;
+            border-radius: 5px;
+            background-color: #222;
+            color: white;
+            outline: none;
+        }
+
+        #resultsInfo {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .club-card {
+            background: linear-gradient(135deg, #222 0%, #333 100%);
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 25px 20px;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.2s, border-color 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .club-card:hover {
+            transform: translateY(-5px);
+            border-color: orange;
+        }
+
+        .club-logo {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+
+        .club-name {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .view-button {
+            background-color: orange;
+            color: black;
+            padding: 6px 18px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+        
+        
+    </style>
+</head>
+<body>
+<a href="index.html" class="home-button" aria-label="Home">
+    <svg width="44" height="44" viewBox="0 0 24 24">
+        <path fill="white" d="M12 3L2 12h3v9h6v-6h2v6h6v-9h3z"/>
+    </svg>
+</a>
+
+<div class="search-container">
+    <h1>Team Searcher</h1>
+    <input type="text" id="searchBar" placeholder="Type Teamname..." oninput="search()">
+    <div id="resultsInfo">Type 3 letters to search</div>
+</div>
+
+<div id="results" class="results-grid"></div>
+
+<script>
+    // 🟧 HIER VOEG JE PLOEGEN TOE 🟧
+const clubsData = [
+ {
+    name: "Spartak Brno ZJS",
+    keywords: ["spartakbrnozjs", "spartak brno zjs"],
+    logo: "images/spartakbrnozjs.png",
+    link: "clubs/tjzbrojovkabrno.html"
+  },
+  {
+    name: "1 FC Brno",
+    keywords: ["1fcbrno", "1 fc brno", "fc brno"],
+    logo: "images/1fcbrno.png",
+    link: "clubs/tjzbrojovkabrno.html"
+  },
+  {
+    name: "FC Boby Brno",
+    keywords: ["fcbobybrno", "fc boby brno"],
+    logo: "images/fcbobybrno.png",
+    link: "clubs/tjzbrojovkabrno.html"
+  },
+  {
+    name: "TJ Zbrojovka Brno",
+    keywords: ["tjzbrojovkabrno", "tj zbrojovka brno"],
+    logo: "images/tjzbrojovkabrno.png",
+    link: "clubs/tjzbrojovkabrno.html"
+  },
+  {
+    name: "RSC Anderlecht",
+    keywords: ["rscanderlecht", "rsc anderlecht"],
+    logo: "images/rscanderlecht.png",
+    link: "clubs/rscanderlecht.html"
+  },
+  {
+    name: "SC Leipzig",
+    keywords: ["SC Leipzig", "Leipzig"],
+    logo: "images/scleipzig.png",
+    link: "clubs/1fclokomotiveleipzig.html"
+  },
+  {
+    name: "1 FC Lokomotive Leipzig",
+    keywords: ["1 FC Lokomotive Leipzig", "Lokomotive Leipzig"],
+    logo: "images/1fclokomotiveleipzig.png",
+    link: "clubs/1fclokomotiveleipzig.html"
+  },
+];
+
+    function search() {
+        const query = document.getElementById('searchBar').value.toLowerCase().trim();
+        const resultsDiv = document.getElementById('results');
+        const info = document.getElementById('resultsInfo');
+
+        resultsDiv.innerHTML = '';
+
+        if (query.length < 3) {
+            info.innerText = 'Type 3 letters to search';
+            return;
+        }
+
+        const filtered = clubsData.filter(c =>
+            c.keywords.some(k => k.includes(query)) || c.name.toLowerCase().includes(query)
+        );
+
+        filtered.forEach(club => {
+            const card = document.createElement('a');
+            card.href = club.link;
+            card.className = 'club-card';
+            card.innerHTML = `
+                <img src="${club.logo}" alt="${club.name}" class="club-logo">
+                <div class="club-name">${club.name}</div>
+                <div class="view-button">See Games</div>
+            `;
+            resultsDiv.appendChild(card);
+        });
+
+        info.innerText = filtered.length + ' Teams found';
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,274 @@
+/* css/style.css */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.app-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 280px;
+    background-color: #1a1d23;
+    color: white;
+    padding: 25px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
+.sidebar h2 {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    color: rgb(255, 148, 0)important;
+}
+
+.nav-home {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.nav-group h3 {
+    font-size: 0.7rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 20px 0 10px 0;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-nav a {
+    color: #16e79f;
+    text-decoration: none;
+    display: block;
+    padding: 8px 0;
+    font-size: 0.95rem;
+}
+
+.sidebar-nav a:hover, .sidebar-nav a.active {
+    color: rgb(255, 148, 0);
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 40px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px;
+    background: #2d323e;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+.round-divider { 
+    background-color: rgb(255, 148, 0); /* Oranje */
+    color: #ffffff;                     /* Witte tekst */
+    padding: 10px 15px !important; 
+    font-weight: bold; 
+}
+
+:root {
+    --sidebar-bg: #1a1d23;
+    --accent-color: rgb(255, 148, 0); /* Veranderd van #4facfe naar Oranje */
+    --text-light: #adb5bd;
+    --card-bg: #ffffff;
+}
+
+/* Het kader voor de afbeeldingspreview */
+#image-preview-tooltip {
+    position: fixed;
+    display: none;
+    z-index: 10000;
+    pointer-events: none;
+    background: #fff;
+    border: 3px solid rgb(255, 148, 0);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    padding: 5px;
+    max-width: 100px;
+}
+#image-preview-tooltip img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+
+/* De Container voor de foto's */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+/* De individuele kaartjes voor de tickets */
+.ticket-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid #ddd;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.ticket-card:hover {
+    border-color: var(--accent-color); /* Oranje rand bij hover */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+.ticket-card img {
+    width: 100%;
+    height: 80px;
+    object-fit: cover; /* Zorgt dat alle foto's even groot lijken */
+    border-bottom: 3px solid #4b0082; /* Paars lijntje onder de foto */
+}
+
+.ticket-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.ticket-info h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: #1a1d23;
+}
+
+.ticket-info p {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+.score-bold a {
+    text-decoration: none;
+    color: inherit;
+    display: block; /* Maakt de hele cel klikbaar */
+}
+
+.score-bold a:hover {
+    background-color: #f0f0f0; /* Geeft een subtiel effect als je eroverheen muist */
+}
+
+.subtotal-row td:first-child {
+    text-align: right;
+    padding-right: 25px;
+    color: #666;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* HOME ICON LINKSBOVEN */
+.home-icon-link {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 9999;
+    display: block;
+    width: 32px; /* Container breedte */
+    height: 32px; /* Container hoogte */
+    transition: transform 0.2s;
+}
+
+.home-icon-link:hover {
+    transform: scale(1.2);
+}
+
+.home-icon-link svg {
+    display: block;
+    fill: #ffffff !important; /* Forceert wit */
+}
+
+/* Zorg dat de hero relatief is */
+.hero {
+    position: relative !important;
+}
+alphabet-nav, 
+#alphabet-nav, 
+div[class*="alphabet"], 
+nav[class*="alphabet"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+}
+/* Verberg de volledige A-Z container inclusief alle knoppen */
+.az-filter-container {
+    display: none !important;
+}
+
+/* Voor de zekerheid ook het ID van de navigatiebalk zelf */
+#alphabet-nav {
+    display: none !important;
+}
+
+/* DE DEFINITIEVE HIGHLIGHT REGEL */
+.match-table-full tbody tr:target td {
+    background-color: #ffeb3b !important; /* Felgeel */
+    border-top: 2px solid #ff9800 !important;
+    border-bottom: 2px solid #ff9800 !important;
+    color: black !important;
+}
+
+@keyframes highlight-pulse {
+    0% { outline: 3px solid #ff9800; }
+    100% { outline: 0px solid transparent; }
+}
+
+/* De klasse die door het script wordt toegevoegd */
+.highlight-fade-active {
+    background-color: #80f9b1 !important;
+    transition: background-color 0.5s ease-in !important;
+}
+
+/* De klasse die zorgt voor het langzame wegvloeien */
+.highlight-fade-out {
+    background-color: transparent !important;
+    transition: background-color 2s ease-out !important;
+}
+
+.match-table-full tbody tr:target td {
+    background-color: #ffeb3b !important; /* felgeel */
+}
+/* Highlight geselecteerde wedstrijd via #wX */
+table.match-table-full tbody tr:target > td {
+    background-color: #ffeb3b !important;
+    border-top: 2px solid #ff9800 !important;
+    border-bottom: 2px solid #ff9800 !important;
+    color: black !important;
+}
+
+.home-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 99999;
+    text-decoration: none;
+}
+
+.home-button svg {
+    display: block;
+    transition: transform 0.2s;
+}
+
+.home-button:hover svg {
+    transform: scale(1.15);
+}

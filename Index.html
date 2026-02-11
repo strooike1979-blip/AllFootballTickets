@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Football Tickets</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    
+    <style>
+        :root {
+            --sidebar-bg: #1a1d23;
+            --accent-color: rgb(255, 148, 0); /* Jouw oranje kleur */
+            --rsca-purple: #4b0082; /* Anderlecht paars */
+            --text-light: #adb5bd;
+            --card-bg: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+        body, html { margin: 0; padding: 0; height: 100%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; }
+
+        .app-wrapper { display: flex; min-height: 100vh; }
+
+        /* ZIJBALK */
+        .sidebar {
+            width: 300px;
+            background-color: var(--sidebar-bg);
+            color: white;
+            padding: 20px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            border-right: 3px solid var(--accent-color);
+        }
+
+        .sidebar-header { text-align: center; margin-bottom: 30px; }
+        .sidebar-header img { width: 120px; transition: transform 0.3s; cursor: pointer; }
+        .sidebar-header img:hover { transform: scale(1.1) rotate(5deg); }
+        .sidebar-header h2 { font-size: 1.2rem; margin-top: 10px; color: var(--accent-color); text-transform: uppercase; letter-spacing: 1px; }
+
+        .search-box { margin-bottom: 20px; }
+        .search-box input { width: 100%; padding: 10px; border-radius: 5px; border: none; background: #2c313a; color: white; }
+
+        .sidebar-menu h3 { font-size: 0.9rem; color: var(--text-light); text-transform: uppercase; margin: 20px 0 10px; border-bottom: 1px solid #2c313a; padding-bottom: 5px; }
+        .sidebar-menu ul { list-style: none; padding: 0; margin: 0; }
+        .sidebar-menu li { margin-bottom: 8px; }
+        .sidebar-menu a { color: white; text-decoration: none; font-size: 0.95rem; display: block; padding: 8px 10px; border-radius: 4px; transition: 0.2s; }
+        .sidebar-menu a:hover { background-color: var(--accent-color); color: #1a1d23; font-weight: bold; }
+
+        /* HOOFDCONTENT */
+        .main-content { flex-grow: 1; padding: 40px; overflow-y: auto; }
+
+        .welcome-card {
+            background: linear-gradient(135deg, var(--accent-color), #ff7b00);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .welcome-card h2 { margin-top: 0; font-size: 2.2rem; }
+        .welcome-card p { font-size: 1.1rem; opacity: 0.9; line-height: 1.6; }
+
+        h1 { font-size: 2rem; color: var(--sidebar-bg); margin-bottom: 15px; }
+        .intro-text { font-size: 1.1rem; line-height: 1.8; color: #555; max-width: 800px; margin-bottom: 40px; }
+
+        @media (max-width: 900px) {
+            .app-wrapper { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-wrapper">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="images/logo.png" alt="All Football Tickets Logo">
+            <h2>Archive</h2>
+        </div>
+
+        
+       
+
+        <nav class="sidebar-menu">
+            
+            <h3>Tournaments</h3>
+            <ul id="menuList">
+                
+               <li><a href="archief/cl-overzicht.html">Champions League</a></li>
+                <li><a href="archief/el-overzicht.html">Europa League</a></li>
+                <li><a href="archief/conl-overzicht.html">Conference League</a></li>
+                <li><a href="archief/ec1-overzicht.html">Europacup I</a></li>
+                <li><a href="archief/ec2-overzicht.html">Cup Winners Cup</a></li>
+                <li><a href="archief/uc-overzicht.html">UEFA Cup</a></li>
+                <li><a href="archief/itt-overzicht.html">UEFA Intertoto Cup</a></li>
+                <li><a href="archief/icc-overzicht.html">Inter-Cities Fairs Cup</a></li>
+                <li><a href="archief/wc-overzicht.html">World Cup</a></li>
+                <li><a href="archief/ek-overzicht.html">European Championship</a></li>
+                <li><a href="archief/nl-overzicht.html">UEFA Nations League</a></li>
+                <li><a href="archief/Totaaloverzicht.html">Master Stats Dashboard</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <div class="welcome-card">
+            
+            <h2>Welcome to All Football Tickets</h2>
+            <p>The ultimate archive to map the history of football tickets and programs.</p>
+        </div>
+
+        <h1>Football Tickets & Programma's</h1>
+        <p class="intro-text">
+            On this website, I'm trying to create a comprehensive overview of all the tickets and programs for the world's biggest football tournaments. 
+            This website is just a hobby for me.
+            Use the sidebar to delve into the history of each tournament.
+        </p>
+
+        <section style="background: white; padding: 20px; border-radius: 10px; border: 1px solid #ddd; display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+    <img src="images/logo.png" alt="Small Logo" style="width: 60px; height: 60px; object-fit: contain;">
+    <div style="flex-grow: 1; min-width: 250px;">
+        <h3>Help us grow</h3>
+        <p>Do you have a photo of a ticket that isn't on this website? Send it via email or upload it directly!</p>
+    </div>
+    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <a href="mailto:strooike1979@rscafans.be" 
+           style="background: #1a1d23; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; min-width: 140px; text-align: center;">
+           Send email
+        </a>
+        
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeagtQ1UYV-3-rt4rpb2dSzxX8j2aPOwvM2jg_xZer6_hKUZA/viewform?usp=sf_link" 
+           target="_blank" 
+           style="background: var(--accent-color); color: #1a1d23; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; min-width: 140px; text-align: center;">
+           Upload Photo
+        </a>
+    </div>
+</section>
+    </main>
+</div>
+
+<script>
+    function filterMenu() {
+        let input = document.getElementById('globalSearch').value.toLowerCase();
+        let listItems = document.querySelectorAll('#menuList li');
+        
+        listItems.forEach(item => {
+            let text = item.textContent.toLowerCase();
+            item.style.display = text.includes(input) ? "block" : "none";
+        });
+    }
+</script>
+
+</body>
+</html>

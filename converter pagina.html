@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Match naar HTML Converter</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; background-color: #f4f4f9; }
+        textarea { width: 100%; height: 150px; margin-bottom: 10px; border: 1px solid #ccc; padding: 10px; }
+        button { background-color: #007bff; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 4px; }
+        button:hover { background-color: #0056b3; }
+        #output-container { margin-top: 20px; position: relative; }
+        pre { background-color: #272822; color: #f8f8f2; padding: 15px; overflow-x: auto; border-radius: 4px; font-size: 13px; }
+        .copy-btn { position: absolute; right: 10px; top: 10px; background-color: #28a745; }
+    </style>
+</head>
+<body>
+
+    <h2>Match Data naar HTML Converter (v2)</h2>
+    <p>Plak je data hier:</p>
+    <textarea id="inputData" placeholder="04-09-1955	Sporting CP	FK Partizan Belgrade	3-3	ec1-1955-1956.html"></textarea>
+    
+    <button onclick="convertData()">Genereer HTML</button>
+
+    <div id="output-container" style="display:none;">
+        <button class="copy-btn" onclick="copyToClipboard()">Kopieer HTML</button>
+        <pre id="outputCode"></pre>
+    </div>
+
+    <script>
+        function convertData() {
+            const input = document.getElementById('inputData').value.trim();
+            if (!input) return;
+
+            const lines = input.split('\n');
+            let result = "";
+
+            lines.forEach(line => {
+                const parts = line.split('\t');
+                
+                if (parts.length >= 5) {
+                    const datum = parts[0].trim();
+                    const team1 = parts[1].trim();
+                    const team2 = parts[2].trim();
+                    const score = parts[3].trim();
+                    const rawFileName = parts[4].trim();
+
+                    // Hier passen we de link aan: 
+                    // ec1-1955-1956.html wordt ec1-1955-1956/construction.html
+                    const folderName = rawFileName.replace('.html', '');
+                    const finalLink = folderName + "/construction.html";
+
+                    result += `<tr>\n`;
+                    result += `    <td>\t ${datum}&nbsp;\t</td>\n`;
+                    result += `    <td>\t${team1}\t - \t${team2}\t</td>\n`;
+                    result += `    <td class="score-bold">\t${score}\t</td>\n`;
+                    result += `    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>\n`;
+                    result += `    <td><a href="${finalLink}"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>\n`;
+                    result += `</tr>\n`;
+                }
+            });
+
+            document.getElementById('outputCode').textContent = result;
+            document.getElementById('output-container').style.display = 'block';
+        }
+
+        function copyToClipboard() {
+            const code = document.getElementById('outputCode').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                alert("HTML gekopieerd!");
+            });
+        }
+    </script>
+
+</body>
+</html>
