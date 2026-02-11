@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>European Championship Archief</title>
+    <style>
+        /* Dezelfde stijlen als in je index.html voor consistentie */
+        * { box-sizing: border-box; }
+        body, html { margin: 0; padding: 0; height: 100%; font-family: 'Segoe UI', sans-serif; background-color: #f8f9fa; }
+
+        .app-wrapper { display: flex; min-height: 100vh; width: 100%; }
+
+        /* ZIJBALK (Hetzelfde als index.html) */
+        .sidebar {
+            width: 320px;
+            background-color: #1a1d23;
+            color: white;
+            padding: 25px 15px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .sidebar h2 { color: #FFFFFF; margin-bottom: 20px; font-size: 1.4rem; text-align: center; }
+
+        .sidebar-nav ul { list-style: none; padding: 0; margin: 0; }
+        .sidebar-nav a {
+            text-decoration: none;
+            color: #adb5bd;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            transition: 0.2s;
+        }
+        .sidebar-nav a:hover { background: #343a40; color: rgb(255, 148, 0); }
+
+        /* CONTENT GEBIED */
+        .main-content { flex-grow: 1; padding: 40px; }
+
+        .year-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; margin-top: 20px; }
+        
+        .year-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            border: 1px solid #eee;
+        }
+        .year-card:hover { transform: translateY(-5px); box-shadow: 0 6px 15px rgba(0,0,0,0.1); border-color: rgb(255, 148, 0); }
+   /* --- Dashboard Stats Styling --- */
+.stats-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+    gap: 20px; 
+    margin-bottom: 40px; 
+}
+.stat-card { 
+    background: white; 
+    padding: 20px; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+    text-align: center; 
+    border-bottom: 4px solid #0e1e5b; /* CL Blauw */
+}
+.stat-card h3 { margin: 0; color: #666; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+.stat-card .value { font-size: 2rem; font-weight: 800; margin: 10px 0; color: #0e1e5b; }
+
+.prog-bg { background: #eee; height: 8px; border-radius: 4px; overflow: hidden; margin-top: 10px; }
+.prog-fill { height: 100%; background: rgb(255, 148, 0); width: 0%; transition: width 1s ease-in-out; }
+
+/* Verberg de bron-data tabel */
+#data-source { display: none; }
+    </style>
+</head>
+<body>
+
+<div class="app-wrapper">
+    <aside class="sidebar">
+        <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #333;">
+                <img src="../images/logo.png" alt="All Football Tickets Logo" style="width: 100%; max-width: 180px; border-radius: 10px; opacity: 0.8;">
+            </div>
+        
+       
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="../index.html" style="font-weight: bold; color: rgb(255, 148, 0);">← Home</a></li>
+            </ul>
+
+            <h3 style="font-size: 0.8rem; color: #666; margin: 20px 0 10px 10px; text-transform: uppercase;">Tournaments</h3>
+            <ul>
+               
+                <li><a href="cl-overzicht.html">Champions League</a></li>
+                <li><a href="el-overzicht.html">Europa League</a></li>
+                <li><a href="conl-overzicht.html">Conference League</a></li>
+            </ul>
+
+            
+            <ul>
+                <li><a href="ec1-overzicht.html">Europacup I</a></li>
+                <li><a href="ec2-overzicht.html">Cup Winners Cup</a></li>
+                <li><a href="uc-overzicht.html">UEFA Cup</a></li>
+                <li><a href="itt-overzicht.html">UEFA Intertoto Cup</a></li>
+                <li><a href="icc-overzicht.html">Inter-Cities Fairs Cup</a></li>
+                <li><a href="wc-overzicht.html">World Cup</a></li>
+                <li><a href="ek-overzicht.html">European Championship</a></li>
+                <li><a href="nl-overzicht.html">UEFA Nations League</a></li>
+                <li><a href="Totaaloverzicht.html">Master Stats Dashboard</a></li>
+            </ul>
+        
+            
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        
+        <h1>European Championship Archief</h1>
+        <div class="stats-grid">
+    <div class="stat-card">
+        <h3>Tickets on site</h3>
+        <div class="value" id="grand-tickets">0 / 0</div>
+        <div class="prog-bg"><div id="bar-tickets" class="prog-fill"></div></div>
+    </div>
+ 
+    <div class="stat-card">
+        <h3>Total Progress</h3>
+        <div class="value" id="grand-perc">0%</div>
+        <p style="margin:0; font-size:0.8rem; color:#888;"></p>
+    </div>
+</div>
+
+<table id="data-source">
+    <tbody class="season-rows">
+<tr><td>1960</td><td><span class="t-owned">0</span>/<span class="t-total">4</span></td><td class="row-perc">-</td></tr>
+<tr><td>1964</td><td><span class="t-owned">0</span>/<span class="t-total">4</span></td><td class="row-perc">-</td></tr>
+<tr><td>1968</td><td><span class="t-owned">0</span>/<span class="t-total">5</span></td><td class="row-perc">-</td></tr>
+<tr><td>1972</td><td><span class="t-owned">0</span>/<span class="t-total">4</span></td><td class="row-perc">-</td></tr>
+<tr><td>1976</td><td><span class="t-owned">0</span>/<span class="t-total">4</span></td><td class="row-perc">-</td></tr>
+<tr><td>1980</td><td><span class="t-owned">0</span>/<span class="t-total">14</span></td><td class="row-perc">-</td></tr>
+<tr><td>1984</td><td><span class="t-owned">0</span>/<span class="t-total">15</span></td><td class="row-perc">-</td></tr>
+<tr><td>1988</td><td><span class="t-owned">7</span>/<span class="t-total">15</span></td><td class="row-perc">-</td></tr>
+<tr><td>1992</td><td><span class="t-owned">5</span>/<span class="t-total">15</span></td><td class="row-perc">-</td></tr>
+<tr><td>1996</td><td><span class="t-owned">16</span>/<span class="t-total">31</span></td><td class="row-perc">-</td></tr>
+<tr><td>2000</td><td><span class="t-owned">26</span>/<span class="t-total">31</span></td><td class="row-perc">-</td></tr>
+<tr><td>2004</td><td><span class="t-owned">23</span>/<span class="t-total">31</span></td><td class="row-perc">-</td></tr>
+<tr><td>2008</td><td><span class="t-owned">6</span>/<span class="t-total">31</span></td><td class="row-perc">-</td></tr>
+<tr><td>2012</td><td><span class="t-owned">6</span>/<span class="t-total">31</span></td><td class="row-perc">-</td></tr>
+<tr><td>2016</td><td><span class="t-owned">21</span>/<span class="t-total">51</span></td><td class="row-perc">-</td></tr>
+<tr><td>2020</td><td><span class="t-owned">0</span>/<span class="t-total">51</span></td><td class="row-perc">-</td></tr>
+<tr><td>2024</td><td><span class="t-owned">0</span>/<span class="t-total">51</span></td><td class="row-perc">-</td></tr>        
+        </table>
+     
+        
+        <p>Select a season to see games-scores-tickets and programs</p>
+
+<div class="year-grid">
+<a href="ek-1960.html" class="year-card">
+    <span style="font-weight: bold; display: block; margin-bottom: 10px;">1960</span>
+    <img src="../images/1960_ek.png" alt="European Championship 1960" style="width: 100px;">
+</a>
+
+<a href="ek-1964.html" class="year-card">
+    <span style="font-weight: bold; display: block; margin-bottom: 10px;">1964</span>
+    <img src="../images/1964_ek.jpeg" alt="European Championship 1964" style="width: 100px;">
+</a>
+
+<a href="ek-1968.html" class="year-card">
+    <span style="font-weight: bold; display: block; margin-bottom: 10px;">1968</span>
+    <img src="../images/1968_ek.jpeg" alt="European Championship 1968" style="width: 100px;">
+</a>
+
+<a href="ek-1972.html" class="year-card">
+    <span style="font-weight: bold; display: block; margin-bottom: 10px;">1972</span>
+    <img src="../images/1972_ek.webp" alt="European Championship 1972" style="width: 100px;">
+</a>
+
+<a href="ek-1976.html" class="year-card">
+    <span style="font-weight: bold; display: block; margin-bottom: 10px;">1976</span>
+    <img src="../images/1976_ek.png" alt="European Championship 1976" style="width: 100px;">
+</a>
+
+<a href="ek-1980.html" class="year-card">
+    <span style="font-weight: bold; display: block; margin-bottom: 10px;">1980</span>
+    <img src="../images/1980_ek.png" alt="European Championship 1980" style="width: 100px;">
+</a>
+
+<a href="ek-1984.html" class="year-card">
+    <span style="font-weight: bold; display: block; margin-bottom: 10px;">1984</span>
+    <img src="../images/1984_ek.png" alt="European Championship 1984" style="width: 100px;">
+</a>
+
+<a href="ek-1988.html" class="year-card">
+    <span style="font-weight: bold; display: block; margin-bottom: 10px;">1988</span>
+    <img src="../images/1988_ek.jpeg" alt="European Championship 1988" style="width: 100px;">
+</a>
+
+<a href="ek-1992.html" class="year-card">
+    <span style="font-weight: bold; display: block; margin-bottom: 10px;">1992</span>
+    <img src="../images/1992_ek.jpeg" alt="European Championship 1992" style="width: 100px;">
+</a>
+
+<a href="ek-1996.html" class="year-card">
+    <span style="font-weight: bold; display: block; margin-bottom: 10px;">1996</span>
+    <img src="../images/1996_ek.png" alt="European Championship 1996" style="width: 100px;">
+</a>
+
+<a href="ek-2000.html" class="year-card">
+    <span style="font-weight: bold; display: block; margin-bottom: 10px;">2000</span>
+    <img src="../images/2000_ek.png" alt="European Championship 2000" style="width: 100px;">
+</a>
+
+<a href="ek-2004.html" class="year-card">
+    <span style="font-weight: bold; display: block; margin-bottom: 10px;">2004</span>
+    <img src="../images/2004_ek.webp" alt="European Championship 2004" style="width: 100px;">
+</a>
+
+<a href="ek-2008.html" class="year-card">
+    <span style="font-weight: bold; display: block; margin-bottom: 10px;">2008</span>
+    <img src="../images/2008_ek.webp" alt="European Championship 2008" style="width: 100px;">
+</a>
+
+<a href="ek-2012.html" class="year-card">
+    <span style="font-weight: bold; display: block; margin-bottom: 10px;">2012</span>
+    <img src="../images/2012_ek.svg" alt="European Championship 2012" style="width: 100px;">
+</a>
+
+<a href="ek-2016.html" class="year-card">
+    <span style="font-weight: bold; display: block; margin-bottom: 10px;">2016</span>
+    <img src="../images/2016_ek.png" alt="European Championship 2016" style="width: 100px;">
+</a>
+
+<a href="ek-2020.html" class="year-card">
+    <span style="font-weight: bold; display: block; margin-bottom: 10px;">2020</span>
+    <img src="../images/2020_ek.jpeg" alt="European Championship 2020" style="width: 100px;">
+</a>
+
+<a href="ek-2024.html" class="year-card">
+    <span style="font-weight: bold; display: block; margin-bottom: 10px;">2024</span>
+    <img src="../images/2024_ek.png" alt="European Championship 2024" style="width: 100px;">
+</a>
+</div>
+    </main>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    let tO = 0, tT = 0;
+    
+    // Zoek alle rijen in de verborgen tabel
+    const rows = document.querySelectorAll('#data-source .season-rows tr');
+    
+    rows.forEach(row => {
+        // Haal alleen de cijfers voor tickets op
+        tO += parseInt(row.querySelector('.t-owned')?.innerText) || 0;
+        tT += parseInt(row.querySelector('.t-total')?.innerText) || 0;
+    });
+
+    // Update de tekst in de ticket-widget
+    const grandTickets = document.getElementById('grand-tickets');
+    if (grandTickets) {
+        grandTickets.innerText = tO + " / " + tT;
+    }
+    
+    // Bereken percentage op basis van alleen tickets
+    const tPerc = tT > 0 ? (tO / tT) * 100 : 0;
+    const totalPerc = Math.round(tPerc);
+
+    // Update de ticket-balk
+    const barTickets = document.getElementById('bar-tickets');
+    if (barTickets) {
+        barTickets.style.width = tPerc + "%";
+    }
+
+    // Update het totaal percentage (grand-perc)
+    const grandPerc = document.getElementById('grand-perc');
+    if (grandPerc) {
+        grandPerc.innerText = totalPerc + "%";
+    }
+});
+</script>
+</body>
+</html>
