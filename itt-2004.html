@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UEFA Intertoto Cup 2004 - Full Match List</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Basis Layout */
+        .app-wrapper {
+            display: flex;
+            min-height: 110vh;
+        }
+
+        .sidebar {
+            width: 260px;
+            background: #111;
+            padding: 20px;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            background: #ffffff;
+            color: #000000;
+        }
+
+        /* Navigatie & Header */
+        .season-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #393838;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+        
+        .season-navigation h1 { margin: 0; font-size: 24px; color: #ffffff !important; }
+
+        .next-button {
+            background-color: rgb(255, 148, 0) !important;
+            color: white !important;
+            padding: 10px 18px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 13px;
+            transition: opacity 0.3s ease;
+        }
+        .next-button:hover { opacity: 0.9; }
+
+        /* Statistieken in Sidebar */
+        .sidebar-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-section h3 {
+            color: rgb(255, 148, 0);
+            font-size: 14px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .stat-value {
+            color: #000000;
+            font-weight: bold;
+            background: #ffffff;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        /* Tabel Styling */
+        .team-section { width: 100%; overflow-x: auto; }
+        .match-table-full { width: 100%; border-collapse: collapse; min-width: 700px; color: #000000; }
+        .match-table-full th { text-align: left; padding: 12px; border-bottom: 2px solid #000; color: #000; }
+        .match-table-full td { padding: 12px; border-bottom: 1px solid #eee; }
+        
+        .match-table-full tbody tr:hover td { background-color: #f0f7ff !important; }
+        
+        .round-divider { background-color: rgb(255, 148, 0); padding: 10px 15px !important; font-weight: bold; color: #000000; }
+        .score-bold { font-weight: bold; color: #000000; }
+        .table-icon { width: 25px; transition: transform 0.2s ease; }
+
+        #scrollTopBtn {
+            position: fixed; bottom: 20px; right: 20px; width: 40px; height: 40px;
+            background: #0046a6; color: white; border: none; border-radius: 50%; cursor: pointer; display: none;
+            z-index: 100;
+        }
+
+        @media (max-width: 768px) {
+            .app-wrapper { flex-direction: column; }
+            .sidebar { width: 100%; }
+            .season-navigation { flex-direction: column; text-align: center; gap: 15px; }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="app-wrapper">
+    <aside class="sidebar">
+        <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #333;">
+                <img src="../images/logo.png" alt="All Football Tickets Logo" style="width: 100%; max-width: 180px; border-radius: 10px; opacity: 0.8;">
+            </div>
+        
+        <nav class="sidebar-nav">
+            <a href="../index.html" style="color: #fff; text-decoration: none; display: block; margin-bottom: 10px;">Home</a>
+            <a href="itt-overzicht.html" style="color: #fff; text-decoration: none; display: block; margin-bottom: 20px;">UEFA Intertoto Cup</a>
+        </nav>
+        
+        <div class="sidebar-section">
+            <h3>Season Stats</h3>
+            <div class="stat-item">
+                <span>Tickets:</span> 
+                <span class="stat-value"><span id="ticket-count">0</span> / <span id="total-tickets">0</span></span>
+            </div>
+            
+        </div>
+
+        <div class="sidebar-section">
+    <h3>Select a Season</h3>
+    <select class="season-selector" onchange="location = this.value;" style="width:100%; padding:8px; background:#fff; color:#000; border:1px solid #333;">
+        
+
+<option value="itt-1995.html">1995</option>
+<option value="itt-1996.html">1996</option>
+<option value="itt-1997.html">1997</option>
+<option value="itt-1998.html">1998</option>
+<option value="itt-1999.html">1999</option>
+<option value="itt-2000.html">2000</option>
+<option value="itt-2001.html">2001</option>
+<option value="itt-2002.html">2002</option>
+<option value="itt-2003.html">2003</option>
+<option value="itt-2004.html" selected>2004</option>
+<option value="itt-2005.html">2005</option>
+<option value="itt-2006.html">2006</option>
+<option value="itt-2007.html">2007</option>
+<option value="itt-2008.html">2008</option>
+
+
+
+        
+        
+
+        
+        
+    </select>
+</div>
+
+        <div class="sidebar-section">
+            <h3>Legenda</h3>
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+                <img src="../images/aaa.png" width="20"> <span style="font-size:13px; color:#ccc;">on Site (hover over to see)</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:10px;">
+                <img src="../images/bbb.png" width="20"> <span style="font-size:13px; color:#ccc;">searching</span>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="season-navigation">
+    <div>
+        <h1>UEFA Intertoto Cup 2004</h1>
+        <div class="az-filter-container" style="margin-top: 15px;">
+    <div id="alphabet-nav" style="display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px;"></div>
+    <div id="team-list-display" style="position: absolute; width: 320px; background: white; border: 1px solid #ccc; border-radius: 8px; display: none; max-height: 400px; overflow-y: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 9999;"></div>
+</div>
+        
+    </div>
+    <div style="display: flex; gap: 10px;">
+        <a href="itt-2003.html" class="next-button">&laquo;Previous 2003</a>
+        <a href="itt-2005.html" class="next-button">Next 2005 &raquo;</a>
+    </div>
+</header>
+
+        <section class="team-section">
+            <table class="match-table-full" id="matchTable">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Game</th>
+                        <th>Score</th>
+                        <th>Tickets</th>
+                        <th>Match Stats</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+<tr><td colspan="5" class="round-divider">Round 1</td></tr>
+<tr>
+    <td>	 19-06-2004&nbsp;	</td>
+    <td>	Esbjerg fB	 - 	NSÍ Runavík	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-06-2004&nbsp;	</td>
+    <td>	Aberystwyth Town	 - 	Dinaburg Daugavpils	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://i.postimg.cc/509M51gM/itt20040619-ABERYSTWYTH-TOWN-v-DINABURG.png" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-06-2004&nbsp;	</td>
+    <td>	Ethnikos Achnas	 - 	Vardar Skopje	</td>
+    <td class="score-bold">	1-5	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-06-2004&nbsp;	</td>
+    <td>	Hibernians FC	 - 	Slaven Belupo Koprivnica	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-06-2004&nbsp;	</td>
+    <td>	Spartak Trnava	 - 	Debreceni VSC	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-06-2004&nbsp;	</td>
+    <td>	Cork City FC	 - 	Malmö FF	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-06-2004&nbsp;	</td>
+    <td>	FC Sopron	 - 	FK Teplice	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-06-2004&nbsp;	</td>
+    <td>	NK Publikum Celje	 - 	FK Sloboda Tuzla	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-06-2004&nbsp;	</td>
+    <td>	KAA Gent	 - 	Fylkir Reykjavík	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-06-2004&nbsp;	</td>
+    <td>	Odense Boldklub	 - 	Ballymena United	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-06-2004&nbsp;	</td>
+    <td>	Spartak Moscou	 - 	FK Atlantas Klaipeda	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-06-2004&nbsp;	</td>
+    <td>	Casino Schwarz-Weiss Bregenz	 - 	FK Keshla	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-06-2004&nbsp;	</td>
+    <td>	UE Sant Julia	 - 	FK Smederevo 1924	</td>
+    <td class="score-bold">	0-8	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-06-2004&nbsp;	</td>
+    <td>	KF Teuta	 - 	MFK Dubnica	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-06-2004&nbsp;	</td>
+    <td>	CS Grevenmacher	 - 	Tampere United	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-06-2004&nbsp;	</td>
+    <td>	Marek Dupnitsa	 - 	FC Dila Gori	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-06-2004&nbsp;	</td>
+    <td>	FC Thun	 - 	CF Gloria Bistrita	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-06-2004&nbsp;	</td>
+    <td>	FK Vetra Vilnius	 - 	JK Trans Narva	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-06-2004&nbsp;	</td>
+    <td>	KF Vllaznia	 - 	Hapoel Beer Sheva	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-06-2004&nbsp;	</td>
+    <td>	Myllykosken Pallo -47	 - 	FC Tescoma Zlin	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-06-2004&nbsp;	</td>
+    <td>	Odra Wodzislaw Slaski	 - 	Dinamo Minsk	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Round 1</td></tr>
+<tr>
+    <td>	 26-06-2004&nbsp;	</td>
+    <td>	FK Keshla	 - 	Casino Schwarz-Weiss Bregenz	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-06-2004&nbsp;	</td>
+    <td>	NSÍ Runavík	 - 	Esbjerg fB	</td>
+    <td class="score-bold">	0-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-06-2004&nbsp;	</td>
+    <td>	JK Trans Narva	 - 	FK Vetra Vilnius	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-06-2004&nbsp;	</td>
+    <td>	Ballymena United	 - 	Odense Boldklub	</td>
+    <td class="score-bold">	0-7	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-06-2004&nbsp;	</td>
+    <td>	Fylkir Reykjavík	 - 	KAA Gent	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-06-2004&nbsp;	</td>
+    <td>	FK Smederevo 1924	 - 	UE Sant Julia	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-06-2004&nbsp;	</td>
+    <td>	Slaven Belupo Koprivnica	 - 	Hibernians FC	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-06-2004&nbsp;	</td>
+    <td>	Dinaburg Daugavpils	 - 	Aberystwyth Town	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-06-2004&nbsp;	</td>
+    <td>	Hapoel Beer Sheva	 - 	KF Vllaznia	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-06-2004&nbsp;	</td>
+    <td>	Vardar Skopje	 - 	Ethnikos Achnas	</td>
+    <td class="score-bold">	5-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-06-2004&nbsp;	</td>
+    <td>	FC Dila Gori	 - 	Marek Dupnitsa	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-06-2004&nbsp;	</td>
+    <td>	FK Teplice	 - 	FC Sopron	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-06-2004&nbsp;	</td>
+    <td>	CF Gloria Bistrita	 - 	FC Thun	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-06-2004&nbsp;	</td>
+    <td>	FC Tescoma Zlin	 - 	Myllykosken Pallo -47	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-06-2004&nbsp;	</td>
+    <td>	FK Atlantas Klaipeda	 - 	Spartak Moscou	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-06-2004&nbsp;	</td>
+    <td>	Dinamo Minsk	 - 	Odra Wodzislaw Slaski	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-06-2004&nbsp;	</td>
+    <td>	MFK Dubnica	 - 	KF Teuta	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-06-2004&nbsp;	</td>
+    <td>	Debreceni VSC	 - 	Spartak Trnava	</td>
+    <td class="score-bold">	4-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-06-2004&nbsp;	</td>
+    <td>	Malmö FF	 - 	Cork City FC	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-06-2004&nbsp;	</td>
+    <td>	FK Sloboda Tuzla	 - 	NK Publikum Celje	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-06-2004&nbsp;	</td>
+    <td>	Tampere United	 - 	CS Grevenmacher	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Round 2</td></tr>
+<tr>
+    <td>	 3-07-2004&nbsp;	</td>
+    <td>	Spartak Moscou	 - 	NK Kamen Ingrad Velika	</td>
+    <td class="score-bold">	4-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-07-2004&nbsp;	</td>
+    <td>	VfL Wolfsburg	 - 	FC Thun	</td>
+    <td class="score-bold">	2-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-07-2004&nbsp;	</td>
+    <td>	Hibernian FC	 - 	FK Vetra Vilnius	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-07-2004&nbsp;	</td>
+    <td>	Esbjerg fB	 - 	OGC Nice	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-07-2004&nbsp;	</td>
+    <td>	FK Teplice	 - 	Shinnik Yaroslavl	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-07-2004&nbsp;	</td>
+    <td>	MFK Dubnica	 - 	FC Slovan Liberec	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-07-2004&nbsp;	</td>
+    <td>	Slaven Belupo Koprivnica	 - 	KF Vllaznia	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-07-2004&nbsp;	</td>
+    <td>	Vardar Skopje	 - 	KAA Gent	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-07-2004&nbsp;	</td>
+    <td>	Spartak Trnava	 - 	FK Sloboda Tuzla	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-07-2004&nbsp;	</td>
+    <td>	NEC Nijmegen	 - 	Cork City FC	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-07-2004&nbsp;	</td>
+    <td>	KVC Westerlo	 - 	FC Tescoma Zlin	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-07-2004&nbsp;	</td>
+    <td>	Odense Boldklub	 - 	FC Villarreal	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-07-2004&nbsp;	</td>
+    <td>	Dinamo Minsk	 - 	FK Smederevo 1924	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-07-2004&nbsp;	</td>
+    <td>	OFK Belgrad	 - 	Dinaburg Daugavpils	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-07-2004&nbsp;	</td>
+    <td>	KRC Genk	 - 	Marek Dupnitsa	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-07-2004&nbsp;	</td>
+    <td>	Tampere United	 - 	FK Keshla	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Round 2</td></tr>
+<tr>
+    <td>	 10-07-2004&nbsp;	</td>
+    <td>	FK Keshla	 - 	Tampere United	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 10-07-2004&nbsp;	</td>
+    <td>	FK Vetra Vilnius	 - 	Hibernian FC	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 10-07-2004&nbsp;	</td>
+    <td>	Shinnik Yaroslavl	 - 	FK Teplice	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 10-07-2004&nbsp;	</td>
+    <td>	Dinaburg Daugavpils	 - 	OFK Belgrad	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 10-07-2004&nbsp;	</td>
+    <td>	Marek Dupnitsa	 - 	KRC Genk	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 10-07-2004&nbsp;	</td>
+    <td>	FK Sloboda Tuzla	 - 	Spartak Trnava	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 10-07-2004&nbsp;	</td>
+    <td>	NK Kamen Ingrad Velika	 - 	Spartak Moscou	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 10-07-2004&nbsp;	</td>
+    <td>	FC Slovan Liberec	 - 	MFK Dubnica	</td>
+    <td class="score-bold">	5-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 10-07-2004&nbsp;	</td>
+    <td>	FC Tescoma Zlin	 - 	KVC Westerlo	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 10-07-2004&nbsp;	</td>
+    <td>	KAA Gent	 - 	Vardar Skopje	</td>
+    <td class="score-bold">	1-0 pen 3-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 10-07-2004&nbsp;	</td>
+    <td>	FC Villarreal	 - 	Odense Boldklub	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 11-07-2004&nbsp;	</td>
+    <td>	Cork City FC	 - 	NEC Nijmegen	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 11-07-2004&nbsp;	</td>
+    <td>	FK Smederevo 1924	 - 	Dinamo Minsk	</td>
+    <td class="score-bold">	1-3 aet</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 11-07-2004&nbsp;	</td>
+    <td>	FC Thun	 - 	VfL Wolfsburg	</td>
+    <td class="score-bold">	4-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 11-07-2004&nbsp;	</td>
+    <td>	OGC Nice	 - 	Esbjerg fB	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 11-07-2004&nbsp;	</td>
+    <td>	KF Vllaznia	 - 	Slaven Belupo Koprivnica	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Round 3</td></tr>
+<tr>
+    <td>	 17-07-2004&nbsp;	</td>
+    <td>	FC Thun	 - 	Hamburger SV	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2004&nbsp;	</td>
+    <td>	Shinnik Yaroslavl	 - 	UD Leiria	</td>
+    <td class="score-bold">	1-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2004&nbsp;	</td>
+    <td>	FC Schalke 04	 - 	Vardar Skopje	</td>
+    <td class="score-bold">	5-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2004&nbsp;	</td>
+    <td>	FC Slovan Liberec	 - 	Roda JC	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2004&nbsp;	</td>
+    <td>	Slaven Belupo Koprivnica	 - 	Spartak Trnava	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2004&nbsp;	</td>
+    <td>	LOSC Lille	 - 	Dinamo Minsk	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2004&nbsp;	</td>
+    <td>	FC Tescoma Zlin	 - 	Atlético Madrid	</td>
+    <td class="score-bold">	2-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2004&nbsp;	</td>
+    <td>	KRC Genk	 - 	Borussia Dortmund	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://i.postimg.cc/FRFQbmpt/itt20040717-genk-borussia-dortmund.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-07-2004&nbsp;	</td>
+    <td>	FC Villarreal	 - 	Spartak Moscou	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-07-2004&nbsp;	</td>
+    <td>	FK Vetra Vilnius	 - 	Esbjerg fB	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-07-2004&nbsp;	</td>
+    <td>	FC Nantes	 - 	Cork City FC	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 18-07-2004&nbsp;	</td>
+    <td>	Tampere United	 - 	OFK Belgrad	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Round 3</td></tr>
+<tr>
+    <td>	 24-07-2004&nbsp;	</td>
+    <td>	Dinamo Minsk	 - 	LOSC Lille	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-07-2004&nbsp;	</td>
+    <td>	Borussia Dortmund	 - 	KRC Genk	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://i.postimg.cc/yd6zhBjH/itt20040724-Borussia-Dortmund-KRC-Genk.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-07-2004&nbsp;	</td>
+    <td>	Esbjerg fB	 - 	FK Vetra Vilnius	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-07-2004&nbsp;	</td>
+    <td>	Roda JC	 - 	FC Slovan Liberec	</td>
+    <td class="score-bold">	1-1 aet	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-07-2004&nbsp;	</td>
+    <td>	Vardar Skopje	 - 	FC Schalke 04	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://i.postimg.cc/bJYj08gP/itt20040724-Vardar-Skopje-Schalke-04.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-07-2004&nbsp;	</td>
+    <td>	Spartak Moscou	 - 	FC Villarreal	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-07-2004&nbsp;	</td>
+    <td>	OFK Belgrad	 - 	Tampere United	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-07-2004&nbsp;	</td>
+    <td>	Spartak Trnava	 - 	Slaven Belupo Koprivnica	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-07-2004&nbsp;	</td>
+    <td>	Hamburger SV	 - 	FC Thun	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-07-2004&nbsp;	</td>
+    <td>	Cork City FC	 - 	FC Nantes	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-07-2004&nbsp;	</td>
+    <td>	Atlético Madrid	 - 	FC Tescoma Zlin	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-07-2004&nbsp;	</td>
+    <td>	UD Leiria	 - 	Shinnik Yaroslavl	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Semi Final</td></tr>
+<tr>
+    <td>	 28-07-2004&nbsp;	</td>
+    <td>	OFK Belgrad	 - 	Atlético Madrid	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-07-2004&nbsp;	</td>
+    <td>	KRC Genk	 - 	UD Leiria	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://i.postimg.cc/0Q5qGxnP/itt20040729-genk-leiria.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-07-2004&nbsp;	</td>
+    <td>	LOSC Lille	 - 	Slaven Belupo Koprivnica	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-07-2004&nbsp;	</td>
+    <td>	FC Slovan Liberec	 - 	FC Nantes	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-07-2004&nbsp;	</td>
+    <td>	Esbjerg fB	 - 	FC Schalke 04	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 28-07-2004&nbsp;	</td>
+    <td>	FC Villarreal	 - 	Hamburger SV	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Semi Final</td></tr>
+<tr>
+    <td>	 3-08-2004&nbsp;	</td>
+    <td>	FC Schalke 04	 - 	Esbjerg fB	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://i.postimg.cc/Tw2XjG0R/itt20040803-FC-Schalke-04-Esbjerg.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-08-2004&nbsp;	</td>
+    <td>	Slaven Belupo Koprivnica	 - 	LOSC Lille	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-08-2004&nbsp;	</td>
+    <td>	FC Nantes	 - 	FC Slovan Liberec	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-08-2004&nbsp;	</td>
+    <td>	Hamburger SV	 - 	FC Villarreal	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-08-2004&nbsp;	</td>
+    <td>	Atlético Madrid	 - 	OFK Belgrad	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-08-2004&nbsp;	</td>
+    <td>	UD Leiria	 - 	KRC Genk	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Final</td></tr>
+<tr style="background: rgba(255, 215, 0, 0.2);">
+    <td><strong> 10-08-2004&nbsp;</strong></td>
+    <td><strong>LOSC Lille	 - 	UD Leiria</strong></td>
+    <td class="score-bold">0-0</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/final.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr style="background: rgba(255, 215, 0, 0.2);">
+    <td><strong> 10-08-2004&nbsp;</strong></td>
+    <td><strong>FC Schalke 04	 - 	FC Slovan Liberec</strong></td>
+    <td class="score-bold">2-1</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/final.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr style="background: rgba(255, 215, 0, 0.2);">
+    <td><strong> 10-08-2004&nbsp;</strong></td>
+    <td><strong>FC Villarreal	 - 	Atlético Madrid</strong></td>
+    <td class="score-bold">2-0</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/final.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Final</td></tr>
+<tr style="background: rgba(255, 215, 0, 0.2);">
+    <td><strong> 24-08-2004&nbsp;</strong></td>
+    <td><strong>FC Slovan Liberec	 - 	FC Schalke 04</strong></td>
+    <td class="score-bold">0-1</td>
+    <td><a href="https://i.postimg.cc/gJcPydsk/itt20040824-Slovan-Liberec-FC-Schalke-04.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/final.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr style="background: rgba(255, 215, 0, 0.2);">
+    <td><strong> 24-08-2004&nbsp;</strong></td>
+    <td><strong>Atlético Madrid	 - 	FC Villarreal</strong></td>
+    <td class="score-bold">2-0 pen 1-3</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/final.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr style="background: rgba(255, 215, 0, 0.2);">
+    <td><strong> 24-08-2004&nbsp;</strong></td>
+    <td><strong>UD Leiria	 - 	LOSC Lille</strong></td>
+    <td class="score-bold">0-2 aet</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="itt-2004/final.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>                        
+                    
+                </tbody>
+            </table>
+        </section>
+    </main>
+</div>
+
+<button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" id="scrollTopBtn">↑</button>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // 1. Tooltip aanmaken
+        const tooltip = document.createElement('div');
+        tooltip.id = 'image-preview-tooltip';
+        Object.assign(tooltip.style, {
+            position: 'fixed',
+            display: 'none',
+            zIndex: '10000',
+            pointerEvents: 'none',
+            background: '#fff',
+            border: '3px solid rgb(255, 148, 0)',
+            borderRadius: '8px',
+            boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
+            padding: '5px',
+            width: '250px' // Iets smaller voor de zekerheid
+        });
+        document.body.appendChild(tooltip);
+
+        const rows = document.querySelectorAll('#matchTable tbody tr');
+        let ticketsOwned = 0;
+        let programsOwned = 0;
+        let totalMatches = 0;
+
+        rows.forEach(row => {
+            const cells = row.cells;
+            if (cells.length === 5) { 
+                totalMatches++;
+                const links = row.querySelectorAll('td a');
+                links.forEach(link => {
+                    const img = link.querySelector('img');
+                    if (img && img.src.includes('images/aaa.png')) {
+                        if (link.parentElement.cellIndex === 3) ticketsOwned++;
+                        if (link.parentElement.cellIndex === 4) programsOwned++;
+
+                        link.addEventListener('mouseenter', () => {
+                            tooltip.innerHTML = `<img src="${link.href}" style="width:100%; height:auto; display:block; border-radius:4px;">`;
+                            tooltip.style.display = 'block';
+                        });
+
+                        link.addEventListener('mousemove', (e) => {
+                            const gap = 20;
+                            const tooltipWidth = 460; // breedte + padding
+                            let x = e.clientX + gap;
+                            let y = e.clientY + 10;
+
+                            // RECHTS BUITEN BEELD? -> Verplaats naar links van de muis
+                            if (x + tooltipWidth > window.innerWidth) {
+                                x = e.clientX - tooltipWidth - gap;
+                            }
+
+                            // LINKS BUITEN BEELD?
+                            if (x < 0) x = 10;
+
+                            // ONDERKANT BUITEN BEELD?
+                            if (y + 400 > window.innerHeight) {
+                                y = window.innerHeight - 410;
+                            }
+
+                            tooltip.style.left = x + 'px';
+                            tooltip.style.top = y + 'px';
+                        });
+
+                        link.addEventListener('mouseleave', () => {
+                            tooltip.style.display = 'none';
+                        });
+                    }
+                });
+            }
+        });
+
+        // Tellers invullen
+        document.getElementById('ticket-count').innerText = ticketsOwned;
+        document.getElementById('total-tickets').innerText = totalMatches;
+        
+    });
+
+    // Scroll knop
+    window.onscroll = function() {
+        let btn = document.getElementById("scrollTopBtn");
+        if (btn) btn.style.display = (window.pageYOffset > 200) ? "block" : "none";
+    };
+</script>
+<script src="search-index.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Zelfde opschoon-functie als de converter
+        function cleanId(text) {
+            return text.toString().toLowerCase().replace(/[^a-z0-9]/g, '');
+        }
+
+        // 1. Geef alle rijen een ID
+        const rows = document.querySelectorAll("tr");
+        rows.forEach(row => {
+            const cells = row.querySelectorAll("td");
+            if (cells.length >= 2) {
+                const date = cells[0].innerText;
+                const teams = cells[1].innerText;
+                row.id = "match" + cleanId(date + teams);
+            }
+        });
+
+        // 2. Scroll naar de match als er een # in de URL staat
+        if (window.location.hash) {
+            // Wacht heel even tot de pagina volledig rustig is
+            setTimeout(() => {
+                const target = document.querySelector(window.location.hash);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // Highlight de rij
+                    target.style.transition = "background-color 0.5s";
+                    target.style.backgroundColor = "#cdffcf";
+                    setTimeout(() => { target.style.backgroundColor = ""; }, 5000);
+                }
+            }, 600); // 600ms vertraging voor stabiliteit
+        }
+    });
+</script>
+</body>
+</html>

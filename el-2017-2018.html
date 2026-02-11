@@ -1,0 +1,3663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Europa League 2017/2018 - Full Match List</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Basis Layout */
+        .app-wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 260px;
+            background: #111;
+            padding: 20px;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            background: #ffffff;
+            color: #000000;
+        }
+
+        /* Navigatie & Header */
+        .season-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #393838;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+        
+        .season-navigation h1 { margin: 0; font-size: 24px; color: #ffffff !important; }
+
+        .next-button {
+            background-color: rgb(255, 148, 0) !important;
+            color: white !important;
+            padding: 10px 18px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 13px;
+            transition: opacity 0.3s ease;
+        }
+        .next-button:hover { opacity: 0.9; }
+
+        /* Statistieken in Sidebar */
+        .sidebar-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-section h3 {
+            color: rgb(255, 148, 0);
+            font-size: 14px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .stat-value {
+            color: #000000;
+            font-weight: bold;
+            background: #ffffff;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        /* Tabel Styling */
+        .team-section { width: 100%; overflow-x: auto; }
+        .match-table-full { width: 100%; border-collapse: collapse; min-width: 700px; color: #000000; }
+        .match-table-full th { text-align: left; padding: 12px; border-bottom: 2px solid #000; color: #000; }
+        .match-table-full td { padding: 12px; border-bottom: 1px solid #eee; }
+        
+        .match-table-full tbody tr:hover td { background-color: #f0f7ff !important; }
+        
+        .round-divider { background-color: rgb(255, 148, 0); padding: 10px 15px !important; font-weight: bold; color: #000000; }
+        .score-bold { font-weight: bold; color: #000000; }
+        .table-icon { width: 25px; transition: transform 0.2s ease; }
+
+        #scrollTopBtn {
+            position: fixed; bottom: 20px; right: 20px; width: 40px; height: 40px;
+            background: #0046a6; color: white; border: none; border-radius: 50%; cursor: pointer; display: none;
+            z-index: 100;
+        }
+
+        @media (max-width: 768px) {
+            .app-wrapper { flex-direction: column; }
+            .sidebar { width: 100%; }
+            .season-navigation { flex-direction: column; text-align: center; gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-wrapper">
+    <aside class="sidebar">
+        <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #333;">
+                <img src="../images/logo.png" alt="All Football Tickets Logo" style="width: 100%; max-width: 180px; border-radius: 10px; opacity: 0.8;">
+            </div>
+        <nav class="sidebar-nav">
+            <a href="../index.html" style="color: #fff; text-decoration: none; display: block; margin-bottom: 10px;">Home</a>
+            <a href="el-overzicht.html" style="color: #fff; text-decoration: none; display: block; margin-bottom: 20px;">Europa League</a>
+        </nav>
+        
+        <div class="sidebar-section">
+            <h3>Season Stats</h3>
+            <div class="stat-item">
+                <span>Tickets:</span> 
+                <span class="stat-value"><span id="ticket-count">0</span> / <span id="total-tickets">0</span></span>
+            </div>
+            
+        </div>
+
+        <div class="sidebar-section">
+            <h3>Select a Season</h3>
+            <select class="season-selector" onchange="location = this.value;" style="width:100%; padding:8px; background:#fff; color:#000; border:1px solid #333;">
+
+<option value="el-2009-2010.html">2009 / 2010</option>
+<option value="el-2010-2011.html">2010 / 2011</option>
+<option value="el-2011-2012.html">2011 / 2012</option>
+<option value="el-2012-2013.html">2012 / 2013</option>
+<option value="el-2013-2014.html">2013 / 2014</option>
+<option value="el-2014-2015.html">2014 / 2015</option>
+<option value="el-2015-2016.html">2015 / 2016</option>
+<option value="el-2016-2017.html">2016 / 2017</option>
+<option value="el-2017-2018.html" selected>2017 / 2018</option>
+<option value="el-2018-2019.html">2018 / 2019</option>
+<option value="el-2019-2020.html">2019 / 2020</option>
+<option value="el-2020-2021.html">2020 / 2021</option>
+<option value="el-2021-2022.html">2021 / 2022</option>
+<option value="el-2022-2023.html">2022 / 2023</option>
+<option value="el-2023-2024.html">2023 / 2024</option>
+<option value="el-2024-2025.html">2024 / 2025</option>
+<option value="el-2025-2026.html">2025 / 2026</option>
+                </select>
+        </div>
+
+        <div class="sidebar-section">
+            <h3>Legenda</h3>
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+                <img src="../images/aaa.png" width="20"> <span style="font-size:13px; color:#ccc;">on Site (hover over to see)</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:10px;">
+                <img src="../images/bbb.png" width="20"> <span style="font-size:13px; color:#ccc;">searching</span>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="season-navigation">
+    <div>
+        <h1>Europa League 2017-2018</h1>
+        <div class="az-filter-container" style="margin-top: 15px;">
+    <div id="alphabet-nav" style="display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px;"></div>
+    <div id="team-list-display" style="position: absolute; width: 320px; background: white; border: 1px solid #ccc; border-radius: 8px; display: none; max-height: 400px; overflow-y: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 9999;"></div>
+</div>
+        
+    </div>
+    <div style="display: flex; gap: 10px;">
+        <a href="el-2016-2017.html" class="next-button">&laquo;Previous 16/17</a>
+        <a href="el-2018-2019.html" class="next-button">Next 18/19 &raquo;</a>
+    </div>
+</header>
+
+        <section class="team-section">
+            <table class="match-table-full" id="matchTable">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Game</th>
+                        <th>Score</th>
+                        <th>Tickets</th>
+                        <th>Match Stats</th>
+                    </tr>
+                </thead>
+                <tbody>
+<tr><td colspan="5" class="round-divider">Qualification Round 1</td></tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	FC ShIraq Gyumri	 - 	ND Gorica	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	Irtysh Pavlodar	 - 	Dunav Ruse	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	Kairat Almaty	 - 	FK Atlantas Klaipeda	</td>
+    <td class="score-bold">	6-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	FC Pyunik Erewan	 - 	Slovan Bratislava	</td>
+    <td class="score-bold">	1-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	FK Partizani	 - 	Botev Plovdiv	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	JFK Ventspils	 - 	Valur Reykjavík	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	AS Trencin	 - 	Torpedo Kutaisi	</td>
+    <td class="score-bold">	5-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	FCI Levadia	 - 	Cork City FC	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	Dinamo Minsk	 - 	NSÍ Runavík	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	Chikhura Sachkhere	 - 	SCR Altach	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	Shkendija Tetovo	 - 	Dacia Chisinau	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	Dinamo Batumi	 - 	Jagiellonia Bialystok	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	Vaasan Palloseura	 - 	NK Olimpija Ljubljana	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	Shakhter Soligorsk	 - 	FK Sūduva Marijampolė	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	Kalju FC	 - 	B36 Tórshavn	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	Lyngby Boldklub	 - 	Bangor City	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	Ferencvarosi TC	 - 	FK Jelgava	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	Beitar Jerusalem	 - 	Vasas FC	</td>
+    <td class="score-bold">	4-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	Levski Sofia	 - 	FK Sutjeska Niksic	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	Odds BK	 - 	Ballymena United	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	FK Haugesund	 - 	Coleraine FC	</td>
+    <td class="score-bold">	7-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	UE Santa Coloma	 - 	NK Osijek	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	Zaria Balti	 - 	FK Sarajevo	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	AEK Larnaca	 - 	Lincoln Red Imps FC	</td>
+    <td class="score-bold">	5-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	Zira FK	 - 	FC Differdingen 03	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	CS Fola Esch	 - 	FC Milsami Orhei	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	KI Klaksvik	 - 	AIK	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	KF Skënderbeu	 - 	UE Sant Julia	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	IFK Norrkoping	 - 	FC Prishtina	</td>
+    <td class="score-bold">	5-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	FC Midtjylland	 - 	Derry City	</td>
+    <td class="score-bold">	6-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	Maccabi Tel Aviv	 - 	KF Tirana	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	FK Vojvodina Novi Sad	 - 	MFK Ruzomberok	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	Connah's Quay Nomads	 - 	HJK Helsinki	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	Bala Town	 - 	FC Vaduz	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	NK Domzale	 - 	FC Flora Tallinn	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	NK Siroki Brijeg	 - 	Ordabasy Shymkent	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	Mladost Podgorica	 - 	Gandzasar Kapan	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	Red Star Belgrade	 - 	Floriana FC	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	FK Mladost Lucani	 - 	FK Keshla	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	SP Tre Penne	 - 	Rabotnicki Skopje	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	St  Johnstone FC	 - 	FK Trakai	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	FK Zeljeznicar Sarajevo	 - 	FK Zeta Golubovac	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	Videoton FC	 - 	Balzan FC	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	St Joseph's FC	 - 	AEL Limassol	</td>
+    <td class="score-bold">	0-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	Valletta FC	 - 	SS Folgore/Falciano	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	Rangers FC	 - 	FC Progrès Niederkorn	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://i.postimg.cc/dtKh8WDp/el20170629-rangers-progres.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	Crusaders FC	 - 	FK Liepaja	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	Lech Poznan	 - 	Pelister Bitola	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	KR Reykjavík	 - 	SJK Seinäjoki	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 29-06-2017&nbsp;	</td>
+    <td>	Stjarnan Gardabaer	 - 	Shamrock Rovers	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Qualification Round 1</td></tr>
+<tr>
+    <td>	 4-07-2017&nbsp;	</td>
+    <td>	Balzan FC	 - 	Videoton FC	</td>
+    <td class="score-bold">	3-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-07-2017&nbsp;	</td>
+    <td>	FC Progrès Niederkorn	 - 	Rangers FC	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://i.postimg.cc/PrkCm6N7/el20170704-progres-rangers.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	AEL Limassol	 - 	St Joseph's FC	</td>
+    <td class="score-bold">	6-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	Dacia Chisinau	 - 	Shkendija Tetovo	</td>
+    <td class="score-bold">	0-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	Ordabasy Shymkent	 - 	NK Siroki Brijeg	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	Pelister Bitola	 - 	Lech Poznan	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	FC Milsami Orhei	 - 	CS Fola Esch	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	FK Sūduva Marijampolė	 - 	Shakhter Soligorsk	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	KF Tirana	 - 	Maccabi Tel Aviv	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	FK Jelgava	 - 	Ferencvarosi TC	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	Rabotnicki Skopje	 - 	SP Tre Penne	</td>
+    <td class="score-bold">	6-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	SJK Seinäjoki	 - 	KR Reykjavík	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	HJK Helsinki	 - 	Connah's Quay Nomads	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	FC Flora Tallinn	 - 	NK Domzale	</td>
+    <td class="score-bold">	2-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	FK Trakai	 - 	St  Johnstone FC	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	FK Atlantas Klaipeda	 - 	Kairat Almaty	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	Gandzasar Kapan	 - 	Mladost Podgorica	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	FK Liepaja	 - 	Crusaders FC	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	Slovan Bratislava	 - 	FC Pyunik Erewan	</td>
+    <td class="score-bold">	5-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	FK Keshla	 - 	FK Mladost Lucani	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	FC Vaduz	 - 	Bala Town	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	Torpedo Kutaisi	 - 	AS Trencin	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	FC Differdingen 03	 - 	Zira FK	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	AIK	 - 	KI Klaksvik	</td>
+    <td class="score-bold">	5-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	Botev Plovdiv	 - 	FK Partizani	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	Dunav Ruse	 - 	Irtysh Pavlodar	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	MFK Ruzomberok	 - 	FK Vojvodina Novi Sad	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	Bangor City	 - 	Lyngby Boldklub	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	NSÍ Runavík	 - 	Dinamo Minsk	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	FK Sarajevo	 - 	Zaria Balti	</td>
+    <td class="score-bold">	2-1 pen 5-6	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	B36 Tórshavn	 - 	Kalju FC	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	FC Prishtina	 - 	IFK Norrkoping	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	NK Olimpija Ljubljana	 - 	Vaasan Palloseura	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	Floriana FC	 - 	Red Star Belgrade	</td>
+    <td class="score-bold">	3-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	SS Folgore/Falciano	 - 	Valletta FC	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	SCR Altach	 - 	Chikhura Sachkhere	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	ND Gorica	 - 	FC ShIraq Gyumri	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	FK Zeta Golubovac	 - 	FK Zeljeznicar Sarajevo	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	FK Sutjeska Niksic	 - 	Levski Sofia	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	UE Sant Julia	 - 	KF Skënderbeu	</td>
+    <td class="score-bold">	0-5	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	Vasas FC	 - 	Beitar Jerusalem	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	Jagiellonia Bialystok	 - 	Dinamo Batumi	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	Coleraine FC	 - 	FK Haugesund	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	NK Osijek	 - 	UE Santa Coloma	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	Cork City FC	 - 	FCI Levadia	</td>
+    <td class="score-bold">	4-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	Derry City	 - 	FC Midtjylland	</td>
+    <td class="score-bold">	1-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	Ballymena United	 - 	Odds BK	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	Shamrock Rovers	 - 	Stjarnan Gardabaer	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	Lincoln Red Imps FC	 - 	AEK Larnaca	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 6-07-2017&nbsp;	</td>
+    <td>	Valur Reykjavík	 - 	JFK Ventspils	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Qualification Round 2</td></tr>
+<tr>
+    <td>	 12-07-2017&nbsp;	</td>
+    <td>	FK Keshla	 - 	CS Fola Esch	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	Irtysh Pavlodar	 - 	Red Star Belgrade	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	Kairat Almaty	 - 	KF Skënderbeu	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	Maccabi Tel Aviv	 - 	KR Reykjavík	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	Shkendija Tetovo	 - 	HJK Helsinki	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	MFK Ruzomberok	 - 	SK Brann	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	Rabotnicki Skopje	 - 	Dinamo Minsk	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	Kalju FC	 - 	Videoton FC	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	SCR Altach	 - 	Dynamo Brest	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	Bröndby IF	 - 	Vaasan Palloseura	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	FK Liepaja	 - 	FK Sūduva Marijampolė	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	Apollon Limassol	 - 	Zaria Balti	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	FK Haugesund	 - 	Lech Poznan	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	FK Qabala	 - 	Jagiellonia Bialystok	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	FC Vaduz	 - 	Odds BK	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	Östersunds FK	 - 	Galatasaray	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	Valletta FC	 - 	FC Utrecht	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	Astra Giurgiu	 - 	Zira FK	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://i.postimg.cc/nctXvdM6/el20170713-FC-Astra-Giurgiu-Zira-FK.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	FC Progrès Niederkorn	 - 	AEL Limassol	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	Beitar Jerusalem	 - 	Botev Plovdiv	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	IFK Norrkoping	 - 	FK Trakai	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	Slovan Bratislava	 - 	Lyngby Boldklub	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	SK Sturm Graz	 - 	Mladost Podgorica	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	HNK Hajduk Split	 - 	Levski Sofia	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	AS Trencin	 - 	Bnei Yehuda Tel Aviv	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	NK Osijek	 - 	FC Luzern	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	Aberdeen FC	 - 	NK Siroki Brijeg	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	Cork City FC	 - 	AEK Larnaca	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	FK Zeljeznicar Sarajevo	 - 	AIK	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	Ferencvarosi TC	 - 	FC Midtjylland	</td>
+    <td class="score-bold">	2-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	Panionios Athen	 - 	ND Gorica	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	Shamrock Rovers	 - 	FK Mlada Boleslav	</td>
+    <td class="score-bold">	2-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 13-07-2017&nbsp;	</td>
+    <td>	Valur Reykjavík	 - 	NK Domzale	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Qualification Round 2</td></tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	Lyngby Boldklub	 - 	Slovan Bratislava	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	Dinamo Minsk	 - 	Rabotnicki Skopje	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	HJK Helsinki	 - 	Shkendija Tetovo	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	FK Sūduva Marijampolė	 - 	FK Liepaja	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	FK Trakai	 - 	IFK Norrkoping	</td>
+    <td class="score-bold">	2-1 pen 5-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	Vaasan Palloseura	 - 	Bröndby IF	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	FK Mlada Boleslav	 - 	Shamrock Rovers	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	Dynamo Brest	 - 	SCR Altach	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	Zaria Balti	 - 	Apollon Limassol	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://i.postimg.cc/CLVRjvd3/el20170720-Zaria-Balti-Apollon-Limassol.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	AIK	 - 	FK Zeljeznicar Sarajevo	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	AEK Larnaca	 - 	Cork City FC	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	Zira FK	 - 	Astra Giurgiu	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://i.postimg.cc/02qzptrh/el20170720-FK-ZIRA-AFC-ASTRA.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	SK Brann	 - 	MFK Ruzomberok	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	Odds BK	 - 	FC Vaduz	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	FC Midtjylland	 - 	Ferencvarosi TC	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	Bnei Yehuda Tel Aviv	 - 	AS Trencin	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	Levski Sofia	 - 	HNK Hajduk Split	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	CS Fola Esch	 - 	FK Keshla	</td>
+    <td class="score-bold">	4-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	Galatasaray	 - 	Östersunds FK	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	FC Utrecht	 - 	Valletta FC	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	Botev Plovdiv	 - 	Beitar Jerusalem	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	FC Luzern	 - 	NK Osijek	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	Lech Poznan	 - 	FK Haugesund	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	AEL Limassol	 - 	FC Progrès Niederkorn	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	NK Domzale	 - 	Valur Reykjavík	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	KF Skënderbeu	 - 	Kairat Almaty	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	Red Star Belgrade	 - 	Irtysh Pavlodar	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	Jagiellonia Bialystok	 - 	FK Qabala	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	Mladost Podgorica	 - 	SK Sturm Graz	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	NK Siroki Brijeg	 - 	Aberdeen FC	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	ND Gorica	 - 	Panionios Athen	</td>
+    <td class="score-bold">	2-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	Videoton FC	 - 	Kalju FC	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 20-07-2017&nbsp;	</td>
+    <td>	KR Reykjavík	 - 	Maccabi Tel Aviv	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Qualification Round 3</td></tr>
+<tr>
+    <td>	 27-07-2017&nbsp;	</td>
+    <td>	FK Mlada Boleslav	 - 	KF Skënderbeu	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-07-2017&nbsp;	</td>
+    <td>	Olimpik Donetsk	 - 	PAOK Thessaloniki	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-07-2017&nbsp;	</td>
+    <td>	FK Trakai	 - 	Shkendija Tetovo	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-07-2017&nbsp;	</td>
+    <td>	Maccabi Tel Aviv	 - 	Panionios Athen	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-07-2017&nbsp;	</td>
+    <td>	FK Sūduva Marijampolė	 - 	FC Sion	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-07-2017&nbsp;	</td>
+    <td>	AIK	 - 	SC Braga	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-07-2017&nbsp;	</td>
+    <td>	AEK Larnaca	 - 	Dinamo Minsk	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-07-2017&nbsp;	</td>
+    <td>	FC Utrecht	 - 	Lech Poznan	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-07-2017&nbsp;	</td>
+    <td>	Östersunds FK	 - 	CS Fola Esch	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-07-2017&nbsp;	</td>
+    <td>	SK Sturm Graz	 - 	Fenerbahçe SK	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-07-2017&nbsp;	</td>
+    <td>	FK Krasnodar	 - 	Lyngby Boldklub	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-07-2017&nbsp;	</td>
+    <td>	PSV Eindhoven	 - 	NK Osijek	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-07-2017&nbsp;	</td>
+    <td>	Bnei Yehuda Tel Aviv	 - 	Zenit Saint-Petersburg	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-07-2017&nbsp;	</td>
+    <td>	FC Dinamo 1948	 - 	Athletic Bilbao	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-07-2017&nbsp;	</td>
+    <td>	Astra Giurgiu	 - 	FK Oleksandriya	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-07-2017&nbsp;	</td>
+    <td>	Botev Plovdiv	 - 	CS Marítimo	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-07-2017&nbsp;	</td>
+    <td>	Bröndby IF	 - 	HNK Hajduk Split	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-07-2017&nbsp;	</td>
+    <td>	Arka Gdynia	 - 	FC Midtjylland	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-07-2017&nbsp;	</td>
+    <td>	Universitatea Craiova	 - 	AC Milan	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-07-2017&nbsp;	</td>
+    <td>	Panathinaikos FC	 - 	FK Qabala	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-07-2017&nbsp;	</td>
+    <td>	Red Star Belgrade	 - 	AC Sparta Prague	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-07-2017&nbsp;	</td>
+    <td>	KAA Gent	 - 	SCR Altach	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-07-2017&nbsp;	</td>
+    <td>	FC Girondins Bordeaux	 - 	Videoton FC	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-07-2017&nbsp;	</td>
+    <td>	Aberdeen FC	 - 	Apollon Limassol	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-07-2017&nbsp;	</td>
+    <td>	Olympique Marseille	 - 	KV Oostende	</td>
+    <td class="score-bold">	4-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-07-2017&nbsp;	</td>
+    <td>	GNK Dinamo Zagreb	 - 	Odds BK	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-07-2017&nbsp;	</td>
+    <td>	FK Austria Wien	 - 	AEL Limassol	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-07-2017&nbsp;	</td>
+    <td>	SC Freiburg	 - 	NK Domzale	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 27-07-2017&nbsp;	</td>
+    <td>	Everton FC	 - 	MFK Ruzomberok	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Qualification Round 3</td></tr>
+<tr>
+    <td>	 2-08-2017&nbsp;	</td>
+    <td>	FC Sion	 - 	FK Sūduva Marijampolė	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-08-2017&nbsp;	</td>
+    <td>	AEL Limassol	 - 	FK Austria Wien	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-08-2017&nbsp;	</td>
+    <td>	Dinamo Minsk	 - 	AEK Larnaca	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-08-2017&nbsp;	</td>
+    <td>	Shkendija Tetovo	 - 	FK Trakai	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-08-2017&nbsp;	</td>
+    <td>	Odds BK	 - 	GNK Dinamo Zagreb	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-08-2017&nbsp;	</td>
+    <td>	Videoton FC	 - 	FC Girondins Bordeaux	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-08-2017&nbsp;	</td>
+    <td>	AC Sparta Prague	 - 	Red Star Belgrade	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-08-2017&nbsp;	</td>
+    <td>	Apollon Limassol	 - 	Aberdeen FC	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-08-2017&nbsp;	</td>
+    <td>	FK Oleksandriya	 - 	Astra Giurgiu	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-08-2017&nbsp;	</td>
+    <td>	Zenit Saint-Petersburg	 - 	Bnei Yehuda Tel Aviv	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-08-2017&nbsp;	</td>
+    <td>	FK Qabala	 - 	Panathinaikos FC	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-08-2017&nbsp;	</td>
+    <td>	CS Fola Esch	 - 	Östersunds FK	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-08-2017&nbsp;	</td>
+    <td>	Fenerbahçe SK	 - 	SK Sturm Graz	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-08-2017&nbsp;	</td>
+    <td>	Lyngby Boldklub	 - 	FK Krasnodar	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-08-2017&nbsp;	</td>
+    <td>	KF Skënderbeu	 - 	FK Mlada Boleslav	</td>
+    <td class="score-bold">	2-1 pen 4-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-08-2017&nbsp;	</td>
+    <td>	PAOK Thessaloniki	 - 	Olimpik Donetsk	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-08-2017&nbsp;	</td>
+    <td>	CS Marítimo	 - 	Botev Plovdiv	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-08-2017&nbsp;	</td>
+    <td>	Lech Poznan	 - 	FC Utrecht	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-08-2017&nbsp;	</td>
+    <td>	HNK Hajduk Split	 - 	Bröndby IF	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-08-2017&nbsp;	</td>
+    <td>	FC Midtjylland	 - 	Arka Gdynia	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-08-2017&nbsp;	</td>
+    <td>	SCR Altach	 - 	KAA Gent	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-08-2017&nbsp;	</td>
+    <td>	AC Milan	 - 	Universitatea Craiova	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-08-2017&nbsp;	</td>
+    <td>	Athletic Bilbao	 - 	FC Dinamo 1948	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-08-2017&nbsp;	</td>
+    <td>	KV Oostende	 - 	Olympique Marseille	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-08-2017&nbsp;	</td>
+    <td>	MFK Ruzomberok	 - 	Everton FC	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-08-2017&nbsp;	</td>
+    <td>	NK Osijek	 - 	PSV Eindhoven	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-08-2017&nbsp;	</td>
+    <td>	Panionios Athen	 - 	Maccabi Tel Aviv	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-08-2017&nbsp;	</td>
+    <td>	NK Domzale	 - 	SC Freiburg	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-08-2017&nbsp;	</td>
+    <td>	SC Braga	 - 	AIK	</td>
+    <td class="score-bold">	2-1 aet	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Qualification Round 4</td></tr>
+<tr>
+    <td>	 16-08-2017&nbsp;	</td>
+    <td>	FC Utrecht	 - 	Zenit Saint-Petersburg	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-08-2017&nbsp;	</td>
+    <td>	FK Krasnodar	 - 	Red Star Belgrade	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-08-2017&nbsp;	</td>
+    <td>	Apollon Limassol	 - 	FC Midtjylland	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-08-2017&nbsp;	</td>
+    <td>	BATE Borisov	 - 	FK Oleksandriya	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-08-2017&nbsp;	</td>
+    <td>	GNK Dinamo Zagreb	 - 	KF Skënderbeu	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-08-2017&nbsp;	</td>
+    <td>	FH Hafnarfjördur	 - 	SC Braga	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-08-2017&nbsp;	</td>
+    <td>	Vardar Skopje	 - 	Fenerbahçe SK	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-08-2017&nbsp;	</td>
+    <td>	PAOK Thessaloniki	 - 	Östersunds FK	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-08-2017&nbsp;	</td>
+    <td>	FC Viktoria Plzen	 - 	AEK Larnaca	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://i.postimg.cc/c4NvQDrq/el20170817-Viktoria-Pilsen-AEK-Larnaka.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-08-2017&nbsp;	</td>
+    <td>	Ludogorets Razgrad	 - 	FK Sūduva Marijampolė	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-08-2017&nbsp;	</td>
+    <td>	Panathinaikos FC	 - 	Athletic Bilbao	</td>
+    <td class="score-bold">	2-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-08-2017&nbsp;	</td>
+    <td>	SCR Altach	 - 	Maccabi Tel Aviv	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-08-2017&nbsp;	</td>
+    <td>	Club Brugge KV	 - 	AEK Athens	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-08-2017&nbsp;	</td>
+    <td>	NK Domzale	 - 	Olympique Marseille	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-08-2017&nbsp;	</td>
+    <td>	NK Osijek	 - 	FK Austria Wien	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-08-2017&nbsp;	</td>
+    <td>	AFC Ajax	 - 	Rosenborg BK	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-08-2017&nbsp;	</td>
+    <td>	Legia Warszawa	 - 	FC Sheriff Tiraspol	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-08-2017&nbsp;	</td>
+    <td>	FC Viitorul Constanta	 - 	Red Bull Salzburg	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-08-2017&nbsp;	</td>
+    <td>	AC Milan	 - 	Shkendija Tetovo	</td>
+    <td class="score-bold">	6-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-08-2017&nbsp;	</td>
+    <td>	FK Partizan Belgrade	 - 	Videoton FC	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-08-2017&nbsp;	</td>
+    <td>	Everton FC	 - 	HNK Hajduk Split	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 17-08-2017&nbsp;	</td>
+    <td>	CS Marítimo	 - 	Dynamo Kyiv	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Qualification Round 4</td></tr>
+<tr>
+    <td>	 24-08-2017&nbsp;	</td>
+    <td>	AEK Larnaca	 - 	FC Viktoria Plzen	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-08-2017&nbsp;	</td>
+    <td>	Dynamo Kyiv	 - 	CS Marítimo	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-08-2017&nbsp;	</td>
+    <td>	Zenit Saint-Petersburg	 - 	FC Utrecht	</td>
+    <td class="score-bold">	2-0 aet	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-08-2017&nbsp;	</td>
+    <td>	FC Sheriff Tiraspol	 - 	Legia Warszawa </td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-08-2017&nbsp;	</td>
+    <td>	Red Bull Salzburg	 - 	FC Viitorul Constanta	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-08-2017&nbsp;	</td>
+    <td>	FK Oleksandriya	 - 	BATE Borisov	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-08-2017&nbsp;	</td>
+    <td>	Östersunds FK	 - 	PAOK Thessaloniki	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-08-2017&nbsp;	</td>
+    <td>	Maccabi Tel Aviv	 - 	SCR Altach	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-08-2017&nbsp;	</td>
+    <td>	Fenerbahçe SK	 - 	Vardar Skopje	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-08-2017&nbsp;	</td>
+    <td>	FK Sūduva Marijampolė	 - 	Ludogorets Razgrad	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-08-2017&nbsp;	</td>
+    <td>	Videoton FC	 - 	FK Partizan Belgrade	</td>
+    <td class="score-bold">	0-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-08-2017&nbsp;	</td>
+    <td>	KF Skënderbeu	 - 	GNK Dinamo Zagreb	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-08-2017&nbsp;	</td>
+    <td>	FC Midtjylland	 - 	Apollon Limassol	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-08-2017&nbsp;	</td>
+    <td>	AEK Athens	 - 	Club Brugge KV	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-08-2017&nbsp;	</td>
+    <td>	Shkendija Tetovo	 - 	AC Milan	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-08-2017&nbsp;	</td>
+    <td>	Olympique Marseille	 - 	NK Domzale	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-08-2017&nbsp;	</td>
+    <td>	Athletic Bilbao	 - 	Panathinaikos FC	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-08-2017&nbsp;	</td>
+    <td>	SC Braga	 - 	FH Hafnarfjördur	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-08-2017&nbsp;	</td>
+    <td>	Rosenborg BK	 - 	AFC Ajax	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-08-2017&nbsp;	</td>
+    <td>	HNK Hajduk Split	 - 	Everton FC	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-08-2017&nbsp;	</td>
+    <td>	Red Star Belgrade	 - 	FK Krasnodar	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 24-08-2017&nbsp;	</td>
+    <td>	FK Austria Wien	 - 	NK Osijek	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group A</td></tr>
+<tr>
+    <td>	14-09-2017&nbsp;	</td>
+    <td>	SK Slavia Praag	 - 	Maccabi Tel Aviv	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	14-09-2017&nbsp;	</td>
+    <td>	FC Villarreal	 - 	FC Astana	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	28-09-2017&nbsp;	</td>
+    <td>	FC Astana	 - 	SK Slavia Praag	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	28-09-2017&nbsp;	</td>
+    <td>	Maccabi Tel Aviv	 - 	FC Villarreal	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19-10-2017&nbsp;	</td>
+    <td>	FC Astana	 - 	Maccabi Tel Aviv	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19-10-2017&nbsp;	</td>
+    <td>	FC Villarreal	 - 	SK Slavia Praag	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	2-11-2017&nbsp;	</td>
+    <td>	SK Slavia Praag	 - 	FC Villarreal	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	2-11-2017&nbsp;	</td>
+    <td>	Maccabi Tel Aviv	 - 	FC Astana	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-11-2017&nbsp;	</td>
+    <td>	FC Astana	 - 	FC Villarreal	</td>
+    <td class="score-bold">	2-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-11-2017&nbsp;	</td>
+    <td>	Maccabi Tel Aviv	 - 	SK Slavia Praag	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	7-12-2017&nbsp;	</td>
+    <td>	SK Slavia Praag	 - 	FC Astana	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	7-12-2017&nbsp;	</td>
+    <td>	FC Villarreal	 - 	Maccabi Tel Aviv	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group B</td></tr>
+<tr>
+    <td>	14-09-2017&nbsp;	</td>
+    <td>	BSC Young Boys	 - 	FK Partizan Belgrade	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	14-09-2017&nbsp;	</td>
+    <td>	Dynamo Kyiv	 - 	KF Skënderbeu	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	28-09-2017&nbsp;	</td>
+    <td>	KF Skënderbeu	 - 	BSC Young Boys	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	28-09-2017&nbsp;	</td>
+    <td>	FK Partizan Belgrade	 - 	Dynamo Kyiv	</td>
+    <td class="score-bold">	2-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19-10-2017&nbsp;	</td>
+    <td>	Dynamo Kyiv	 - 	BSC Young Boys	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19-10-2017&nbsp;	</td>
+    <td>	KF Skënderbeu	 - 	FK Partizan Belgrade	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	2-11-2017&nbsp;	</td>
+    <td>	BSC Young Boys	 - 	Dynamo Kyiv	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	2-11-2017&nbsp;	</td>
+    <td>	FK Partizan Belgrade	 - 	KF Skënderbeu	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-11-2017&nbsp;	</td>
+    <td>	FK Partizan Belgrade	 - 	BSC Young Boys	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-11-2017&nbsp;	</td>
+    <td>	KF Skënderbeu	 - 	Dynamo Kyiv	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	7-12-2017&nbsp;	</td>
+    <td>	BSC Young Boys	 - 	KF Skënderbeu	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	7-12-2017&nbsp;	</td>
+    <td>	Dynamo Kyiv	 - 	FK Partizan Belgrade	</td>
+    <td class="score-bold">	4-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group C</td></tr>
+<tr>
+    <td>	14-09-2017&nbsp;	</td>
+    <td>	Basaksehir FK	 - 	Ludogorets Razgrad	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	14-09-2017&nbsp;	</td>
+    <td>	TSG 1899 Hoffenheim	 - 	SC Braga	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	28-09-2017&nbsp;	</td>
+    <td>	SC Braga	 - 	Basaksehir FK	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	28-09-2017&nbsp;	</td>
+    <td>	Ludogorets Razgrad	 - 	TSG 1899 Hoffenheim	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19-10-2017&nbsp;	</td>
+    <td>	TSG 1899 Hoffenheim	 - 	Basaksehir FK	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19-10-2017&nbsp;	</td>
+    <td>	SC Braga	 - 	Ludogorets Razgrad	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	2-11-2017&nbsp;	</td>
+    <td>	Basaksehir FK	 - 	TSG 1899 Hoffenheim	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	2-11-2017&nbsp;	</td>
+    <td>	Ludogorets Razgrad	 - 	SC Braga	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-11-2017&nbsp;	</td>
+    <td>	Ludogorets Razgrad	 - 	Basaksehir FK	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-11-2017&nbsp;	</td>
+    <td>	SC Braga	 - 	TSG 1899 Hoffenheim	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	7-12-2017&nbsp;	</td>
+    <td>	Basaksehir FK	 - 	SC Braga	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	7-12-2017&nbsp;	</td>
+    <td>	TSG 1899 Hoffenheim	 - 	Ludogorets Razgrad	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group D</td></tr>
+<tr>
+    <td>	14-09-2017&nbsp;	</td>
+    <td>	HNK Rijeka	 - 	AEK Athens	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	14-09-2017&nbsp;	</td>
+    <td>	FK Austria Wien	 - 	AC Milan	</td>
+    <td class="score-bold">	1-5	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	28-09-2017&nbsp;	</td>
+    <td>	AC Milan	 - 	HNK Rijeka	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	28-09-2017&nbsp;	</td>
+    <td>	AEK Athens	 - 	FK Austria Wien	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19-10-2017&nbsp;	</td>
+    <td>	FK Austria Wien	 - 	HNK Rijeka	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19-10-2017&nbsp;	</td>
+    <td>	AC Milan	 - 	AEK Athens	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	2-11-2017&nbsp;	</td>
+    <td>	HNK Rijeka	 - 	FK Austria Wien	</td>
+    <td class="score-bold">	1-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	2-11-2017&nbsp;	</td>
+    <td>	AEK Athens	 - 	AC Milan	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-11-2017&nbsp;	</td>
+    <td>	AEK Athens	 - 	HNK Rijeka	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-11-2017&nbsp;	</td>
+    <td>	AC Milan	 - 	FK Austria Wien	</td>
+    <td class="score-bold">	5-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	7-12-2017&nbsp;	</td>
+    <td>	HNK Rijeka	 - 	AC Milan	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	7-12-2017&nbsp;	</td>
+    <td>	FK Austria Wien	 - 	AEK Athens	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group E</td></tr>
+<tr>
+    <td>	14-09-2017&nbsp;	</td>
+    <td>	Apollon Limassol	 - 	Olympique Lyon	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	14-09-2017&nbsp;	</td>
+    <td>	Atalanta Bergamo	 - 	Everton FC	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	28-09-2017&nbsp;	</td>
+    <td>	Everton FC	 - 	Apollon Limassol	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	28-09-2017&nbsp;	</td>
+    <td>	Olympique Lyon	 - 	Atalanta Bergamo	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19-10-2017&nbsp;	</td>
+    <td>	Atalanta Bergamo	 - 	Apollon Limassol	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19-10-2017&nbsp;	</td>
+    <td>	Everton FC	 - 	Olympique Lyon	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	2-11-2017&nbsp;	</td>
+    <td>	Apollon Limassol	 - 	Atalanta Bergamo	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	2-11-2017&nbsp;	</td>
+    <td>	Olympique Lyon	 - 	Everton FC	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-11-2017&nbsp;	</td>
+    <td>	Olympique Lyon	 - 	Apollon Limassol	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-11-2017&nbsp;	</td>
+    <td>	Everton FC	 - 	Atalanta Bergamo	</td>
+    <td class="score-bold">	1-5	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	7-12-2017&nbsp;	</td>
+    <td>	Apollon Limassol	 - 	Everton FC	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	7-12-2017&nbsp;	</td>
+    <td>	Atalanta Bergamo	 - 	Olympique Lyon	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group F</td></tr>
+<tr>
+    <td>	14-09-2017&nbsp;	</td>
+    <td>	FC Copenhagen	 - 	Lokomotiv Moskou	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	14-09-2017&nbsp;	</td>
+    <td>	FC Fastav Zlin	 - 	FC Sheriff Tiraspol	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	28-09-2017&nbsp;	</td>
+    <td>	FC Sheriff Tiraspol	 - 	FC Copenhagen	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	28-09-2017&nbsp;	</td>
+    <td>	Lokomotiv Moskou	 - 	FC Fastav Zlin	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19-10-2017&nbsp;	</td>
+    <td>	FC Fastav Zlin	 - 	FC Copenhagen	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19-10-2017&nbsp;	</td>
+    <td>	FC Sheriff Tiraspol	 - 	Lokomotiv Moskou	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	2-11-2017&nbsp;	</td>
+    <td>	FC Copenhagen	 - 	FC Fastav Zlin	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	2-11-2017&nbsp;	</td>
+    <td>	Lokomotiv Moskou	 - 	FC Sheriff Tiraspol	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-11-2017&nbsp;	</td>
+    <td>	Lokomotiv Moskou	 - 	FC Copenhagen	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-11-2017&nbsp;	</td>
+    <td>	FC Sheriff Tiraspol	 - 	FC Fastav Zlin	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	7-12-2017&nbsp;	</td>
+    <td>	FC Copenhagen	 - 	FC Sheriff Tiraspol	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	7-12-2017&nbsp;	</td>
+    <td>	FC Fastav Zlin	 - 	Lokomotiv Moskou	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group G</td></tr>
+<tr>
+    <td>	14-09-2017&nbsp;	</td>
+    <td>	FCSB	 - 	FC Viktoria Plzen	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	14-09-2017&nbsp;	</td>
+    <td>	Hapoel Beer Sheva	 - 	FC Lugano	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	28-09-2017&nbsp;	</td>
+    <td>	FC Lugano	 - 	FCSB	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	28-09-2017&nbsp;	</td>
+    <td>	FC Viktoria Plzen	 - 	Hapoel Beer Sheva	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19-10-2017&nbsp;	</td>
+    <td>	Hapoel Beer Sheva	 - 	FCSB	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19-10-2017&nbsp;	</td>
+    <td>	FC Lugano	 - 	FC Viktoria Plzen	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	2-11-2017&nbsp;	</td>
+    <td>	FCSB	 - 	Hapoel Beer Sheva	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	2-11-2017&nbsp;	</td>
+    <td>	FC Viktoria Plzen	 - 	FC Lugano	</td>
+    <td class="score-bold">	4-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-11-2017&nbsp;	</td>
+    <td>	FC Viktoria Plzen	 - 	FCSB	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-11-2017&nbsp;	</td>
+    <td>	FC Lugano	 - 	Hapoel Beer Sheva	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	7-12-2017&nbsp;	</td>
+    <td>	FCSB	 - 	FC Lugano	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	7-12-2017&nbsp;	</td>
+    <td>	Hapoel Beer Sheva	 - 	FC Viktoria Plzen	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group H</td></tr>
+<tr>
+    <td>	14-09-2017&nbsp;	</td>
+    <td>	Red Star Belgrade	 - 	BATE Borisov	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	14-09-2017&nbsp;	</td>
+    <td>	Arsenal FC	 - 	1.FC Köln	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	28-09-2017&nbsp;	</td>
+    <td>	BATE Borisov	 - 	Arsenal FC	</td>
+    <td class="score-bold">	2-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	28-09-2017&nbsp;	</td>
+    <td>	1.FC Köln	 - 	Red Star Belgrade	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19-10-2017&nbsp;	</td>
+    <td>	Red Star Belgrade	 - 	Arsenal FC	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19-10-2017&nbsp;	</td>
+    <td>	BATE Borisov	 - 	1.FC Köln	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	2-11-2017&nbsp;	</td>
+    <td>	Arsenal FC	 - 	Red Star Belgrade	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	2-11-2017&nbsp;	</td>
+    <td>	1.FC Köln	 - 	BATE Borisov	</td>
+    <td class="score-bold">	5-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-11-2017&nbsp;	</td>
+    <td>	1.FC Köln	 - 	Arsenal FC	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-11-2017&nbsp;	</td>
+    <td>	BATE Borisov	 - 	Red Star Belgrade	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	7-12-2017&nbsp;	</td>
+    <td>	Arsenal FC	 - 	BATE Borisov	</td>
+    <td class="score-bold">	6-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	7-12-2017&nbsp;	</td>
+    <td>	Red Star Belgrade	 - 	1.FC Köln	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group I</td></tr>
+<tr>
+    <td>	14-09-2017&nbsp;	</td>
+    <td>	Vitória Guimarães SC	 - 	Red Bull Salzburg	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	14-09-2017&nbsp;	</td>
+    <td>	Olympique Marseille	 - 	Konyaspor	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	28-09-2017&nbsp;	</td>
+    <td>	Konyaspor	 - 	Vitória Guimarães SC	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	28-09-2017&nbsp;	</td>
+    <td>	Red Bull Salzburg	 - 	Olympique Marseille	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19-10-2017&nbsp;	</td>
+    <td>	Olympique Marseille	 - 	Vitória Guimarães SC	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19-10-2017&nbsp;	</td>
+    <td>	Konyaspor	 - 	Red Bull Salzburg	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	2-11-2017&nbsp;	</td>
+    <td>	Vitória Guimarães SC	 - 	Olympique Marseille	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	2-11-2017&nbsp;	</td>
+    <td>	Red Bull Salzburg	 - 	Konyaspor	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-11-2017&nbsp;	</td>
+    <td>	Red Bull Salzburg	 - 	Vitória Guimarães SC	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-11-2017&nbsp;	</td>
+    <td>	Konyaspor	 - 	Olympique Marseille	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	7-12-2017&nbsp;	</td>
+    <td>	Vitória Guimarães SC	 - 	Konyaspor	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	7-12-2017&nbsp;	</td>
+    <td>	Olympique Marseille	 - 	Red Bull Salzburg	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group J</td></tr>
+<tr>
+    <td>	14-09-2017&nbsp;	</td>
+    <td>	Hertha BSC	 - 	Athletic Bilbao	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	14-09-2017&nbsp;	</td>
+    <td>	Zorya Lugansk	 - 	Östersunds FK	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	28-09-2017&nbsp;	</td>
+    <td>	Östersunds FK	 - 	Hertha BSC	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	28-09-2017&nbsp;	</td>
+    <td>	Athletic Bilbao	 - 	Zorya Lugansk	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19-10-2017&nbsp;	</td>
+    <td>	Zorya Lugansk	 - 	Hertha BSC	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19-10-2017&nbsp;	</td>
+    <td>	Östersunds FK	 - 	Athletic Bilbao	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	2-11-2017&nbsp;	</td>
+    <td>	Hertha BSC	 - 	Zorya Lugansk	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	2-11-2017&nbsp;	</td>
+    <td>	Athletic Bilbao	 - 	Östersunds FK	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-11-2017&nbsp;	</td>
+    <td>	Athletic Bilbao	 - 	Hertha BSC	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-11-2017&nbsp;	</td>
+    <td>	Östersunds FK	 - 	Zorya Lugansk	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	7-12-2017&nbsp;	</td>
+    <td>	Hertha BSC	 - 	Östersunds FK	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	7-12-2017&nbsp;	</td>
+    <td>	Zorya Lugansk	 - 	Athletic Bilbao	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group K</td></tr>
+<tr>
+    <td>	14-09-2017&nbsp;	</td>
+    <td>	Vitesse Arnhem	 - 	Lazio Roma	</td>
+    <td class="score-bold">	2-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	14-09-2017&nbsp;	</td>
+    <td>	Zulte Waregem	 - 	OGC Nice	</td>
+    <td class="score-bold">	1-5	</td>
+    <td><a href="https://i.postimg.cc/jdrDz8L0/el20170914-Zulte-Waregem-OGC-Nizza.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	28-09-2017&nbsp;	</td>
+    <td>	OGC Nice	 - 	Vitesse Arnhem	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	28-09-2017&nbsp;	</td>
+    <td>	Lazio Roma	 - 	Zulte Waregem	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19-10-2017&nbsp;	</td>
+    <td>	Zulte Waregem	 - 	Vitesse Arnhem	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19-10-2017&nbsp;	</td>
+    <td>	OGC Nice	 - 	Lazio Roma	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	2-11-2017&nbsp;	</td>
+    <td>	Vitesse Arnhem	 - 	Zulte Waregem	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://i.postimg.cc/yYzDFfkH/el20171102-Vitesse-vs-Zulte-Waregem.png" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	2-11-2017&nbsp;	</td>
+    <td>	Lazio Roma	 - 	OGC Nice	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-11-2017&nbsp;	</td>
+    <td>	Lazio Roma	 - 	Vitesse Arnhem	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-11-2017&nbsp;	</td>
+    <td>	OGC Nice	 - 	Zulte Waregem	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	7-12-2017&nbsp;	</td>
+    <td>	Vitesse Arnhem	 - 	OGC Nice	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	7-12-2017&nbsp;	</td>
+    <td>	Zulte Waregem	 - 	Lazio Roma	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://i.postimg.cc/kXd2xjBP/el20171207-Zulte-Waregem-Lazio-Rom.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group L</td></tr>
+<tr>
+    <td>	14-09-2017&nbsp;	</td>
+    <td>	Real Sociedad San Sebastián	 - 	Rosenborg BK	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	14-09-2017&nbsp;	</td>
+    <td>	Vardar Skopje	 - 	Zenit Saint-Petersburg	</td>
+    <td class="score-bold">	0-5	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	28-09-2017&nbsp;	</td>
+    <td>	Zenit Saint-Petersburg	 - 	Real Sociedad San Sebastián	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	28-09-2017&nbsp;	</td>
+    <td>	Rosenborg BK	 - 	Vardar Skopje	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19-10-2017&nbsp;	</td>
+    <td>	Vardar Skopje	 - 	Real Sociedad San Sebastián	</td>
+    <td class="score-bold">	0-6	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	19-10-2017&nbsp;	</td>
+    <td>	Zenit Saint-Petersburg	 - 	Rosenborg BK	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	2-11-2017&nbsp;	</td>
+    <td>	Real Sociedad San Sebastián	 - 	Vardar Skopje	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	2-11-2017&nbsp;	</td>
+    <td>	Rosenborg BK	 - 	Zenit Saint-Petersburg	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-11-2017&nbsp;	</td>
+    <td>	Rosenborg BK	 - 	Real Sociedad San Sebastián	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	23-11-2017&nbsp;	</td>
+    <td>	Zenit Saint-Petersburg	 - 	Vardar Skopje	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	7-12-2017&nbsp;	</td>
+    <td>	Real Sociedad San Sebastián	 - 	Zenit Saint-Petersburg	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	7-12-2017&nbsp;	</td>
+    <td>	Vardar Skopje	 - 	Rosenborg BK	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Round 2</td></tr>
+<tr>
+    <td>	 13-02-2018&nbsp;	</td>
+    <td>	Red Star Belgrade	 - 	CSKA Moscou	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 15-02-2018&nbsp;	</td>
+    <td>	FC Astana	 - 	Sporting CP	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 15-02-2018&nbsp;	</td>
+    <td>	Borussia Dortmund	 - 	Atalanta Bergamo	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 15-02-2018&nbsp;	</td>
+    <td>	OGC Nice	 - 	Lokomotiv Moskou	</td>
+    <td class="score-bold">	2-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 15-02-2018&nbsp;	</td>
+    <td>	Spartak Moscou	 - 	Athletic Bilbao	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 15-02-2018&nbsp;	</td>
+    <td>	Real Sociedad San Sebastián	 - 	Red Bull Salzburg	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 15-02-2018&nbsp;	</td>
+    <td>	Ludogorets Razgrad	 - 	AC Milan	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 15-02-2018&nbsp;	</td>
+    <td>	Östersunds FK	 - 	Arsenal FC	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 15-02-2018&nbsp;	</td>
+    <td>	Olympique Marseille	 - 	SC Braga	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 15-02-2018&nbsp;	</td>
+    <td>	FC Copenhagen	 - 	Atlético Madrid	</td>
+    <td class="score-bold">	1-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 15-02-2018&nbsp;	</td>
+    <td>	AEK Athens	 - 	Dynamo Kyiv	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 15-02-2018&nbsp;	</td>
+    <td>	Celtic Glasgow	 - 	Zenit Saint-Petersburg	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 15-02-2018&nbsp;	</td>
+    <td>	SSC Napoli	 - 	RB Leipzig	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 15-02-2018&nbsp;	</td>
+    <td>	Olympique Lyon	 - 	FC Villarreal	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 15-02-2018&nbsp;	</td>
+    <td>	FK Partizan Belgrade	 - 	FC Viktoria Plzen	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 15-02-2018&nbsp;	</td>
+    <td>	FCSB	 - 	Lazio Roma	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Round 2</td></tr>
+<tr>
+    <td>	 21-02-2018&nbsp;	</td>
+    <td>	CSKA Moscou	 - 	Red Star Belgrade	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 22-02-2018&nbsp;	</td>
+    <td>	Lokomotiv Moskou	 - 	OGC Nice	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 22-02-2018&nbsp;	</td>
+    <td>	Atlético Madrid	 - 	FC Copenhagen	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 22-02-2018&nbsp;	</td>
+    <td>	Dynamo Kyiv	 - 	AEK Athens	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 22-02-2018&nbsp;	</td>
+    <td>	Zenit Saint-Petersburg	 - 	Celtic Glasgow	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 22-02-2018&nbsp;	</td>
+    <td>	RB Leipzig	 - 	SSC Napoli	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 22-02-2018&nbsp;	</td>
+    <td>	FC Villarreal	 - 	Olympique Lyon	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 22-02-2018&nbsp;	</td>
+    <td>	FC Viktoria Plzen	 - 	FK Partizan Belgrade	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 22-02-2018&nbsp;	</td>
+    <td>	Lazio Roma	 - 	FCSB	</td>
+    <td class="score-bold">	5-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 22-02-2018&nbsp;	</td>
+    <td>	Sporting CP	 - 	FC Astana	</td>
+    <td class="score-bold">	3-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 22-02-2018&nbsp;	</td>
+    <td>	Atalanta Bergamo	 - 	Borussia Dortmund	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 22-02-2018&nbsp;	</td>
+    <td>	Athletic Bilbao	 - 	Spartak Moscou	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 22-02-2018&nbsp;	</td>
+    <td>	Red Bull Salzburg	 - 	Real Sociedad San Sebastián	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 22-02-2018&nbsp;	</td>
+    <td>	AC Milan	 - 	Ludogorets Razgrad	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 22-02-2018&nbsp;	</td>
+    <td>	Arsenal FC	 - 	Östersunds FK	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 22-02-2018&nbsp;	</td>
+    <td>	SC Braga	 - 	Olympique Marseille	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Last 16</td></tr>
+<tr>
+    <td>	 8-03-2018&nbsp;	</td>
+    <td>	Atlético Madrid	 - 	Lokomotiv Moskou	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 8-03-2018&nbsp;	</td>
+    <td>	CSKA Moscou	 - 	Olympique Lyon	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 8-03-2018&nbsp;	</td>
+    <td>	Borussia Dortmund	 - 	Red Bull Salzburg	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 8-03-2018&nbsp;	</td>
+    <td>	AC Milan	 - 	Arsenal FC	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 8-03-2018&nbsp;	</td>
+    <td>	Lazio Roma	 - 	Dynamo Kyiv	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 8-03-2018&nbsp;	</td>
+    <td>	RB Leipzig	 - 	Zenit Saint-Petersburg	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 8-03-2018&nbsp;	</td>
+    <td>	Olympique Marseille	 - 	Athletic Bilbao	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 8-03-2018&nbsp;	</td>
+    <td>	Sporting CP	 - 	FC Viktoria Plzen	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Last 16</td></tr>
+<tr>
+    <td>	 15-03-2018&nbsp;	</td>
+    <td>	Lokomotiv Moskou	 - 	Atlético Madrid	</td>
+    <td class="score-bold">	1-5	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 15-03-2018&nbsp;	</td>
+    <td>	Dynamo Kyiv	 - 	Lazio Roma	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 15-03-2018&nbsp;	</td>
+    <td>	Zenit Saint-Petersburg	 - 	RB Leipzig	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 15-03-2018&nbsp;	</td>
+    <td>	Athletic Bilbao	 - 	Olympique Marseille	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 15-03-2018&nbsp;	</td>
+    <td>	FC Viktoria Plzen	 - 	Sporting CP	</td>
+    <td class="score-bold">	2-1 aet	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 15-03-2018&nbsp;	</td>
+    <td>	Olympique Lyon	 - 	CSKA Moscou	</td>
+    <td class="score-bold">	2-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 15-03-2018&nbsp;	</td>
+    <td>	Red Bull Salzburg	 - 	Borussia Dortmund	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 15-03-2018&nbsp;	</td>
+    <td>	Arsenal FC	 - 	AC Milan	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Quarter Final</td></tr>
+<tr>
+    <td>	 5-04-2018&nbsp;	</td>
+    <td>	RB Leipzig	 - 	Olympique Marseille	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-04-2018&nbsp;	</td>
+    <td>	Arsenal FC	 - 	CSKA Moscou	</td>
+    <td class="score-bold">	4-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-04-2018&nbsp;	</td>
+    <td>	Atlético Madrid	 - 	Sporting CP	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://i.postimg.cc/CLVRjvzV/el20180405-atletico-sporting.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-04-2018&nbsp;	</td>
+    <td>	Lazio Roma	 - 	Red Bull Salzburg	</td>
+    <td class="score-bold">	4-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Quarter Final</td></tr>
+<tr>
+    <td>	 12-04-2018&nbsp;	</td>
+    <td>	Olympique Marseille	 - 	RB Leipzig	</td>
+    <td class="score-bold">	5-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-04-2018&nbsp;	</td>
+    <td>	CSKA Moscou	 - 	Arsenal FC	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-04-2018&nbsp;	</td>
+    <td>	Sporting CP	 - 	Atlético Madrid	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-04-2018&nbsp;	</td>
+    <td>	Red Bull Salzburg	 - 	Lazio Roma	</td>
+    <td class="score-bold">	4-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Semi Final</td></tr>
+<tr>
+    <td>	 26-04-2018&nbsp;	</td>
+    <td>	Olympique Marseille	 - 	Red Bull Salzburg	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-04-2018&nbsp;	</td>
+    <td>	Arsenal FC	 - 	Atlético Madrid	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Semi Final</td></tr>
+<tr>
+    <td>	 3-05-2018&nbsp;	</td>
+    <td>	Red Bull Salzburg	 - 	Olympique Marseille	</td>
+    <td class="score-bold">	2-1 aet	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-05-2018&nbsp;	</td>
+    <td>	Atlético Madrid	 - 	Arsenal FC	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Final</td></tr>
+<tr style="background: rgba(255, 215, 0, 0.2);">
+    <td><strong>  16-05-2018&nbsp;&nbsp;</strong></td>
+    <td><strong>Olympique Marseille	 - 	Atlético Madrid</strong></td>
+    <td class="score-bold">0-3</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2017-2018/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</div>
+
+<button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" id="scrollTopBtn">↑</button>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // 1. Tooltip aanmaken
+        const tooltip = document.createElement('div');
+        tooltip.id = 'image-preview-tooltip';
+        Object.assign(tooltip.style, {
+            position: 'fixed',
+            display: 'none',
+            zIndex: '10000',
+            pointerEvents: 'none',
+            background: '#fff',
+            border: '3px solid rgb(255, 148, 0)',
+            borderRadius: '8px',
+            boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
+            padding: '5px',
+            width: '250px' // Iets smaller voor de zekerheid
+        });
+        document.body.appendChild(tooltip);
+
+        const rows = document.querySelectorAll('#matchTable tbody tr');
+        let ticketsOwned = 0;
+        let programsOwned = 0;
+        let totalMatches = 0;
+
+        rows.forEach(row => {
+            const cells = row.cells;
+            if (cells.length === 5) { 
+                totalMatches++;
+                const links = row.querySelectorAll('td a');
+                links.forEach(link => {
+                    const img = link.querySelector('img');
+                    if (img && img.src.includes('images/aaa.png')) {
+                        if (link.parentElement.cellIndex === 3) ticketsOwned++;
+                        if (link.parentElement.cellIndex === 4) programsOwned++;
+
+                        link.addEventListener('mouseenter', () => {
+                            tooltip.innerHTML = `<img src="${link.href}" style="width:100%; height:auto; display:block; border-radius:4px;">`;
+                            tooltip.style.display = 'block';
+                        });
+
+                        link.addEventListener('mousemove', (e) => {
+                            const gap = 20;
+                            const tooltipWidth = 460; // breedte + padding
+                            let x = e.clientX + gap;
+                            let y = e.clientY + 10;
+
+                            // RECHTS BUITEN BEELD? -> Verplaats naar links van de muis
+                            if (x + tooltipWidth > window.innerWidth) {
+                                x = e.clientX - tooltipWidth - gap;
+                            }
+
+                            // LINKS BUITEN BEELD?
+                            if (x < 0) x = 10;
+
+                            // ONDERKANT BUITEN BEELD?
+                            if (y + 400 > window.innerHeight) {
+                                y = window.innerHeight - 410;
+                            }
+
+                            tooltip.style.left = x + 'px';
+                            tooltip.style.top = y + 'px';
+                        });
+
+                        link.addEventListener('mouseleave', () => {
+                            tooltip.style.display = 'none';
+                        });
+                    }
+                });
+            }
+        });
+
+        // Tellers invullen
+        document.getElementById('ticket-count').innerText = ticketsOwned;
+        document.getElementById('total-tickets').innerText = totalMatches;
+        
+    });
+
+    // Scroll knop
+    window.onscroll = function() {
+        let btn = document.getElementById("scrollTopBtn");
+        if (btn) btn.style.display = (window.pageYOffset > 200) ? "block" : "none";
+    };
+</script>
+<script src="search-index.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Zelfde opschoon-functie als de converter
+        function cleanId(text) {
+            return text.toString().toLowerCase().replace(/[^a-z0-9]/g, '');
+        }
+
+        // 1. Geef alle rijen een ID
+        const rows = document.querySelectorAll("tr");
+        rows.forEach(row => {
+            const cells = row.querySelectorAll("td");
+            if (cells.length >= 2) {
+                const date = cells[0].innerText;
+                const teams = cells[1].innerText;
+                row.id = "match" + cleanId(date + teams);
+            }
+        });
+
+        // 2. Scroll naar de match als er een # in de URL staat
+        if (window.location.hash) {
+            // Wacht heel even tot de pagina volledig rustig is
+            setTimeout(() => {
+                const target = document.querySelector(window.location.hash);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // Highlight de rij
+                    target.style.transition = "background-color 0.5s";
+                    target.style.backgroundColor = "#cdffcf";
+                    setTimeout(() => { target.style.backgroundColor = ""; }, 5000);
+                }
+            }, 600); // 600ms vertraging voor stabiliteit
+        }
+    });
+</script>
+</body>
+</html>

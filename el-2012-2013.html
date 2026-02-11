@@ -1,0 +1,3705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Europa League 2012/2013 - Full Match List</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Basis Layout */
+        .app-wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 260px;
+            background: #111;
+            padding: 20px;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            background: #ffffff;
+            color: #000000;
+        }
+
+        /* Navigatie & Header */
+        .season-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #393838;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+        
+        .season-navigation h1 { margin: 0; font-size: 24px; color: #ffffff !important; }
+
+        .next-button {
+            background-color: rgb(255, 148, 0) !important;
+            color: white !important;
+            padding: 10px 18px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 13px;
+            transition: opacity 0.3s ease;
+        }
+        .next-button:hover { opacity: 0.9; }
+
+        /* Statistieken in Sidebar */
+        .sidebar-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-section h3 {
+            color: rgb(255, 148, 0);
+            font-size: 14px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .stat-value {
+            color: #000000;
+            font-weight: bold;
+            background: #ffffff;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        /* Tabel Styling */
+        .team-section { width: 100%; overflow-x: auto; }
+        .match-table-full { width: 100%; border-collapse: collapse; min-width: 700px; color: #000000; }
+        .match-table-full th { text-align: left; padding: 12px; border-bottom: 2px solid #000; color: #000; }
+        .match-table-full td { padding: 12px; border-bottom: 1px solid #eee; }
+        
+        .match-table-full tbody tr:hover td { background-color: #f0f7ff !important; }
+        
+        .round-divider { background-color: rgb(255, 148, 0); padding: 10px 15px !important; font-weight: bold; color: #000000; }
+        .score-bold { font-weight: bold; color: #000000; }
+        .table-icon { width: 25px; transition: transform 0.2s ease; }
+
+        #scrollTopBtn {
+            position: fixed; bottom: 20px; right: 20px; width: 40px; height: 40px;
+            background: #0046a6; color: white; border: none; border-radius: 50%; cursor: pointer; display: none;
+            z-index: 100;
+        }
+
+        @media (max-width: 768px) {
+            .app-wrapper { flex-direction: column; }
+            .sidebar { width: 100%; }
+            .season-navigation { flex-direction: column; text-align: center; gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-wrapper">
+    <aside class="sidebar">
+        <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #333;">
+                <img src="../images/logo.png" alt="All Football Tickets Logo" style="width: 100%; max-width: 180px; border-radius: 10px; opacity: 0.8;">
+            </div>
+        <nav class="sidebar-nav">
+            <a href="../index.html" style="color: #fff; text-decoration: none; display: block; margin-bottom: 10px;">Home</a>
+            <a href="el-overzicht.html" style="color: #fff; text-decoration: none; display: block; margin-bottom: 20px;">Europa League</a>
+        </nav>
+        
+        <div class="sidebar-section">
+            <h3>Season Stats</h3>
+            <div class="stat-item">
+                <span>Tickets:</span> 
+                <span class="stat-value"><span id="ticket-count">0</span> / <span id="total-tickets">0</span></span>
+            </div>
+            
+        </div>
+
+        <div class="sidebar-section">
+            <h3>Select a Season</h3>
+            <select class="season-selector" onchange="location = this.value;" style="width:100%; padding:8px; background:#fff; color:#000; border:1px solid #333;">
+
+<option value="el-2009-2010.html">2009 / 2010</option>
+<option value="el-2010-2011.html">2010 / 2011</option>
+<option value="el-2011-2012.html">2011 / 2012</option>
+<option value="el-2012-2013.html" selected>2012 / 2013</option>
+<option value="el-2013-2014.html">2013 / 2014</option>
+<option value="el-2014-2015.html">2014 / 2015</option>
+<option value="el-2015-2016.html">2015 / 2016</option>
+<option value="el-2016-2017.html">2016 / 2017</option>
+<option value="el-2017-2018.html">2017 / 2018</option>
+<option value="el-2018-2019.html">2018 / 2019</option>
+<option value="el-2019-2020.html">2019 / 2020</option>
+<option value="el-2020-2021.html">2020 / 2021</option>
+<option value="el-2021-2022.html">2021 / 2022</option>
+<option value="el-2022-2023.html">2022 / 2023</option>
+<option value="el-2023-2024.html">2023 / 2024</option>
+<option value="el-2024-2025.html">2024 / 2025</option>
+<option value="el-2025-2026.html">2025 / 2026</option>
+                </select>
+        </div>
+
+        <div class="sidebar-section">
+            <h3>Legenda</h3>
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+                <img src="../images/aaa.png" width="20"> <span style="font-size:13px; color:#ccc;">on Site (hover over to see)</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:10px;">
+                <img src="../images/bbb.png" width="20"> <span style="font-size:13px; color:#ccc;">searching</span>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="season-navigation">
+    <div>
+        <h1>Europa League 2012-2013</h1>
+        <div class="az-filter-container" style="margin-top: 15px;">
+    <div id="alphabet-nav" style="display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px;"></div>
+    <div id="team-list-display" style="position: absolute; width: 320px; background: white; border: 1px solid #ccc; border-radius: 8px; display: none; max-height: 400px; overflow-y: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 9999;"></div>
+</div>
+        
+    </div>
+    <div style="display: flex; gap: 10px;">
+        <a href="el-2011-2012.html" class="next-button">&laquo;Previous 11/12</a>
+        <a href="el-2013-2014.html" class="next-button">Next 13/14 &raquo;</a>
+    </div>
+</header>
+
+        <section class="team-section">
+            <table class="match-table-full" id="matchTable">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Game</th>
+                        <th>Score</th>
+                        <th>Tickets</th>
+                        <th>Match Stats</th>
+                    </tr>
+                </thead>
+                <tbody>
+<tr><td colspan="5" class="round-divider">Qualification Round 1</td></tr>
+<tr>
+    <td>	 3-07-2012&nbsp;	</td>
+    <td>	Shkendija Tetovo	 - 	Portadown FC	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 3-07-2012&nbsp;	</td>
+    <td>	Víkingur Gøta	 - 	FK Gomel	</td>
+    <td class="score-bold">	0-6	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	Khazar Lankaran	 - 	JK Nomme Kalju	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	FK Jagodina	 - 	Ordabasy Shymkent	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	Renova Dzepciste	 - 	AC Libertas	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	Kuopion Palloseura	 - 	Llanelli Town	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	JK Trans Narva	 - 	FK Keshla	</td>
+    <td class="score-bold">	0-5	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	Levadia Tallinn	 - 	FK Siauliai	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	Rudar Pljevlja	 - 	FC ShIraq Gyumri	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	JJK Jyväskylä	 - 	Stabæk Fotball	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	FC Baku	 - 	NS Mura	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	IF Elfsborg	 - 	Floriana FC	</td>
+    <td class="score-bold">	8-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	FC Pyunik Erewan	 - 	FK Zeta Golubovac	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	KF Teuta	 - 	Metalurgi Rustavi	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	FC Differdingen 03	 - 	NSÍ Runavík	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	Dacia Chisinau	 - 	NK Celje	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	FK Sūduva Marijampolė	 - 	Daugava Daugavpils	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	Birkirkara FC	 - 	Metalurg Skopje	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	KF Tirana	 - 	CS Grevenmacher	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	Torpedo Kutaisi	 - 	FK Aktobe	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	FK Sarajevo	 - 	Hibernians FC	</td>
+    <td class="score-bold">	5-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	FC Santa Coloma	 - 	NK Osijek	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	FC Twente	 - 	UE Santa Coloma	</td>
+    <td class="score-bold">	6-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	EB/Streymur	 - 	Gandzasar Kapan	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	NK Olimpija Ljubljana	 - 	Jeunesse Esch	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	Lech Poznan	 - 	Zhetysu Taldykorgan	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	MTK Budapest	 - 	FK Senica	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	Flamurtari FC	 - 	Budapest Honvéd FC	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	Cefn Druids	 - 	Myllykosken Pallo -47	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	La Fiorita 1967	 - 	Liepajas Metalurgs	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	Cliftonville FC	 - 	Kalmar FF	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	St. Patrick's Athletic	 - 	ÍBV Vestmannaeyjar	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	Bangor City	 - 	FC Zimbru Chisinau	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	Bohemian Football Club	 - 	Thór Akureyri	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	Crusaders FC	 - 	Rosenborg BK	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	FK Borac Banja Luka	 - 	FK Celik Niksic	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 5-07-2012&nbsp;	</td>
+    <td>	FH Hafnarfjördur	 - 	USV Eschen/Mauren	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Qualification Round 1</td></tr>
+<tr>
+    <td>	 10-07-2012&nbsp;	</td>
+    <td>	Floriana FC	 - 	IF Elfsborg	</td>
+    <td class="score-bold">	0-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 10-07-2012&nbsp;	</td>
+    <td>	JK Nomme Kalju	 - 	Khazar Lankaran	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 10-07-2012&nbsp;	</td>
+    <td>	CS Grevenmacher	 - 	KF Tirana	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 10-07-2012&nbsp;	</td>
+    <td>	Portadown FC	 - 	Shkendija Tetovo	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	Zhetysu Taldykorgan	 - 	Lech Poznan	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	FC ShIraq Gyumri	 - 	Rudar Pljevlja	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	Metalurgi Rustavi	 - 	KF Teuta	</td>
+    <td class="score-bold">	6-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	Ordabasy Shymkent	 - 	FK Jagodina	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	Metalurg Skopje	 - 	Birkirkara FC	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	Gandzasar Kapan	 - 	EB/Streymur	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	FK Aktobe	 - 	Torpedo Kutaisi	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	FK Celik Niksic	 - 	FK Borac Banja Luka	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	FK Gomel	 - 	Víkingur Gøta	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	Jeunesse Esch	 - 	NK Olimpija Ljubljana	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	Liepajas Metalurgs	 - 	La Fiorita 1967	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	Daugava Daugavpils	 - 	FK Sūduva Marijampolė	</td>
+    <td class="score-bold">	2-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	FK Siauliai	 - 	Levadia Tallinn	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	FK Keshla	 - 	JK Trans Narva	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	Myllykosken Pallo -47	 - 	Cefn Druids	</td>
+    <td class="score-bold">	5-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	FC Zimbru Chisinau	 - 	Bangor City	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	Rosenborg BK	 - 	Crusaders FC	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	Stabæk Fotball	 - 	JJK Jyväskylä	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	Kalmar FF	 - 	Cliftonville FC	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	FK Senica	 - 	MTK Budapest	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	USV Eschen/Mauren	 - 	FH Hafnarfjördur	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	UE Santa Coloma	 - 	FC Twente	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	Llanelli Town	 - 	Kuopion Palloseura	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	NSÍ Runavík	 - 	FC Differdingen 03	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	Hibernians FC	 - 	FK Sarajevo	</td>
+    <td class="score-bold">	4-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	NK Osijek	 - 	FC Santa Coloma	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	FK Zeta Golubovac	 - 	FC Pyunik Erewan	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	NK Celje	 - 	Dacia Chisinau	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	NS Mura	 - 	FC Baku	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	AC Libertas	 - 	Renova Dzepciste	</td>
+    <td class="score-bold">	0-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	Budapest Honvéd FC	 - 	Flamurtari FC	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	Thór Akureyri	 - 	Bohemian Football Club	</td>
+    <td class="score-bold">	5-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 12-07-2012&nbsp;	</td>
+    <td>	ÍBV Vestmannaeyjar	 - 	St. Patrick's Athletic	</td>
+    <td class="score-bold">	2-1 aet	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Qualification Round 2</td></tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	Naftan Novopolotsk	 - 	Red Star Belgrade	</td>
+    <td class="score-bold">	3-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	Liepajas Metalurgs	 - 	Legia Warszawa </td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	FC Milsami Orhei	 - 	FK Aktobe	</td>
+    <td class="score-bold">	4-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	Khazar Lankaran	 - 	Lech Poznan	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	Anzji Machatsjkala	 - 	Budapest Honvéd FC	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	Lokomotiv Plovdiv	 - 	Vitesse Arnhem	</td>
+    <td class="score-bold">	4-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	Renova Dzepciste	 - 	FK Gomel	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	Levadia Tallinn	 - 	Anorthosis Famagusta	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	JJK Jyväskylä	 - 	FK Zeta Golubovac	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	Metalurgi Rustavi	 - 	FC Viktoria Plzen	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	FK Keshla	 - 	Asteras Tripolis	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	NK Olimpija Ljubljana	 - 	Tromsø IL	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	Shakhter Soligorsk	 - 	SV Ried	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	FC Differdingen 03	 - 	KAA Gent	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	AIK	 - 	FH Hafnarfjördur	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	Aarhus GF	 - 	FC Dila Gori	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	Spartak Trnava	 - 	Sligo Rovers	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	Ruch Chorzow	 - 	Metalurg Skopje	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	FK Mlada Boleslav	 - 	Thór Akureyri	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	Metalurg Donetsk	 - 	FK Celik Niksic	</td>
+    <td class="score-bold">	7-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	Bnei Yehuda Tel Aviv	 - 	FC ShIraq Gyumri	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	APOEL Nicosia	 - 	FK Senica	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	Eskisehirspor	 - 	St  Johnstone FC	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	Slaven Belupo Koprivnica	 - 	Portadown FC	</td>
+    <td class="score-bold">	6-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	KF Tirana	 - 	Aalesunds FK	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	Levski Sofia	 - 	FK Sarajevo	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	Rosenborg BK	 - 	Ordabasy Shymkent	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	Dacia Chisinau	 - 	IF Elfsborg	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	VMFD Zalgiris Vilnius	 - 	FC Admira Wacker Mödling	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	Rapid Boekarest	 - 	Myllykosken Pallo -47	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	BSC Young Boys	 - 	FC Zimbru Chisinau	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	FC Twente	 - 	FC Inter Turku	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	Servette FC	 - 	Gandzasar Kapan	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	NK Osijek	 - 	Kalmar FF	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	Maccabi Netanya	 - 	Kuopion Palloseura	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	NS Mura	 - 	CSKA Sofia	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	Slovan Bratislava	 - 	Videoton FC	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	HNK Hajduk Split	 - 	Skonto Riga	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	FK Vojvodina Novi Sad	 - 	FK Sūduva Marijampolė	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 19-07-2012&nbsp;	</td>
+    <td>	NK Siroki Brijeg	 - 	St. Patrick's Athletic	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Qualification Round 2</td></tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	FC ShIraq Gyumri	 - 	Bnei Yehuda Tel Aviv	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	FC Dila Gori	 - 	Aarhus GF	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://i.postimg.cc/QMpJQ85p/el20120726-Dila-Gori-Aarhus-GF.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	Ordabasy Shymkent	 - 	Rosenborg BK	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	Metalurg Skopje	 - 	Ruch Chorzow	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	Gandzasar Kapan	 - 	Servette FC	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	Kuopion Palloseura	 - 	Maccabi Netanya	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	FK Celik Niksic	 - 	Metalurg Donetsk	</td>
+    <td class="score-bold">	2-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	FC Inter Turku	 - 	FC Twente	</td>
+    <td class="score-bold">	0-5	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	IF Elfsborg	 - 	Dacia Chisinau	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	FK Gomel	 - 	Renova Dzepciste	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	FK Aktobe	 - 	FC Milsami Orhei	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	Myllykosken Pallo -47	 - 	Rapid Boekarest	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	Budapest Honvéd FC	 - 	Anzji Machatsjkala	</td>
+    <td class="score-bold">	0-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	FK Sūduva Marijampolė	 - 	FK Vojvodina Novi Sad	</td>
+    <td class="score-bold">	0-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	Kalmar FF	 - 	NK Osijek	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	Asteras Tripolis	 - 	FK Keshla	</td>
+    <td class="score-bold">	1-1 pen 4-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	CSKA Sofia	 - 	NS Mura	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	SV Ried	 - 	Shakhter Soligorsk	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	Anorthosis Famagusta	 - 	Levadia Tallinn	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	Tromsø IL	 - 	NK Olimpija Ljubljana	</td>
+    <td class="score-bold">	1-0 aet	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	Aalesunds FK	 - 	KF Tirana	</td>
+    <td class="score-bold">	5-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	FC Zimbru Chisinau	 - 	BSC Young Boys	</td>
+    <td class="score-bold">	1-0 pen 1-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	FK Senica	 - 	APOEL Nicosia	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	KAA Gent	 - 	FC Differdingen 03	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://i.postimg.cc/VNjWqfMX/el20120726-gent-differdange.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	FC Viktoria Plzen	 - 	Metalurgi Rustavi	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	Vitesse Arnhem	 - 	Lokomotiv Plovdiv	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	Lech Poznan	 - 	Khazar Lankaran	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	Sligo Rovers	 - 	Spartak Trnava	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	FK Zeta Golubovac	 - 	JJK Jyväskylä	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	Red Star Belgrade	 - 	Naftan Novopolotsk	</td>
+    <td class="score-bold">	3-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	Legia Warszawa	 - 	Liepajas Metalurgs	</td>
+    <td class="score-bold">	5-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	Videoton FC	 - 	Slovan Bratislava	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	Skonto Riga	 - 	HNK Hajduk Split	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	St. Patrick's Athletic	 - 	NK Siroki Brijeg	</td>
+    <td class="score-bold">	2-1 aet	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	Portadown FC	 - 	Slaven Belupo Koprivnica	</td>
+    <td class="score-bold">	2-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	St  Johnstone FC	 - 	Eskisehirspor	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	FK Sarajevo	 - 	Levski Sofia	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	FC Admira Wacker Mödling	 - 	VMFD Zalgiris Vilnius	</td>
+    <td class="score-bold">	5-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	FH Hafnarfjördur	 - 	AIK	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 26-07-2012&nbsp;	</td>
+    <td>	Thór Akureyri	 - 	FK Mlada Boleslav	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Qualification Round 3</td></tr>
+<tr>
+    <td>	 2-08-2012&nbsp;	</td>
+    <td>	Anzji Machatsjkala	 - 	Vitesse Arnhem	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-08-2012&nbsp;	</td>
+    <td>	Kuopion Palloseura	 - 	Bursaspor	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-08-2012&nbsp;	</td>
+    <td>	Arsenal Kiew	 - 	NS Mura	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-08-2012&nbsp;	</td>
+    <td>	FC Dila Gori	 - 	Anorthosis Famagusta	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-08-2012&nbsp;	</td>
+    <td>	SV Ried	 - 	Legia Warszawa </td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-08-2012&nbsp;	</td>
+    <td>	AIK	 - 	Lech Poznan	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-08-2012&nbsp;	</td>
+    <td>	Kalmar FF	 - 	BSC Young Boys	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://i.postimg.cc/5twSB4vs/el20120802-kalmar-young-boys.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-08-2012&nbsp;	</td>
+    <td>	Ruch Chorzow	 - 	FC Viktoria Plzen	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-08-2012&nbsp;	</td>
+    <td>	APOEL Nicosia	 - 	Aalesunds FK	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-08-2012&nbsp;	</td>
+    <td>	Bnei Yehuda Tel Aviv	 - 	PAOK Thessaloniki	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-08-2012&nbsp;	</td>
+    <td>	Tromsø IL	 - 	Metalurg Donetsk	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-08-2012&nbsp;	</td>
+    <td>	sc Heerenveen	 - 	Rapid Boekarest	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-08-2012&nbsp;	</td>
+    <td>	Steaua Bucharest	 - 	Spartak Trnava	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-08-2012&nbsp;	</td>
+    <td>	Servette FC	 - 	Rosenborg BK	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-08-2012&nbsp;	</td>
+    <td>	FC Twente	 - 	FK Mlada Boleslav	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-08-2012&nbsp;	</td>
+    <td>	KRC Genk	 - 	FK Aktobe	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://i.postimg.cc/cJQBRxYw/el20120802-genk-aktobe.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-08-2012&nbsp;	</td>
+    <td>	Asteras Tripolis	 - 	CS Marítimo	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-08-2012&nbsp;	</td>
+    <td>	FK Gomel	 - 	Liverpool FC	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://i.postimg.cc/tghN3qPN/el20120802-gomel-liverpool.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-08-2012&nbsp;	</td>
+    <td>	AC Horsens	 - 	IF Elfsborg	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-08-2012&nbsp;	</td>
+    <td>	Videoton FC	 - 	KAA Gent	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-08-2012&nbsp;	</td>
+    <td>	Red Star Belgrade	 - 	Omonia Nicosia	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-08-2012&nbsp;	</td>
+    <td>	Dundee United FC	 - 	Dynamo Moskou	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://i.postimg.cc/wBhQXqJ5/el20120802-dundee-dinamo-moskou.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-08-2012&nbsp;	</td>
+    <td>	Eskisehirspor	 - 	Olympique Marseille	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-08-2012&nbsp;	</td>
+    <td>	St. Patrick's Athletic	 - 	Hannover 96	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://i.postimg.cc/Lsz3t9fC/el20120802-St-Patrick-s-Athletic-Hannover-96.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-08-2012&nbsp;	</td>
+    <td>	HNK Hajduk Split	 - 	Inter Milan	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-08-2012&nbsp;	</td>
+    <td>	FK Vojvodina Novi Sad	 - 	SK Rapid Wien	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-08-2012&nbsp;	</td>
+    <td>	Athletic Bilbao	 - 	Slaven Belupo Koprivnica	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-08-2012&nbsp;	</td>
+    <td>	FK Sarajevo	 - 	FK Zeta Golubovac	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-08-2012&nbsp;	</td>
+    <td>	FC Admira Wacker Mödling	 - 	AC Sparta Prague	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Qualification Round 3</td></tr>
+<tr>
+    <td>	 9-08-2012&nbsp;	</td>
+    <td>	Omonia Nicosia	 - 	Red Star Belgrade	</td>
+    <td class="score-bold">	0-0 pen 5-6	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-08-2012&nbsp;	</td>
+    <td>	FK Aktobe	 - 	KRC Genk	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-08-2012&nbsp;	</td>
+    <td>	Dynamo Moskou	 - 	Dundee United FC	</td>
+    <td class="score-bold">	5-0	</td>
+    <td><a href="https://i.postimg.cc/tTptDKtd/el20120809-dinamo-moskou-dundee.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-08-2012&nbsp;	</td>
+    <td>	IF Elfsborg	 - 	AC Horsens	</td>
+    <td class="score-bold">	2-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-08-2012&nbsp;	</td>
+    <td>	Slaven Belupo Koprivnica	 - 	Athletic Bilbao	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-08-2012&nbsp;	</td>
+    <td>	Legia Warszawa	 - 	SV Ried	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-08-2012&nbsp;	</td>
+    <td>	Rosenborg BK	 - 	Servette FC	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-08-2012&nbsp;	</td>
+    <td>	FK Mlada Boleslav	 - 	FC Twente	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-08-2012&nbsp;	</td>
+    <td>	Anorthosis Famagusta	 - 	FC Dila Gori	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-08-2012&nbsp;	</td>
+    <td>	Metalurg Donetsk	 - 	Tromsø IL	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-08-2012&nbsp;	</td>
+    <td>	Aalesunds FK	 - 	APOEL Nicosia	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-08-2012&nbsp;	</td>
+    <td>	Spartak Trnava	 - 	Steaua Bucharest	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-08-2012&nbsp;	</td>
+    <td>	BSC Young Boys	 - 	Kalmar FF	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-08-2012&nbsp;	</td>
+    <td>	KAA Gent	 - 	Videoton FC	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://i.postimg.cc/d1wmnbm2/el20120809-gent-videoton.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-08-2012&nbsp;	</td>
+    <td>	FK Zeta Golubovac	 - 	FK Sarajevo	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-08-2012&nbsp;	</td>
+    <td>	Vitesse Arnhem	 - 	Anzji Machatsjkala	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-08-2012&nbsp;	</td>
+    <td>	PAOK Thessaloniki	 - 	Bnei Yehuda Tel Aviv	</td>
+    <td class="score-bold">	4-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-08-2012&nbsp;	</td>
+    <td>	NS Mura	 - 	Arsenal Kiew	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-08-2012&nbsp;	</td>
+    <td>	Lech Poznan	 - 	AIK	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-08-2012&nbsp;	</td>
+    <td>	AC Sparta Prague	 - 	FC Admira Wacker Mödling	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-08-2012&nbsp;	</td>
+    <td>	FC Viktoria Plzen	 - 	Ruch Chorzow	</td>
+    <td class="score-bold">	5-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-08-2012&nbsp;	</td>
+    <td>	Rapid Boekarest	 - 	sc Heerenveen	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-08-2012&nbsp;	</td>
+    <td>	Bursaspor	 - 	Kuopion Palloseura	</td>
+    <td class="score-bold">	6-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-08-2012&nbsp;	</td>
+    <td>	Hannover 96	 - 	St. Patrick's Athletic	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-08-2012&nbsp;	</td>
+    <td>	Olympique Marseille	 - 	Eskisehirspor	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-08-2012&nbsp;	</td>
+    <td>	Inter Milan	 - 	HNK Hajduk Split	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-08-2012&nbsp;	</td>
+    <td>	CS Marítimo	 - 	Asteras Tripolis	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-08-2012&nbsp;	</td>
+    <td>	SK Rapid Wien	 - 	FK Vojvodina Novi Sad	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 9-08-2012&nbsp;	</td>
+    <td>	Liverpool FC	 - 	FK Gomel	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://i.postimg.cc/MTqbtCbb/el20120809-liverpool-gomel.png" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Qualification Round 4</td></tr>
+<tr>
+    <td>	 22-08-2012&nbsp;	</td>
+    <td>	VfB Stuttgart	 - 	Dynamo Moskou	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-08-2012&nbsp;	</td>
+    <td>	Anzji Machatsjkala	 - 	AZ Alkmaar	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-08-2012&nbsp;	</td>
+    <td>	Neftchi PFK	 - 	APOEL Nicosia	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-08-2012&nbsp;	</td>
+    <td>	Tromsø IL	 - 	FK Partizan Belgrade	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-08-2012&nbsp;	</td>
+    <td>	FK Ekranas Panevezys	 - 	Steaua Bucharest	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-08-2012&nbsp;	</td>
+    <td>	Legia Warszawa	 - 	Rosenborg BK	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-08-2012&nbsp;	</td>
+    <td>	Molde FK	 - 	sc Heerenveen	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-08-2012&nbsp;	</td>
+    <td>	FC Sheriff Tiraspol	 - 	Olympique Marseille	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-08-2012&nbsp;	</td>
+    <td>	AIK	 - 	CSKA Moscou	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-08-2012&nbsp;	</td>
+    <td>	FC Slovan Liberec	 - 	Dnipro Dnipropetrovsk  	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-08-2012&nbsp;	</td>
+    <td>	Atromitos Athen	 - 	Newcastle United	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-08-2012&nbsp;	</td>
+    <td>	FC Luzern	 - 	KRC Genk	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-08-2012&nbsp;	</td>
+    <td>	FC Dinamo 1948	 - 	Metalist Kharkiv	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-08-2012&nbsp;	</td>
+    <td>	Bursaspor	 - 	FC Twente	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-08-2012&nbsp;	</td>
+    <td>	Feyenoord Rotterdam	 - 	AC Sparta Prague	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-08-2012&nbsp;	</td>
+    <td>	Trabzonspor	 - 	Videoton FC	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-08-2012&nbsp;	</td>
+    <td>	F91 Dudelange	 - 	Hapoel Tel Aviv	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-08-2012&nbsp;	</td>
+    <td>	FC Midtjylland	 - 	BSC Young Boys	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-08-2012&nbsp;	</td>
+    <td>	PAOK Thessaloniki	 - 	SK Rapid Wien	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-08-2012&nbsp;	</td>
+    <td>	KSC Lokeren	 - 	FC Viktoria Plzen	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://i.postimg.cc/fLDj5GjK/el20120823-lokeren-plzen.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-08-2012&nbsp;	</td>
+    <td>	Debreceni VSC	 - 	Club Brugge KV	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-08-2012&nbsp;	</td>
+    <td>	Slask Wroclaw	 - 	Hannover 96	</td>
+    <td class="score-bold">	3-5	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-08-2012&nbsp;	</td>
+    <td>	Motherwell FC	 - 	UD Levante	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-08-2012&nbsp;	</td>
+    <td>	Heart of Midlothian FC	 - 	Liverpool FC	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://i.postimg.cc/4dsbwDbQ/el20120823-hearts-liverpool.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-08-2012&nbsp;	</td>
+    <td>	FC Vaslui	 - 	Inter Milan	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-08-2012&nbsp;	</td>
+    <td>	NS Mura	 - 	Lazio Roma	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-08-2012&nbsp;	</td>
+    <td>	Athletic Bilbao	 - 	HJK Helsinki	</td>
+    <td class="score-bold">	6-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-08-2012&nbsp;	</td>
+    <td>	Red Star Belgrade	 - 	FC Girondins Bordeaux	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-08-2012&nbsp;	</td>
+    <td>	CS Marítimo	 - 	FC Dila Gori	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-08-2012&nbsp;	</td>
+    <td>	AC Horsens	 - 	Sporting CP	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 23-08-2012&nbsp;	</td>
+    <td>	FK Zeta Golubovac	 - 	PSV Eindhoven	</td>
+    <td class="score-bold">	0-5	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Qualification Round 4</td></tr>
+<tr>
+    <td>	 28-08-2012&nbsp;	</td>
+    <td>	Dynamo Moskou	 - 	VfB Stuttgart	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-08-2012&nbsp;	</td>
+    <td>	Dnipro Dnipropetrovsk  	 - 	FC Slovan Liberec	</td>
+    <td class="score-bold">	4-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-08-2012&nbsp;	</td>
+    <td>	FC Dila Gori	 - 	CS Marítimo	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-08-2012&nbsp;	</td>
+    <td>	PSV Eindhoven	 - 	FK Zeta Golubovac	</td>
+    <td class="score-bold">	9-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-08-2012&nbsp;	</td>
+    <td>	Rosenborg BK	 - 	Legia Warszawa </td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-08-2012&nbsp;	</td>
+    <td>	sc Heerenveen	 - 	Molde FK	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-08-2012&nbsp;	</td>
+    <td>	Hapoel Tel Aviv	 - 	F91 Dudelange	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-08-2012&nbsp;	</td>
+    <td>	HJK Helsinki	 - 	Athletic Bilbao	</td>
+    <td class="score-bold">	3-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-08-2012&nbsp;	</td>
+    <td>	APOEL Nicosia	 - 	Neftchi PFK	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-08-2012&nbsp;	</td>
+    <td>	CSKA Moscou	 - 	AIK	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-08-2012&nbsp;	</td>
+    <td>	Steaua Bucharest	 - 	FK Ekranas Panevezys	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-08-2012&nbsp;	</td>
+    <td>	BSC Young Boys	 - 	FC Midtjylland	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-08-2012&nbsp;	</td>
+    <td>	AC Sparta Prague	 - 	Feyenoord Rotterdam	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-08-2012&nbsp;	</td>
+    <td>	KRC Genk	 - 	FC Luzern	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://i.postimg.cc/MTqbtCbt/el20120830-genk-luzern.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-08-2012&nbsp;	</td>
+    <td>	Metalist Kharkiv	 - 	FC Dinamo 1948	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-08-2012&nbsp;	</td>
+    <td>	FC Viktoria Plzen	 - 	KSC Lokeren	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-08-2012&nbsp;	</td>
+    <td>	Videoton FC	 - 	Trabzonspor	</td>
+    <td class="score-bold">	0-0 pen 4-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-08-2012&nbsp;	</td>
+    <td>	FC Girondins Bordeaux	 - 	Red Star Belgrade	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-08-2012&nbsp;	</td>
+    <td>	Club Brugge KV	 - 	Debreceni VSC	</td>
+    <td class="score-bold">	4-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-08-2012&nbsp;	</td>
+    <td>	Olympique Marseille	 - 	FC Sheriff Tiraspol	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-08-2012&nbsp;	</td>
+    <td>	UD Levante	 - 	Motherwell FC	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-08-2012&nbsp;	</td>
+    <td>	SK Rapid Wien	 - 	PAOK Thessaloniki	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-08-2012&nbsp;	</td>
+    <td>	Inter Milan	 - 	FC Vaslui	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://i.postimg.cc/k4qFw0Ff/el20120830-Inter-Mailand-FC-Vaslui-30-08-2012.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-08-2012&nbsp;	</td>
+    <td>	FK Partizan Belgrade	 - 	Tromsø IL	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-08-2012&nbsp;	</td>
+    <td>	Hannover 96	 - 	Slask Wroclaw	</td>
+    <td class="score-bold">	5-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-08-2012&nbsp;	</td>
+    <td>	Newcastle United	 - 	Atromitos Athen	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-08-2012&nbsp;	</td>
+    <td>	FC Twente	 - 	Bursaspor	</td>
+    <td class="score-bold">	4-1 aet	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-08-2012&nbsp;	</td>
+    <td>	Lazio Roma	 - 	NS Mura	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-08-2012&nbsp;	</td>
+    <td>	AZ Alkmaar	 - 	Anzji Machatsjkala	</td>
+    <td class="score-bold">	0-5	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-08-2012&nbsp;	</td>
+    <td>	Liverpool FC	 - 	Heart of Midlothian FC	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://i.postimg.cc/rmMCgBCj/el20120830-liverpool-hearts.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 30-08-2012&nbsp;	</td>
+    <td>	Sporting CP	 - 	AC Horsens	</td>
+    <td class="score-bold">	5-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group A</td></tr>
+<tr>
+    <td>	20-09-2012&nbsp;	</td>
+    <td>	BSC Young Boys	 - 	Liverpool FC	</td>
+    <td class="score-bold">	3-5	</td>
+    <td><a href="https://i.postimg.cc/4dsbwDbM/el20120920-young-boys-liverpool.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	20-09-2012&nbsp;	</td>
+    <td>	Udinese Calcio	 - 	Anzji Machatsjkala	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-10-2012&nbsp;	</td>
+    <td>	Anzji Machatsjkala	 - 	BSC Young Boys	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-10-2012&nbsp;	</td>
+    <td>	Liverpool FC	 - 	Udinese Calcio	</td>
+    <td class="score-bold">	2-3	</td>
+    <td><a href="https://i.postimg.cc/PxTzKgzR/el20121004-liverpool-udinese.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	25-10-2012&nbsp;	</td>
+    <td>	BSC Young Boys	 - 	Udinese Calcio	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://i.postimg.cc/3RYC9sFT/el20121025-young-boys-udinese.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	25-10-2012&nbsp;	</td>
+    <td>	Liverpool FC	 - 	Anzji Machatsjkala	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://i.postimg.cc/gJmq4CH9/el20121025-liverpool-anzhi.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-11-2012&nbsp;	</td>
+    <td>	Anzji Machatsjkala	 - 	Liverpool FC	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://i.postimg.cc/XJ4cxRk4/el20121108-anzhi-liverpool.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-11-2012&nbsp;	</td>
+    <td>	Udinese Calcio	 - 	BSC Young Boys	</td>
+    <td class="score-bold">	2-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	22-11-2012&nbsp;	</td>
+    <td>	Anzji Machatsjkala	 - 	Udinese Calcio	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	22-11-2012&nbsp;	</td>
+    <td>	Liverpool FC	 - 	BSC Young Boys	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://i.postimg.cc/zB7wQx0s/el20121122-liverpool-young-boys.png" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-12-2012&nbsp;	</td>
+    <td>	Udinese Calcio	 - 	Liverpool FC	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://i.postimg.cc/fLC7P88s/el20121206-udinese-liverpool.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-12-2012&nbsp;	</td>
+    <td>	BSC Young Boys	 - 	Anzji Machatsjkala	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://i.postimg.cc/Qtmgzffh/el20121206-young-boys-anzhi.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group B</td></tr>
+<tr>
+    <td>	20-09-2012&nbsp;	</td>
+    <td>	Hapoel Tel Aviv	 - 	Atlético Madrid	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	20-09-2012&nbsp;	</td>
+    <td>	FC Viktoria Plzen	 - 	Académica Coimbra	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-10-2012&nbsp;	</td>
+    <td>	Académica Coimbra	 - 	Hapoel Tel Aviv	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-10-2012&nbsp;	</td>
+    <td>	Atlético Madrid	 - 	FC Viktoria Plzen	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	25-10-2012&nbsp;	</td>
+    <td>	Hapoel Tel Aviv	 - 	FC Viktoria Plzen	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	25-10-2012&nbsp;	</td>
+    <td>	Atlético Madrid	 - 	Académica Coimbra	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-11-2012&nbsp;	</td>
+    <td>	Académica Coimbra	 - 	Atlético Madrid	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-11-2012&nbsp;	</td>
+    <td>	FC Viktoria Plzen	 - 	Hapoel Tel Aviv	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	22-11-2012&nbsp;	</td>
+    <td>	Atlético Madrid	 - 	Hapoel Tel Aviv	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	22-11-2012&nbsp;	</td>
+    <td>	Académica Coimbra	 - 	FC Viktoria Plzen	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-12-2012&nbsp;	</td>
+    <td>	FC Viktoria Plzen	 - 	Atlético Madrid	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-12-2012&nbsp;	</td>
+    <td>	Hapoel Tel Aviv	 - 	Académica Coimbra	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group C</td></tr>
+<tr>
+    <td>	20-09-2012&nbsp;	</td>
+    <td>	Fenerbahçe SK	 - 	Olympique Marseille	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	20-09-2012&nbsp;	</td>
+    <td>	AEL Limassol	 - 	Borussia Mönchengladbach	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-10-2012&nbsp;	</td>
+    <td>	Borussia Mönchengladbach	 - 	Fenerbahçe SK	</td>
+    <td class="score-bold">	2-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-10-2012&nbsp;	</td>
+    <td>	Olympique Marseille	 - 	AEL Limassol	</td>
+    <td class="score-bold">	5-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	25-10-2012&nbsp;	</td>
+    <td>	Borussia Mönchengladbach	 - 	Olympique Marseille	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	25-10-2012&nbsp;	</td>
+    <td>	AEL Limassol	 - 	Fenerbahçe SK	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-11-2012&nbsp;	</td>
+    <td>	Olympique Marseille	 - 	Borussia Mönchengladbach	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-11-2012&nbsp;	</td>
+    <td>	Fenerbahçe SK	 - 	AEL Limassol	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	22-11-2012&nbsp;	</td>
+    <td>	Olympique Marseille	 - 	Fenerbahçe SK	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	22-11-2012&nbsp;	</td>
+    <td>	Borussia Mönchengladbach	 - 	AEL Limassol	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-12-2012&nbsp;	</td>
+    <td>	AEL Limassol	 - 	Olympique Marseille	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-12-2012&nbsp;	</td>
+    <td>	Fenerbahçe SK	 - 	Borussia Mönchengladbach	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group D</td></tr>
+<tr>
+    <td>	20-09-2012&nbsp;	</td>
+    <td>	FC Girondins Bordeaux	 - 	Club Brugge KV	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://i.postimg.cc/63tLzkLH/el20120920-bordeaux-brugge.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	20-09-2012&nbsp;	</td>
+    <td>	CS Marítimo	 - 	Newcastle United	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-10-2012&nbsp;	</td>
+    <td>	Newcastle United	 - 	FC Girondins Bordeaux	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-10-2012&nbsp;	</td>
+    <td>	Club Brugge KV	 - 	CS Marítimo	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://i.postimg.cc/FRNgGMg6/el20121004-brugge-maritimo.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	25-10-2012&nbsp;	</td>
+    <td>	CS Marítimo	 - 	FC Girondins Bordeaux	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	25-10-2012&nbsp;	</td>
+    <td>	Newcastle United	 - 	Club Brugge KV	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://i.postimg.cc/NMB7b3kq/el20121025-newcastle-brugge.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-11-2012&nbsp;	</td>
+    <td>	Club Brugge KV	 - 	Newcastle United	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://i.postimg.cc/LX2Bvc3H/el20121108-brugge-newcastle.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-11-2012&nbsp;	</td>
+    <td>	FC Girondins Bordeaux	 - 	CS Marítimo	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	22-11-2012&nbsp;	</td>
+    <td>	Club Brugge KV	 - 	FC Girondins Bordeaux	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://i.postimg.cc/TwfqQzJG/el20121122-brugge-bordeaux.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	22-11-2012&nbsp;	</td>
+    <td>	Newcastle United	 - 	CS Marítimo	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-12-2012&nbsp;	</td>
+    <td>	CS Marítimo	 - 	Club Brugge KV	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://i.postimg.cc/4dPv0WWR/el20121206-maritimo-club-brugge.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-12-2012&nbsp;	</td>
+    <td>	FC Girondins Bordeaux	 - 	Newcastle United	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group E</td></tr>
+<tr>
+    <td>	20-09-2012&nbsp;	</td>
+    <td>	VfB Stuttgart	 - 	Steaua Bucharest	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	20-09-2012&nbsp;	</td>
+    <td>	FC Copenhagen	 - 	Molde FK	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-10-2012&nbsp;	</td>
+    <td>	Molde FK	 - 	VfB Stuttgart	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-10-2012&nbsp;	</td>
+    <td>	Steaua Bucharest	 - 	FC Copenhagen	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	25-10-2012&nbsp;	</td>
+    <td>	VfB Stuttgart	 - 	FC Copenhagen	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	25-10-2012&nbsp;	</td>
+    <td>	Steaua Bucharest	 - 	Molde FK	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-11-2012&nbsp;	</td>
+    <td>	FC Copenhagen	 - 	VfB Stuttgart	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-11-2012&nbsp;	</td>
+    <td>	Molde FK	 - 	Steaua Bucharest	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	22-11-2012&nbsp;	</td>
+    <td>	Steaua Bucharest	 - 	VfB Stuttgart	</td>
+    <td class="score-bold">	1-5	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	22-11-2012&nbsp;	</td>
+    <td>	Molde FK	 - 	FC Copenhagen	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-12-2012&nbsp;	</td>
+    <td>	FC Copenhagen	 - 	Steaua Bucharest	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-12-2012&nbsp;	</td>
+    <td>	VfB Stuttgart	 - 	Molde FK	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group F</td></tr>
+<tr>
+    <td>	20-09-2012&nbsp;	</td>
+    <td>	Dnipro Dnipropetrovsk  	 - 	PSV Eindhoven	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	20-09-2012&nbsp;	</td>
+    <td>	SSC Napoli	 - 	AIK	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-10-2012&nbsp;	</td>
+    <td>	PSV Eindhoven	 - 	SSC Napoli	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://i.postimg.cc/1tscMkck/el20121004-PSV Eindhoven-Eindhoven-SSC-Napoli.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-10-2012&nbsp;	</td>
+    <td>	AIK	 - 	Dnipro Dnipropetrovsk  	</td>
+    <td class="score-bold">	2-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	25-10-2012&nbsp;	</td>
+    <td>	Dnipro Dnipropetrovsk  	 - 	SSC Napoli	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	25-10-2012&nbsp;	</td>
+    <td>	PSV Eindhoven	 - 	AIK	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-11-2012&nbsp;	</td>
+    <td>	AIK	 - 	PSV Eindhoven	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-11-2012&nbsp;	</td>
+    <td>	SSC Napoli	 - 	Dnipro Dnipropetrovsk  	</td>
+    <td class="score-bold">	4-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	22-11-2012&nbsp;	</td>
+    <td>	AIK	 - 	SSC Napoli	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	22-11-2012&nbsp;	</td>
+    <td>	PSV Eindhoven	 - 	Dnipro Dnipropetrovsk  	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-12-2012&nbsp;	</td>
+    <td>	SSC Napoli	 - 	PSV Eindhoven	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-12-2012&nbsp;	</td>
+    <td>	Dnipro Dnipropetrovsk  	 - 	AIK	</td>
+    <td class="score-bold">	4-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group G</td></tr>
+<tr>
+    <td>	20-09-2012&nbsp;	</td>
+    <td>	Sporting CP	 - 	FC Basel 1893	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	20-09-2012&nbsp;	</td>
+    <td>	KRC Genk	 - 	Videoton FC	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://i.postimg.cc/Y9Mf85fn/el20120920-genk-videoton.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-10-2012&nbsp;	</td>
+    <td>	Videoton FC	 - 	Sporting CP	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-10-2012&nbsp;	</td>
+    <td>	FC Basel 1893	 - 	KRC Genk	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	25-10-2012&nbsp;	</td>
+    <td>	KRC Genk	 - 	Sporting CP	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	25-10-2012&nbsp;	</td>
+    <td>	Videoton FC	 - 	FC Basel 1893	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-11-2012&nbsp;	</td>
+    <td>	Sporting CP	 - 	KRC Genk	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-11-2012&nbsp;	</td>
+    <td>	FC Basel 1893	 - 	Videoton FC	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	22-11-2012&nbsp;	</td>
+    <td>	FC Basel 1893	 - 	Sporting CP	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	22-11-2012&nbsp;	</td>
+    <td>	Videoton FC	 - 	KRC Genk	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://i.postimg.cc/50g5rsnD/el20121122-videoton-genk.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-12-2012&nbsp;	</td>
+    <td>	KRC Genk	 - 	FC Basel 1893	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://i.postimg.cc/zB7wQxxm/el20121206-genk-basel.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	7-12-2012&nbsp;	</td>
+    <td>	Sporting CP	 - 	Videoton FC	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group H</td></tr>
+<tr>
+    <td>	20-09-2012&nbsp;	</td>
+    <td>	Inter Milan	 - 	Rubin Kazan	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	20-09-2012&nbsp;	</td>
+    <td>	FK Partizan Belgrade	 - 	Neftchi PFK	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-10-2012&nbsp;	</td>
+    <td>	Rubin Kazan	 - 	FK Partizan Belgrade	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-10-2012&nbsp;	</td>
+    <td>	Neftchi PFK	 - 	Inter Milan	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	25-10-2012&nbsp;	</td>
+    <td>	Rubin Kazan	 - 	Neftchi PFK	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	25-10-2012&nbsp;	</td>
+    <td>	Inter Milan	 - 	FK Partizan Belgrade	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-11-2012&nbsp;	</td>
+    <td>	Neftchi PFK	 - 	Rubin Kazan	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-11-2012&nbsp;	</td>
+    <td>	FK Partizan Belgrade	 - 	Inter Milan	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	22-11-2012&nbsp;	</td>
+    <td>	Rubin Kazan	 - 	Inter Milan	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	22-11-2012&nbsp;	</td>
+    <td>	Neftchi PFK	 - 	FK Partizan Belgrade	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-12-2012&nbsp;	</td>
+    <td>	FK Partizan Belgrade	 - 	Rubin Kazan	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-12-2012&nbsp;	</td>
+    <td>	Inter Milan	 - 	Neftchi PFK	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group I</td></tr>
+<tr>
+    <td>	20-09-2012&nbsp;	</td>
+    <td>	Olympique Lyon	 - 	AC Sparta Prague	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://i.postimg.cc/4dsbwDb2/el20120920-Olympique-Lyon-Sparta-Prag.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	20-09-2012&nbsp;	</td>
+    <td>	Athletic Bilbao	 - 	Ironi Kiryat Shmona	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-10-2012&nbsp;	</td>
+    <td>	Ironi Kiryat Shmona	 - 	Olympique Lyon	</td>
+    <td class="score-bold">	3-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-10-2012&nbsp;	</td>
+    <td>	AC Sparta Prague	 - 	Athletic Bilbao	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	25-10-2012&nbsp;	</td>
+    <td>	Olympique Lyon	 - 	Athletic Bilbao	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	25-10-2012&nbsp;	</td>
+    <td>	AC Sparta Prague	 - 	Ironi Kiryat Shmona	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-11-2012&nbsp;	</td>
+    <td>	Athletic Bilbao	 - 	Olympique Lyon	</td>
+    <td class="score-bold">	2-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-11-2012&nbsp;	</td>
+    <td>	Ironi Kiryat Shmona	 - 	AC Sparta Prague	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	22-11-2012&nbsp;	</td>
+    <td>	AC Sparta Prague	 - 	Olympique Lyon	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	22-11-2012&nbsp;	</td>
+    <td>	Ironi Kiryat Shmona	 - 	Athletic Bilbao	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-12-2012&nbsp;	</td>
+    <td>	Athletic Bilbao	 - 	AC Sparta Prague	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-12-2012&nbsp;	</td>
+    <td>	Olympique Lyon	 - 	Ironi Kiryat Shmona	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group J</td></tr>
+<tr>
+    <td>	20-09-2012&nbsp;	</td>
+    <td>	NK Maribor	 - 	Panathinaikos FC	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	20-09-2012&nbsp;	</td>
+    <td>	Tottenham Hotspur	 - 	Lazio Roma	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-10-2012&nbsp;	</td>
+    <td>	Panathinaikos FC	 - 	Tottenham Hotspur	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-10-2012&nbsp;	</td>
+    <td>	Lazio Roma	 - 	NK Maribor	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	25-10-2012&nbsp;	</td>
+    <td>	NK Maribor	 - 	Tottenham Hotspur	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	25-10-2012&nbsp;	</td>
+    <td>	Panathinaikos FC	 - 	Lazio Roma	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-11-2012&nbsp;	</td>
+    <td>	Lazio Roma	 - 	Panathinaikos FC	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-11-2012&nbsp;	</td>
+    <td>	Tottenham Hotspur	 - 	NK Maribor	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	22-11-2012&nbsp;	</td>
+    <td>	Lazio Roma	 - 	Tottenham Hotspur	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	22-11-2012&nbsp;	</td>
+    <td>	Panathinaikos FC	 - 	NK Maribor	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-12-2012&nbsp;	</td>
+    <td>	Tottenham Hotspur	 - 	Panathinaikos FC	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-12-2012&nbsp;	</td>
+    <td>	NK Maribor	 - 	Lazio Roma	</td>
+    <td class="score-bold">	1-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group K</td></tr>
+<tr>
+    <td>	20-09-2012&nbsp;	</td>
+    <td>	Bayer Leverkusen	 - 	Metalist Kharkiv	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	20-09-2012&nbsp;	</td>
+    <td>	SK Rapid Wien	 - 	Rosenborg BK	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-10-2012&nbsp;	</td>
+    <td>	Rosenborg BK	 - 	Bayer Leverkusen	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-10-2012&nbsp;	</td>
+    <td>	Metalist Kharkiv	 - 	SK Rapid Wien	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	25-10-2012&nbsp;	</td>
+    <td>	SK Rapid Wien	 - 	Bayer Leverkusen	</td>
+    <td class="score-bold">	0-4	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	25-10-2012&nbsp;	</td>
+    <td>	Rosenborg BK	 - 	Metalist Kharkiv	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-11-2012&nbsp;	</td>
+    <td>	Metalist Kharkiv	 - 	Rosenborg BK	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-11-2012&nbsp;	</td>
+    <td>	Bayer Leverkusen	 - 	SK Rapid Wien	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	22-11-2012&nbsp;	</td>
+    <td>	Metalist Kharkiv	 - 	Bayer Leverkusen	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	22-11-2012&nbsp;	</td>
+    <td>	Rosenborg BK	 - 	SK Rapid Wien	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-12-2012&nbsp;	</td>
+    <td>	SK Rapid Wien	 - 	Metalist Kharkiv	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-12-2012&nbsp;	</td>
+    <td>	Bayer Leverkusen	 - 	Rosenborg BK	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Group L</td></tr>
+<tr>
+    <td>	20-09-2012&nbsp;	</td>
+    <td>	FC Twente	 - 	Hannover 96	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	20-09-2012&nbsp;	</td>
+    <td>	UD Levante	 - 	Helsingborgs IF	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-10-2012&nbsp;	</td>
+    <td>	Helsingborgs IF	 - 	FC Twente	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	4-10-2012&nbsp;	</td>
+    <td>	Hannover 96	 - 	UD Levante	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	25-10-2012&nbsp;	</td>
+    <td>	UD Levante	 - 	FC Twente	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	25-10-2012&nbsp;	</td>
+    <td>	Helsingborgs IF	 - 	Hannover 96	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-11-2012&nbsp;	</td>
+    <td>	FC Twente	 - 	UD Levante	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	8-11-2012&nbsp;	</td>
+    <td>	Hannover 96	 - 	Helsingborgs IF	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	22-11-2012&nbsp;	</td>
+    <td>	Hannover 96	 - 	FC Twente	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://i.postimg.cc/bJg05m3W/el20121122-Hannover-96-Twente-Enschede.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	22-11-2012&nbsp;	</td>
+    <td>	Helsingborgs IF	 - 	UD Levante	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-12-2012&nbsp;	</td>
+    <td>	UD Levante	 - 	Hannover 96	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	6-12-2012&nbsp;	</td>
+    <td>	FC Twente	 - 	Helsingborgs IF	</td>
+    <td class="score-bold">	1-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Round 2</td></tr>
+<tr>
+    <td>	 14-02-2013&nbsp;	</td>
+    <td>	Zenit Saint-Petersburg	 - 	Liverpool FC	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://i.postimg.cc/xC5GZ66f/el20130214-zenit-liverpool.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-02-2013&nbsp;	</td>
+    <td>	Anzji Machatsjkala	 - 	Hannover 96	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-02-2013&nbsp;	</td>
+    <td>	BATE Borisov	 - 	Fenerbahçe SK	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-02-2013&nbsp;	</td>
+    <td>	UD Levante	 - 	Olympiacos Piraeus	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-02-2013&nbsp;	</td>
+    <td>	Dynamo Kyiv	 - 	FC Girondins Bordeaux	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-02-2013&nbsp;	</td>
+    <td>	Bayer Leverkusen	 - 	SL Benfica	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-02-2013&nbsp;	</td>
+    <td>	AFC Ajax	 - 	Steaua Bucharest	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-02-2013&nbsp;	</td>
+    <td>	AC Sparta Prague	 - 	Chelsea FC	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://i.postimg.cc/C17C2ccF/el20130214-AC-Sparta-Praha-Chelsea-FC.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-02-2013&nbsp;	</td>
+    <td>	SSC Napoli	 - 	FC Viktoria Plzen	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-02-2013&nbsp;	</td>
+    <td>	Inter Milan	 - 	CFR Cluj	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-02-2013&nbsp;	</td>
+    <td>	Newcastle United	 - 	Metalist Kharkiv	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-02-2013&nbsp;	</td>
+    <td>	VfB Stuttgart	 - 	KRC Genk	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-02-2013&nbsp;	</td>
+    <td>	Atlético Madrid	 - 	Rubin Kazan	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-02-2013&nbsp;	</td>
+    <td>	FC Basel 1893	 - 	Dnipro Dnipropetrovsk  	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-02-2013&nbsp;	</td>
+    <td>	Borussia Mönchengladbach	 - 	Lazio Roma	</td>
+    <td class="score-bold">	3-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-02-2013&nbsp;	</td>
+    <td>	Tottenham Hotspur	 - 	Olympique Lyon	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Round 2</td></tr>
+<tr>
+    <td>	 21-02-2013&nbsp;	</td>
+    <td>	Rubin Kazan	 - 	Atlético Madrid	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-02-2013&nbsp;	</td>
+    <td>	CFR Cluj	 - 	Inter Milan	</td>
+    <td class="score-bold">	0-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-02-2013&nbsp;	</td>
+    <td>	Metalist Kharkiv	 - 	Newcastle United	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-02-2013&nbsp;	</td>
+    <td>	KRC Genk	 - 	VfB Stuttgart	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://i.postimg.cc/DZ6QNxx7/el20130221-genk-stuttgart.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-02-2013&nbsp;	</td>
+    <td>	Dnipro Dnipropetrovsk  	 - 	FC Basel 1893	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-02-2013&nbsp;	</td>
+    <td>	Lazio Roma	 - 	Borussia Mönchengladbach	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-02-2013&nbsp;	</td>
+    <td>	Olympique Lyon	 - 	Tottenham Hotspur	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-02-2013&nbsp;	</td>
+    <td>	Fenerbahçe SK	 - 	BATE Borisov	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-02-2013&nbsp;	</td>
+    <td>	Olympiacos Piraeus	 - 	UD Levante	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-02-2013&nbsp;	</td>
+    <td>	Liverpool FC	 - 	Zenit Saint-Petersburg	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://i.postimg.cc/vBh7K00H/el20130221-liverpool-zenit.png" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-02-2013&nbsp;	</td>
+    <td>	FC Girondins Bordeaux	 - 	Dynamo Kyiv	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-02-2013&nbsp;	</td>
+    <td>	SL Benfica	 - 	Bayer Leverkusen	</td>
+    <td class="score-bold">	2-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-02-2013&nbsp;	</td>
+    <td>	Steaua Bucharest	 - 	AFC Ajax	</td>
+    <td class="score-bold">	2-0 pen 4-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-02-2013&nbsp;	</td>
+    <td>	Hannover 96	 - 	Anzji Machatsjkala	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-02-2013&nbsp;	</td>
+    <td>	Chelsea FC	 - 	AC Sparta Prague	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 21-02-2013&nbsp;	</td>
+    <td>	FC Viktoria Plzen	 - 	SSC Napoli	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Last 16</td></tr>
+<tr>
+    <td>	 7-03-2013&nbsp;	</td>
+    <td>	Anzji Machatsjkala	 - 	Newcastle United	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 7-03-2013&nbsp;	</td>
+    <td>	FC Viktoria Plzen	 - 	Fenerbahçe SK	</td>
+    <td class="score-bold">	0-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 7-03-2013&nbsp;	</td>
+    <td>	VfB Stuttgart	 - 	Lazio Roma	</td>
+    <td class="score-bold">	0-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 7-03-2013&nbsp;	</td>
+    <td>	Steaua Bucharest	 - 	Chelsea FC	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 7-03-2013&nbsp;	</td>
+    <td>	SL Benfica	 - 	FC Girondins Bordeaux	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 7-03-2013&nbsp;	</td>
+    <td>	Tottenham Hotspur	 - 	Inter Milan	</td>
+    <td class="score-bold">	3-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 7-03-2013&nbsp;	</td>
+    <td>	UD Levante	 - 	Rubin Kazan	</td>
+    <td class="score-bold">	0-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 7-03-2013&nbsp;	</td>
+    <td>	FC Basel 1893	 - 	Zenit Saint-Petersburg	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Last 16</td></tr>
+<tr>
+    <td>	 14-03-2013&nbsp;	</td>
+    <td>	Rubin Kazan	 - 	UD Levante	</td>
+    <td class="score-bold">	2-0 aet	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-03-2013&nbsp;	</td>
+    <td>	Zenit Saint-Petersburg	 - 	FC Basel 1893	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-03-2013&nbsp;	</td>
+    <td>	Inter Milan	 - 	Tottenham Hotspur	</td>
+    <td class="score-bold">	4-1 aet</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-03-2013&nbsp;	</td>
+    <td>	Fenerbahçe SK	 - 	FC Viktoria Plzen	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-03-2013&nbsp;	</td>
+    <td>	FC Girondins Bordeaux	 - 	SL Benfica	</td>
+    <td class="score-bold">	2-3	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-03-2013&nbsp;	</td>
+    <td>	Newcastle United	 - 	Anzji Machatsjkala	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-03-2013&nbsp;	</td>
+    <td>	Lazio Roma	 - 	VfB Stuttgart	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 14-03-2013&nbsp;	</td>
+    <td>	Chelsea FC	 - 	Steaua Bucharest	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Quarter Final</td></tr>
+<tr>
+    <td>	 4-04-2013&nbsp;	</td>
+    <td>	Chelsea FC	 - 	Rubin Kazan	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-04-2013&nbsp;	</td>
+    <td>	Tottenham Hotspur	 - 	FC Basel 1893	</td>
+    <td class="score-bold">	2-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-04-2013&nbsp;	</td>
+    <td>	Fenerbahçe SK	 - 	Lazio Roma	</td>
+    <td class="score-bold">	2-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 4-04-2013&nbsp;	</td>
+    <td>	SL Benfica	 - 	Newcastle United	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Quarter Final</td></tr>
+<tr>
+    <td>	 11-04-2013&nbsp;	</td>
+    <td>	Rubin Kazan	 - 	Chelsea FC	</td>
+    <td class="score-bold">	3-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 11-04-2013&nbsp;	</td>
+    <td>	FC Basel 1893	 - 	Tottenham Hotspur	</td>
+    <td class="score-bold">	2-2 pen 4-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 11-04-2013&nbsp;	</td>
+    <td>	Lazio Roma	 - 	Fenerbahçe SK	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 11-04-2013&nbsp;	</td>
+    <td>	Newcastle United	 - 	SL Benfica	</td>
+    <td class="score-bold">	1-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Semi Final</td></tr>
+<tr>
+    <td>	 25-04-2013&nbsp;	</td>
+    <td>	Fenerbahçe SK	 - 	SL Benfica	</td>
+    <td class="score-bold">	1-0	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 25-04-2013&nbsp;	</td>
+    <td>	FC Basel 1893	 - 	Chelsea FC	</td>
+    <td class="score-bold">	1-2	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Semi Final</td></tr>
+<tr>
+    <td>	 2-05-2013&nbsp;	</td>
+    <td>	SL Benfica	 - 	Fenerbahçe SK	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr>
+    <td>	 2-05-2013&nbsp;	</td>
+    <td>	Chelsea FC	 - 	FC Basel 1893	</td>
+    <td class="score-bold">	3-1	</td>
+    <td><a href="https://www.facebook.com" target="_blank"><img src="../images/bbb.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+<tr><td colspan="5" class="round-divider">Final</td></tr>
+<tr style="background: rgba(255, 215, 0, 0.2);">
+    <td><strong>  15-05-2013&nbsp;&nbsp;</strong></td>
+    <td><strong>SL Benfica	 - 	Chelsea FC</strong></td>
+    <td class="score-bold">1-2</td>
+    <td><a href="https://i.postimg.cc/QtmgzffM/el20130515-Chelsea-Benfica.jpg" target="_blank"><img src="../images/aaa.png" class="table-icon"></a></td>
+    <td><a href="el-2012-2013/?????.html"><img src="../images/details.png" class="table-icon" title="Match Stats"></a></td>
+</tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</div>
+
+<button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" id="scrollTopBtn">↑</button>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // 1. Tooltip aanmaken
+        const tooltip = document.createElement('div');
+        tooltip.id = 'image-preview-tooltip';
+        Object.assign(tooltip.style, {
+            position: 'fixed',
+            display: 'none',
+            zIndex: '10000',
+            pointerEvents: 'none',
+            background: '#fff',
+            border: '3px solid rgb(255, 148, 0)',
+            borderRadius: '8px',
+            boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
+            padding: '5px',
+            width: '250px' // Iets smaller voor de zekerheid
+        });
+        document.body.appendChild(tooltip);
+
+        const rows = document.querySelectorAll('#matchTable tbody tr');
+        let ticketsOwned = 0;
+        let programsOwned = 0;
+        let totalMatches = 0;
+
+        rows.forEach(row => {
+            const cells = row.cells;
+            if (cells.length === 5) { 
+                totalMatches++;
+                const links = row.querySelectorAll('td a');
+                links.forEach(link => {
+                    const img = link.querySelector('img');
+                    if (img && img.src.includes('images/aaa.png')) {
+                        if (link.parentElement.cellIndex === 3) ticketsOwned++;
+                        if (link.parentElement.cellIndex === 4) programsOwned++;
+
+                        link.addEventListener('mouseenter', () => {
+                            tooltip.innerHTML = `<img src="${link.href}" style="width:100%; height:auto; display:block; border-radius:4px;">`;
+                            tooltip.style.display = 'block';
+                        });
+
+                        link.addEventListener('mousemove', (e) => {
+                            const gap = 20;
+                            const tooltipWidth = 460; // breedte + padding
+                            let x = e.clientX + gap;
+                            let y = e.clientY + 10;
+
+                            // RECHTS BUITEN BEELD? -> Verplaats naar links van de muis
+                            if (x + tooltipWidth > window.innerWidth) {
+                                x = e.clientX - tooltipWidth - gap;
+                            }
+
+                            // LINKS BUITEN BEELD?
+                            if (x < 0) x = 10;
+
+                            // ONDERKANT BUITEN BEELD?
+                            if (y + 400 > window.innerHeight) {
+                                y = window.innerHeight - 410;
+                            }
+
+                            tooltip.style.left = x + 'px';
+                            tooltip.style.top = y + 'px';
+                        });
+
+                        link.addEventListener('mouseleave', () => {
+                            tooltip.style.display = 'none';
+                        });
+                    }
+                });
+            }
+        });
+
+        // Tellers invullen
+        document.getElementById('ticket-count').innerText = ticketsOwned;
+        document.getElementById('total-tickets').innerText = totalMatches;
+        
+    });
+
+    // Scroll knop
+    window.onscroll = function() {
+        let btn = document.getElementById("scrollTopBtn");
+        if (btn) btn.style.display = (window.pageYOffset > 200) ? "block" : "none";
+    };
+</script>
+<script src="search-index.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Zelfde opschoon-functie als de converter
+        function cleanId(text) {
+            return text.toString().toLowerCase().replace(/[^a-z0-9]/g, '');
+        }
+
+        // 1. Geef alle rijen een ID
+        const rows = document.querySelectorAll("tr");
+        rows.forEach(row => {
+            const cells = row.querySelectorAll("td");
+            if (cells.length >= 2) {
+                const date = cells[0].innerText;
+                const teams = cells[1].innerText;
+                row.id = "match" + cleanId(date + teams);
+            }
+        });
+
+        // 2. Scroll naar de match als er een # in de URL staat
+        if (window.location.hash) {
+            // Wacht heel even tot de pagina volledig rustig is
+            setTimeout(() => {
+                const target = document.querySelector(window.location.hash);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // Highlight de rij
+                    target.style.transition = "background-color 0.5s";
+                    target.style.backgroundColor = "#cdffcf";
+                    setTimeout(() => { target.style.backgroundColor = ""; }, 5000);
+                }
+            }, 600); // 600ms vertraging voor stabiliteit
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Europa League Archief</title>
+    <style>
+        /* Dezelfde stijlen als in je index.html voor consistentie */
+        * { box-sizing: border-box; }
+        body, html { margin: 0; padding: 0; height: 100%; font-family: 'Segoe UI', sans-serif; background-color: #f8f9fa; }
+
+        .app-wrapper { display: flex; min-height: 100vh; width: 100%; }
+
+        /* ZIJBALK (Hetzelfde als index.html) */
+        .sidebar {
+            width: 320px;
+            background-color: #1a1d23;
+            color: white;
+            padding: 25px 15px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .sidebar h2 { color: #FFFFFF; margin-bottom: 20px; font-size: 1.4rem; text-align: center; }
+
+        .sidebar-nav ul { list-style: none; padding: 0; margin: 0; }
+        .sidebar-nav a {
+            text-decoration: none;
+            color: #adb5bd;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            transition: 0.2s;
+        }
+        .sidebar-nav a:hover { background: #343a40; color: rgb(255, 148, 0); }
+
+        /* CONTENT GEBIED */
+        .main-content { flex-grow: 1; padding: 40px; }
+
+        .year-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; margin-top: 20px; }
+        
+        .year-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            border: 1px solid #eee;
+        }
+        .year-card:hover { transform: translateY(-5px); box-shadow: 0 6px 15px rgba(0,0,0,0.1); border-color: rgb(255, 148, 0); }
+/* --- Dashboard Stats Styling --- */
+.stats-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+    gap: 20px; 
+    margin-bottom: 40px; 
+}
+.stat-card { 
+    background: white; 
+    padding: 20px; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+    text-align: center; 
+    border-bottom: 4px solid #0e1e5b; /* CL Blauw */
+}
+.stat-card h3 { margin: 0; color: #666; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+.stat-card .value { font-size: 2rem; font-weight: 800; margin: 10px 0; color: #0e1e5b; }
+
+.prog-bg { background: #eee; height: 8px; border-radius: 4px; overflow: hidden; margin-top: 10px; }
+.prog-fill { height: 100%; background: rgb(255, 148, 0); width: 0%; transition: width 1s ease-in-out; }
+
+/* Verberg de bron-data tabel */
+#data-source { display: none; }   
+    </style>
+</head>
+<body>
+
+<div class="app-wrapper">
+    <aside class="sidebar">
+        <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #333;">
+                <img src="../images/logo.png" alt="All Football Tickets Logo" style="width: 100%; max-width: 180px; border-radius: 10px; opacity: 0.8;">
+            </div>
+        
+       
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="../index.html" style="font-weight: bold; color: rgb(255, 148, 0);">← Home</a></li>
+            </ul>
+
+            <h3 style="font-size: 0.8rem; color: #666; margin: 20px 0 10px 10px; text-transform: uppercase;">Tournaments</h3>
+            <ul>
+               
+                <li><a href="cl-overzicht.html">Champions League</a></li>
+                <li><a href="el-overzicht.html">Europa League</a></li>
+                <li><a href="conl-overzicht.html">Conference League</a></li>
+            </ul>
+
+            
+            <ul>
+                <li><a href="ec1-overzicht.html">Europacup I</a></li>
+                <li><a href="ec2-overzicht.html">Cup Winners Cup</a></li>
+                <li><a href="uc-overzicht.html">UEFA Cup</a></li>
+                <li><a href="itt-overzicht.html">UEFA Intertoto Cup</a></li>
+                <li><a href="icc-overzicht.html">Inter-Cities Fairs Cup</a></li>
+                <li><a href="wc-overzicht.html">World Cup</a></li>
+                <li><a href="ek-overzicht.html">European Championship</a></li>
+                <li><a href="nl-overzicht.html">UEFA Nations League</a></li>
+                <li><a href="Totaaloverzicht.html">Master Stats Dashboard</a></li>
+            </ul>
+        
+            
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <h1>Europa League Archief</h1>
+        <div class="stats-grid">
+    <div class="stat-card">
+        <h3>Tickets on site</h3>
+        <div class="value" id="grand-tickets">0 / 0</div>
+        <div class="prog-bg"><div id="bar-tickets" class="prog-fill"></div></div>
+    </div>
+    
+    <div class="stat-card">
+        <h3>Total Progress</h3>
+        <div class="value" id="grand-perc">0%</div>
+        <p style="margin:0; font-size:0.8rem; color:#888;"></p>
+    </div>
+</div>
+
+<table id="data-source">
+    <tbody class="season-rows">
+<tr><td>09/10</td><td><span class="t-owned">52</span> / <span class="t-total">477</span></td><td class="row-perc">-</td></tr>
+<tr><td>10/11</td><td><span class="t-owned">52</span> / <span class="t-total">481</span></td><td class="row-perc">-</td></tr>
+<tr><td>11/12</td><td><span class="t-owned">51</span> / <span class="t-total">480</span></td><td class="row-perc">-</td></tr>
+<tr><td>12/13</td><td><span class="t-owned">40</span> / <span class="t-total">479</span></td><td class="row-perc">-</td></tr>
+<tr><td>13/14</td><td><span class="t-owned">26</span> / <span class="t-total">479</span></td><td class="row-perc">-</td></tr>
+<tr><td>14/15</td><td><span class="t-owned">46</span> / <span class="t-total">483</span></td><td class="row-perc">-</td></tr>
+<tr><td>15/16</td><td><span class="t-owned">35</span> / <span class="t-total">475</span></td><td class="row-perc">-</td></tr>
+<tr><td>16/17</td><td><span class="t-owned">52</span> / <span class="t-total">469</span></td><td class="row-perc">-</td></tr>
+<tr><td>17/18</td><td><span class="t-owned">10</span> / <span class="t-total">473</span></td><td class="row-perc">-</td></tr>
+<tr><td>18/19</td><td><span class="t-owned">27</span> / <span class="t-total">519</span></td><td class="row-perc">-</td></tr>
+<tr><td>19/20</td><td><span class="t-owned">28</span> / <span class="t-total">511</span></td><td class="row-perc">-</td></tr>
+<tr><td>20/21</td><td><span class="t-owned">4</span> / <span class="t-total">362</span></td><td class="row-perc">-</td></tr>
+<tr><td>21/22</td><td><span class="t-owned">18</span> / <span class="t-total">175</span></td><td class="row-perc">-</td></tr>
+<tr><td>22/23</td><td><span class="t-owned">2</span> / <span class="t-total">175</span></td><td class="row-perc">-</td></tr>
+<tr><td>23/24</td><td><span class="t-owned">4</span> / <span class="t-total">175</span></td><td class="row-perc">-</td></tr>
+<tr><td>24/25</td><td><span class="t-owned">4</span> / <span class="t-total">269</span></td><td class="row-perc">-</td></tr>
+        
+        </table>
+        <p>Select a season to see games-scores-tickets and programs</p>
+
+        <div class="year-grid">
+            
+    <a href="el-2009-2010.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">2009 - 2010</span>
+        <img src="../images/el-logo.png" alt="el Logo" style="width: 100px;">
+    </a>
+
+    <a href="el-2010-2011.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">2010 - 2011</span>
+        <img src="../images/el-logo.png" alt="el Logo" style="width: 100px;">
+    </a>
+    <a href="el-2011-2012.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">2011 - 2012</span>
+        <img src="../images/el-logo.png" alt="el Logo" style="width: 100px;">
+    </a>
+    <a href="el-2012-2013.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">2012 - 2013</span>
+        <img src="../images/el-logo.png" alt="el Logo" style="width: 100px;">
+    </a>
+    <a href="el-2013-2014.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">2013 - 2014</span>
+        <img src="../images/el-logo.png" alt="el Logo" style="width: 100px;">
+    </a>
+    <a href="el-2014-2015.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">2014 - 2015</span>
+        <img src="../images/el-logo.png" alt="el Logo" style="width: 100px;">
+    </a>
+    <a href="el-2015-2016.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">2015 - 2016</span>
+        <img src="../images/el-logo.png" alt="el Logo" style="width: 100px;">
+    </a>
+    <a href="el-2016-2017.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">2016 - 2017</span>
+        <img src="../images/el-logo.png" alt="el Logo" style="width: 100px;">
+    </a>
+    <a href="el-2017-2018.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">2017 - 2018</span>
+        <img src="../images/el-logo.png" alt="el Logo" style="width: 100px;">
+    </a>
+    <a href="el-2018-2019.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">2018 - 2019</span>
+        <img src="../images/el-logo.png" alt="el Logo" style="width: 100px;">
+    </a>
+    <a href="el-2019-2020.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">2019 - 2020</span>
+        <img src="../images/el-logo.png" alt="el Logo" style="width: 100px;">
+    </a>
+
+    <a href="el-2020-2021.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">2020 - 2021</span>
+        <img src="../images/el-logo.png" alt="el Logo" style="width: 100px;">
+    </a>
+    <a href="el-2021-2022.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">2021 - 2022</span>
+        <img src="../images/el-logo.png" alt="el Logo" style="width: 100px;">
+    </a>
+    <a href="el-2022-2023.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">2022 - 2023</span>
+        <img src="../images/el-logo.png" alt="el Logo" style="width: 100px;">
+    </a>
+    <a href="el-2023-2024.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">2023 - 2024</span>
+        <img src="../images/el-logo.png" alt="el Logo" style="width: 100px;">
+    </a>
+    <a href="el-2024-2025.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">2024 - 2025</span>
+        <img src="../images/el-logo.png" alt="el Logo" style="width: 100px;">
+    </a>
+    <a href="el-2025-2026.html" class="year-card">
+        <span style="font-weight: bold; display: block; margin-bottom: 10px;">2025 - 2026</span>
+        <img src="../images/el-logo.png" alt="el Logo" style="width: 100px;">
+    </a>       
+        </div>
+    </main>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    let tO = 0, tT = 0;
+    
+    // Zoek alle rijen in de verborgen tabel
+    const rows = document.querySelectorAll('#data-source .season-rows tr');
+    
+    rows.forEach(row => {
+        // Haal alleen de cijfers voor tickets op
+        tO += parseInt(row.querySelector('.t-owned')?.innerText) || 0;
+        tT += parseInt(row.querySelector('.t-total')?.innerText) || 0;
+    });
+
+    // Update de tekst in de ticket-widget
+    const grandTickets = document.getElementById('grand-tickets');
+    if (grandTickets) {
+        grandTickets.innerText = tO + " / " + tT;
+    }
+    
+    // Bereken percentage op basis van alleen tickets
+    const tPerc = tT > 0 ? (tO / tT) * 100 : 0;
+    const totalPerc = Math.round(tPerc);
+
+    // Update de ticket-balk
+    const barTickets = document.getElementById('bar-tickets');
+    if (barTickets) {
+        barTickets.style.width = tPerc + "%";
+    }
+
+    // Update het totaal percentage (grand-perc)
+    const grandPerc = document.getElementById('grand-perc');
+    if (grandPerc) {
+        grandPerc.innerText = totalPerc + "%";
+    }
+});
+</script>
+</body>
+</html>
